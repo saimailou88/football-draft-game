@@ -1,12 +1,11 @@
-function PlayerCard({player}) {
-    return (
-        <div className="player-card">
-            <h2 className="player-name">{player.player_name}</h2>
-            <p className="player-club">{player.club} · {player.season_year}</p>
+function PlayerCard({ player }) {
+  return (
+    <div className="player-card">
+      <h2 className="player-name">{player.player_name}</h2>
 
       <div className="position-badges">
         {player.positions.map((pos) => (
-          <span key={pos} className="position-badge">{pos}</span>
+          <span key={pos} className="position-badge">{pos} </span>
         ))}
       </div>
 

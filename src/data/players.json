@@ -9916,7 +9916,7 @@
     "season_year":2006,
     "nationality":"es ESP",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":74.0,
     "age":28.0
@@ -9938,7 +9938,7 @@
     "season_year":2006,
     "nationality":"ie IRL",
     "positions":[
-      "RWB"
+      "RB"
     ],
     "rating_overall":65.0,
     "age":26.0
@@ -10059,7 +10059,7 @@
     "season_year":2006,
     "nationality":"sn SEN",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":78.0,
     "age":25.0
@@ -10092,7 +10092,7 @@
     "season_year":2006,
     "nationality":"eng ENG",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":72.0,
     "age":26.0
@@ -10433,7 +10433,7 @@
     "season_year":2006,
     "nationality":"ci CIV",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":79.0,
     "age":20.0
@@ -10466,7 +10466,7 @@
     "season_year":2006,
     "nationality":"tr TUR",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":67.0,
     "age":19.0
@@ -10774,7 +10774,7 @@
     "season_year":2006,
     "nationality":"sct SCO",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":66.0,
     "age":23.0
@@ -11555,7 +11555,7 @@
     "season_year":2006,
     "nationality":"eng ENG",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":70.0,
     "age":23.0
@@ -11709,7 +11709,7 @@
     "season_year":2006,
     "nationality":"tn TUN",
     "positions":[
-      "RWB"
+      "RB"
     ],
     "rating_overall":67.0,
     "age":29.0
@@ -11984,7 +11984,7 @@
     "season_year":2007,
     "nationality":"br BRA",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":73.0,
     "age":26.0
@@ -12215,7 +12215,7 @@
     "season_year":2007,
     "nationality":"sn SEN",
     "positions":[
-      "RWB"
+      "RB"
     ],
     "rating_overall":70.0,
     "age":29.0
@@ -13843,7 +13843,7 @@
     "season_year":2007,
     "nationality":"sct SCO",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":70.0,
     "age":24.0
@@ -13865,7 +13865,7 @@
     "season_year":2007,
     "nationality":"eng ENG",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":72.0,
     "age":24.0
@@ -14305,7 +14305,7 @@
     "season_year":2007,
     "nationality":"nl NED",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":77.0,
     "age":23.0
@@ -14492,7 +14492,7 @@
     "season_year":2007,
     "nationality":"eng ENG",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":91.0,
     "age":21.0
@@ -14536,7 +14536,7 @@
     "season_year":2007,
     "nationality":"tr TUR",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":79.0,
     "age":25.0
@@ -14789,7 +14789,7 @@
     "season_year":2007,
     "nationality":"ar ARG",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":92.0,
     "age":23.0
@@ -14965,7 +14965,7 @@
     "season_year":2007,
     "nationality":"tt TRI",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":65.0,
     "age":35.0
@@ -15075,7 +15075,7 @@
     "season_year":2008,
     "nationality":"br BRA",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":74.0,
     "age":27.0
@@ -15152,7 +15152,7 @@
     "season_year":2008,
     "nationality":"ru RUS",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":75.0,
     "age":27.0
@@ -15196,7 +15196,7 @@
     "season_year":2008,
     "nationality":"br BRA",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":71.0,
     "age":28.0
@@ -15339,7 +15339,7 @@
     "season_year":2008,
     "nationality":"dz ALG",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":72.0,
     "age":26.0
@@ -15515,7 +15515,7 @@
     "season_year":2008,
     "nationality":"ec ECU",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":67.0,
     "age":19.0
@@ -15647,7 +15647,7 @@
     "season_year":2008,
     "nationality":"fr FRA",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":71.0,
     "age":23.0
@@ -15658,7 +15658,7 @@
     "season_year":2008,
     "nationality":"eng ENG",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":71.0,
     "age":27.0
@@ -15878,7 +15878,7 @@
     "season_year":2008,
     "nationality":"it ITA",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":74.0,
     "age":32.0
@@ -16043,7 +16043,7 @@
     "season_year":2008,
     "nationality":"se SWE",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":75.0,
     "age":27.0
@@ -16131,7 +16131,7 @@
     "season_year":2008,
     "nationality":"fr FRA",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":72.0,
     "age":27.0
@@ -16626,7 +16626,7 @@
     "season_year":2008,
     "nationality":"cd COD",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":70.0,
     "age":26.0
@@ -16769,7 +16769,7 @@
     "season_year":2008,
     "nationality":"ng NGA",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":65.0,
     "age":31.0
@@ -16780,7 +16780,7 @@
     "season_year":2008,
     "nationality":"ie IRL",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":74.0,
     "age":28.0
@@ -17495,7 +17495,7 @@
     "season_year":2008,
     "nationality":"nl NED",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":91.0,
     "age":24.0
@@ -17539,7 +17539,7 @@
     "season_year":2008,
     "nationality":"br BRA",
     "positions":[
-      "RWB"
+      "RB"
     ],
     "rating_overall":64.0,
     "age":18.0
@@ -17682,7 +17682,7 @@
     "season_year":2008,
     "nationality":"eng ENG",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":90.0,
     "age":22.0
@@ -17836,7 +17836,7 @@
     "season_year":2008,
     "nationality":"eng ENG",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":62.0,
     "age":19.0
@@ -17946,7 +17946,7 @@
     "season_year":2008,
     "nationality":"eng ENG",
     "positions":[
-      "RWB"
+      "RB"
     ],
     "rating_overall":62.0,
     "age":23.0
@@ -18100,7 +18100,7 @@
     "season_year":2008,
     "nationality":"eng ENG",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":63.0,
     "age":20.0
@@ -18452,7 +18452,7 @@
     "season_year":2009,
     "nationality":"ru RUS",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":83.0,
     "age":28.0
@@ -18485,7 +18485,7 @@
     "season_year":2009,
     "nationality":"br BRA",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":64.0,
     "age":29.0
@@ -18606,7 +18606,7 @@
     "season_year":2009,
     "nationality":"dz ALG",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":70.0,
     "age":27.0
@@ -18639,7 +18639,7 @@
     "season_year":2009,
     "nationality":"ec ECU",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":74.0,
     "age":23.0
@@ -18716,7 +18716,7 @@
     "season_year":2009,
     "nationality":"eng ENG",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":72.0,
     "age":33.0
@@ -19024,7 +19024,7 @@
     "season_year":2009,
     "nationality":"fr FRA",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":69.0,
     "age":24.0
@@ -19046,7 +19046,7 @@
     "season_year":2009,
     "nationality":"eng ENG",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":75.0,
     "age":28.0
@@ -19332,7 +19332,7 @@
     "season_year":2009,
     "nationality":"us USA",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":68.0,
     "age":27.0
@@ -19541,7 +19541,7 @@
     "season_year":2009,
     "nationality":"fr FRA",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":75.0,
     "age":28.0
@@ -19827,7 +19827,7 @@
     "season_year":2009,
     "nationality":"dz ALG",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":64.0,
     "age":25.0
@@ -20179,7 +20179,7 @@
     "season_year":2009,
     "nationality":"cd COD",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":64.0,
     "age":27.0
@@ -20322,7 +20322,7 @@
     "season_year":2009,
     "nationality":"eng ENG",
     "positions":[
-      "RWB"
+      "RB"
     ],
     "rating_overall":73.0,
     "age":24.0
@@ -20410,7 +20410,7 @@
     "season_year":2009,
     "nationality":"ng NGA",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":68.0,
     "age":32.0
@@ -20421,7 +20421,7 @@
     "season_year":2009,
     "nationality":"ie IRL",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":64.0,
     "age":23.0
@@ -20707,7 +20707,7 @@
     "season_year":2009,
     "nationality":"sct SCO",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":77.0,
     "age":26.0
@@ -21103,7 +21103,7 @@
     "season_year":2009,
     "nationality":"nl NED",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":83.0,
     "age":25.0
@@ -21312,7 +21312,7 @@
     "season_year":2009,
     "nationality":"eng ENG",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":99.0,
     "age":23.0
@@ -21664,7 +21664,7 @@
     "season_year":2009,
     "nationality":"be BEL",
     "positions":[
-      "RWB"
+      "RB"
     ],
     "rating_overall":65.0,
     "age":21.0
@@ -21978,8 +21978,7 @@
     "season_year":2010,
     "nationality":"ng NGA",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":75.0,
     "age":28.0
@@ -22017,7 +22016,6 @@
     "nationality":"ng NGA",
     "positions":[
       "ST",
-      "CF",
       "RM"
     ],
     "rating_overall":63.0,
@@ -22030,7 +22028,7 @@
     "nationality":"ru RUS",
     "positions":[
       "LW",
-      "CF",
+      "ST",
       "CAM"
     ],
     "rating_overall":87.0,
@@ -22056,7 +22054,6 @@
     "nationality":"cm CMR",
     "positions":[
       "LB",
-      "LWB",
       "LM"
     ],
     "rating_overall":68.0,
@@ -22068,7 +22065,6 @@
     "season_year":2010,
     "nationality":"br BRA",
     "positions":[
-      "LWB",
       "LB",
       "LM"
     ],
@@ -22082,8 +22078,7 @@
     "nationality":"sn SEN",
     "positions":[
       "ST",
-      "LF",
-      "CF"
+      "LF"
     ],
     "rating_overall":73.0,
     "age":25.0
@@ -22094,7 +22089,6 @@
     "season_year":2010,
     "nationality":"eng ENG",
     "positions":[
-      "LWB",
       "LB",
       "LM"
     ],
@@ -22109,7 +22103,7 @@
     "positions":[
       "LM",
       "LW",
-      "LWB"
+      "LB"
     ],
     "rating_overall":77.0,
     "age":21.0
@@ -22210,8 +22204,7 @@
     "season_year":2010,
     "nationality":"jm JAM",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":78.0,
     "age":26.0
@@ -22223,7 +22216,6 @@
     "nationality":"dk DEN",
     "positions":[
       "ST",
-      "CF",
       "RW"
     ],
     "rating_overall":68.0,
@@ -22235,8 +22227,7 @@
     "season_year":2010,
     "nationality":"zw ZIM",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":68.0,
     "age":31.0
@@ -22248,8 +22239,7 @@
     "nationality":"eng ENG",
     "positions":[
       "ST",
-      "RF",
-      "CF"
+      "RF"
     ],
     "rating_overall":78.0,
     "age":26.0
@@ -22273,8 +22263,7 @@
     "season_year":2010,
     "nationality":"bg BUL",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":98.0,
     "age":29.0
@@ -22296,8 +22285,7 @@
     "season_year":2010,
     "nationality":"ie IRL",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":69.0,
     "age":23.0
@@ -22322,7 +22310,6 @@
     "nationality":"sn SEN",
     "positions":[
       "ST",
-      "CF",
       "LW"
     ],
     "rating_overall":70.0,
@@ -22397,7 +22384,6 @@
     "nationality":"eng ENG",
     "positions":[
       "LB",
-      "LWB",
       "LM"
     ],
     "rating_overall":63.0,
@@ -22423,7 +22409,7 @@
     "positions":[
       "CAM",
       "CM",
-      "CF"
+      "ST"
     ],
     "rating_overall":76.0,
     "age":30.0
@@ -22459,7 +22445,6 @@
     "nationality":"no NOR",
     "positions":[
       "ST",
-      "CF",
       "RF"
     ],
     "rating_overall":65.0,
@@ -22471,8 +22456,7 @@
     "season_year":2010,
     "nationality":"ie IRL",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":67.0,
     "age":33.0
@@ -22534,7 +22518,6 @@
     "nationality":"ma MAR",
     "positions":[
       "ST",
-      "CF",
       "RF"
     ],
     "rating_overall":79.0,
@@ -22585,7 +22568,6 @@
     "season_year":2010,
     "nationality":"fr FRA",
     "positions":[
-      "LWB",
       "LB",
       "LM"
     ],
@@ -22610,7 +22592,6 @@
     "season_year":2010,
     "nationality":"eng ENG",
     "positions":[
-      "LWB",
       "LB"
     ],
     "rating_overall":74.0,
@@ -22696,7 +22677,7 @@
     "nationality":"ma MAR",
     "positions":[
       "CB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":62.0,
     "age":24.0
@@ -22719,8 +22700,7 @@
     "season_year":2010,
     "nationality":"eng ENG",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":77.0,
     "age":29.0
@@ -22840,7 +22820,7 @@
     "nationality":"nl NED",
     "positions":[
       "CAM",
-      "CF",
+      "ST",
       "CM"
     ],
     "rating_overall":87.0,
@@ -22852,8 +22832,7 @@
     "season_year":2010,
     "nationality":"eng ENG",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":63.0,
     "age":24.0
@@ -22864,8 +22843,7 @@
     "season_year":2010,
     "nationality":"ar ARG",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":68.0,
     "age":21.0
@@ -22951,8 +22929,7 @@
     "season_year":2010,
     "nationality":"ci CIV",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":94.0,
     "age":32.0
@@ -23051,7 +23028,6 @@
     "nationality":"se SWE",
     "positions":[
       "ST",
-      "CF",
       "RW"
     ],
     "rating_overall":85.0,
@@ -23077,7 +23053,7 @@
     "positions":[
       "RM",
       "CAM",
-      "RWB"
+      "RB"
     ],
     "rating_overall":74.0,
     "age":31.0
@@ -23088,8 +23064,7 @@
     "season_year":2010,
     "nationality":"es ESP",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":69.0,
     "age":24.0
@@ -23161,7 +23136,6 @@
     "season_year":2010,
     "nationality":"br BRA",
     "positions":[
-      "LWB",
       "LB",
       "LM"
     ],
@@ -23202,7 +23176,7 @@
     "positions":[
       "CDM",
       "CM",
-      "CF"
+      "ST"
     ],
     "rating_overall":67.0,
     "age":22.0
@@ -23266,7 +23240,6 @@
     "nationality":"hn HON",
     "positions":[
       "LB",
-      "LWB",
       "CB"
     ],
     "rating_overall":72.0,
@@ -23339,8 +23312,7 @@
     "season_year":2010,
     "nationality":"jm JAM",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":72.0,
     "age":30.0
@@ -23455,8 +23427,7 @@
     "nationality":"ci CIV",
     "positions":[
       "CB",
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":68.0,
     "age":29.0
@@ -23660,8 +23631,7 @@
     "nationality":"eng ENG",
     "positions":[
       "ST",
-      "LW",
-      "CF"
+      "LW"
     ],
     "rating_overall":68.0,
     "age":32.0
@@ -23673,7 +23643,6 @@
     "nationality":"eng ENG",
     "positions":[
       "RB",
-      "RWB",
       "CB"
     ],
     "rating_overall":63.0,
@@ -23785,8 +23754,7 @@
     "season_year":2010,
     "nationality":"sct SCO",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":67.0,
     "age":25.0
@@ -23797,7 +23765,6 @@
     "season_year":2010,
     "nationality":"cd COD",
     "positions":[
-      "LWB",
       "LB"
     ],
     "rating_overall":61.0,
@@ -23898,8 +23865,7 @@
     "nationality":"cz CZE",
     "positions":[
       "CB",
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":60.0,
     "age":31.0
@@ -23911,7 +23877,6 @@
     "nationality":"br BRA",
     "positions":[
       "ST",
-      "CF",
       "CAM"
     ],
     "rating_overall":62.0,
@@ -23986,8 +23951,7 @@
     "season_year":2010,
     "nationality":"tt TRI",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":79.0,
     "age":25.0
@@ -24012,7 +23976,7 @@
     "nationality":"nl NED",
     "positions":[
       "CDM",
-      "RWB",
+      "RB",
       "CM"
     ],
     "rating_overall":74.0,
@@ -24037,8 +24001,7 @@
     "season_year":2010,
     "nationality":"hr CRO",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":71.0,
     "age":22.0
@@ -24050,7 +24013,7 @@
     "nationality":"ci CIV",
     "positions":[
       "RW",
-      "CF",
+      "ST",
       "LW"
     ],
     "rating_overall":80.0,
@@ -24076,7 +24039,6 @@
     "nationality":"hr CRO",
     "positions":[
       "ST",
-      "CF",
       "RF"
     ],
     "rating_overall":71.0,
@@ -24101,7 +24063,6 @@
     "season_year":2010,
     "nationality":"rs SRB",
     "positions":[
-      "LWB",
       "LB",
       "LM"
     ],
@@ -24394,7 +24355,7 @@
     "positions":[
       "RW",
       "LW",
-      "CF"
+      "ST"
     ],
     "rating_overall":70.0,
     "age":19.0
@@ -24418,7 +24379,6 @@
     "nationality":"eng ENG",
     "positions":[
       "LB",
-      "LWB",
       "LM"
     ],
     "rating_overall":61.0,
@@ -24430,8 +24390,7 @@
     "season_year":2010,
     "nationality":"fr FRA",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":68.0,
     "age":21.0
@@ -24599,8 +24558,7 @@
     "nationality":"eng ENG",
     "positions":[
       "ST",
-      "LF",
-      "CF"
+      "LF"
     ],
     "rating_overall":65.0,
     "age":30.0
@@ -24636,8 +24594,7 @@
     "season_year":2010,
     "nationality":"ru RUS",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":84.0,
     "age":28.0
@@ -24674,7 +24631,6 @@
     "nationality":"nl NED",
     "positions":[
       "ST",
-      "CF",
       "RW"
     ],
     "rating_overall":97.0,
@@ -24687,7 +24643,7 @@
     "nationality":"bg BUL",
     "positions":[
       "LM",
-      "CF",
+      "ST",
       "CAM"
     ],
     "rating_overall":75.0,
@@ -24712,8 +24668,7 @@
     "season_year":2010,
     "nationality":"eng ENG",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":66.0,
     "age":37.0
@@ -24725,7 +24680,6 @@
     "nationality":"fr FRA",
     "positions":[
       "ST",
-      "CF",
       "LF"
     ],
     "rating_overall":77.0,
@@ -24750,7 +24704,6 @@
     "season_year":2010,
     "nationality":"br BRA",
     "positions":[
-      "RWB",
       "RB",
       "RW"
     ],
@@ -24825,7 +24778,6 @@
     "nationality":"wls WAL",
     "positions":[
       "RB",
-      "RWB",
       "LB"
     ],
     "rating_overall":62.0,
@@ -24863,8 +24815,7 @@
     "season_year":2010,
     "nationality":"gd GRN",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":74.0,
     "age":32.0
@@ -24899,7 +24850,6 @@
     "nationality":"co COL",
     "positions":[
       "ST",
-      "CF",
       "CAM"
     ],
     "rating_overall":80.0,
@@ -24925,7 +24875,6 @@
     "nationality":"eng ENG",
     "positions":[
       "ST",
-      "CF",
       "LW"
     ],
     "rating_overall":91.0,
@@ -24951,7 +24900,6 @@
     "nationality":"fr FRA",
     "positions":[
       "RB",
-      "RWB",
       "CB"
     ],
     "rating_overall":73.0,
@@ -24963,8 +24911,7 @@
     "season_year":2010,
     "nationality":"fr FRA",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":75.0,
     "age":31.0
@@ -24975,8 +24922,7 @@
     "season_year":2010,
     "nationality":"es ESP",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":68.0,
     "age":34.0
@@ -25025,7 +24971,6 @@
     "nationality":"eng ENG",
     "positions":[
       "ST",
-      "CF",
       "RW"
     ],
     "rating_overall":62.0,
@@ -25126,7 +25071,7 @@
     "positions":[
       "CDM",
       "CM",
-      "CF"
+      "ST"
     ],
     "rating_overall":58.0,
     "age":29.0
@@ -25175,7 +25120,6 @@
     "season_year":2010,
     "nationality":"nl NED",
     "positions":[
-      "RWB",
       "RB",
       "RM"
     ],
@@ -25202,8 +25146,7 @@
     "nationality":"is ISL",
     "positions":[
       "RB",
-      "CB",
-      "RWB"
+      "CB"
     ],
     "rating_overall":64.0,
     "age":28.0
@@ -25215,8 +25158,7 @@
     "nationality":"eng ENG",
     "positions":[
       "ST",
-      "RF",
-      "CF"
+      "RF"
     ],
     "rating_overall":73.0,
     "age":20.0
@@ -25228,7 +25170,6 @@
     "nationality":"uy URU",
     "positions":[
       "ST",
-      "CF",
       "RF"
     ],
     "rating_overall":72.0,
@@ -25263,7 +25204,7 @@
     "nationality":"eng ENG",
     "positions":[
       "LM",
-      "LWB",
+      "LB",
       "LW"
     ],
     "rating_overall":74.0,
@@ -25337,8 +25278,7 @@
     "season_year":2010,
     "nationality":"es ESP",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":69.0,
     "age":26.0
@@ -25450,7 +25390,6 @@
     "nationality":"ie IRL",
     "positions":[
       "ST",
-      "CF",
       "RW"
     ],
     "rating_overall":76.0,
@@ -25476,7 +25415,6 @@
     "nationality":"eng ENG",
     "positions":[
       "LB",
-      "LWB",
       "CM"
     ],
     "rating_overall":66.0,
@@ -25501,7 +25439,6 @@
     "season_year":2010,
     "nationality":"eng ENG",
     "positions":[
-      "CF",
       "ST",
       "RW"
     ],
@@ -25577,7 +25514,6 @@
     "nationality":"eng ENG",
     "positions":[
       "RB",
-      "RWB",
       "LB"
     ],
     "rating_overall":66.0,
@@ -25651,8 +25587,7 @@
     "season_year":2011,
     "nationality":"tg TOG",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":98.0,
     "age":27.0
@@ -25689,7 +25624,6 @@
     "nationality":"ar ARG",
     "positions":[
       "ST",
-      "CF",
       "CAM"
     ],
     "rating_overall":99.0,
@@ -25749,8 +25683,7 @@
     "season_year":2011,
     "nationality":"ng NGA",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":71.0,
     "age":29.0
@@ -25788,7 +25721,6 @@
     "nationality":"ng NGA",
     "positions":[
       "ST",
-      "CF",
       "RW"
     ],
     "rating_overall":68.0,
@@ -25837,7 +25769,6 @@
     "nationality":"sn SEN",
     "positions":[
       "ST",
-      "CF",
       "LW"
     ],
     "rating_overall":91.0,
@@ -25873,8 +25804,7 @@
     "season_year":2011,
     "nationality":"it ITA",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":84.0,
     "age":20.0
@@ -25947,9 +25877,8 @@
     "season_year":2011,
     "nationality":"wls WAL",
     "positions":[
-      "CF",
-      "LW",
-      "ST"
+      "ST",
+      "LW"
     ],
     "rating_overall":77.0,
     "age":32.0
@@ -25961,7 +25890,6 @@
     "nationality":"dk DEN",
     "positions":[
       "ST",
-      "CF",
       "RW"
     ],
     "rating_overall":80.0,
@@ -25996,8 +25924,7 @@
     "season_year":2011,
     "nationality":"bg BUL",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":74.0,
     "age":30.0
@@ -26019,8 +25946,7 @@
     "season_year":2011,
     "nationality":"ie IRL",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":70.0,
     "age":24.0
@@ -26055,8 +25981,7 @@
     "season_year":2011,
     "nationality":"eng ENG",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":68.0,
     "age":29.0
@@ -26288,8 +26213,7 @@
     "season_year":2011,
     "nationality":"ma MAR",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":64.0,
     "age":27.0
@@ -26300,8 +26224,7 @@
     "season_year":2011,
     "nationality":"sn SEN",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":82.0,
     "age":26.0
@@ -26517,7 +26440,7 @@
     "nationality":"nl NED",
     "positions":[
       "CAM",
-      "CF",
+      "ST",
       "CM"
     ],
     "rating_overall":87.0,
@@ -26541,8 +26464,7 @@
     "season_year":2011,
     "nationality":"ar ARG",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":75.0,
     "age":22.0
@@ -26639,8 +26561,7 @@
     "season_year":2011,
     "nationality":"ci CIV",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":75.0,
     "age":33.0
@@ -26747,8 +26668,7 @@
     "season_year":2011,
     "nationality":"es ESP",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":72.0,
     "age":25.0
@@ -26859,7 +26779,6 @@
     "nationality":"hn HON",
     "positions":[
       "LB",
-      "LWB",
       "CB"
     ],
     "rating_overall":70.0,
@@ -26942,8 +26861,7 @@
     "season_year":2011,
     "nationality":"jm JAM",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":63.0,
     "age":31.0
@@ -27137,8 +27055,7 @@
     "season_year":2011,
     "nationality":"sct SCO",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":66.0,
     "age":22.0
@@ -27173,8 +27090,7 @@
     "season_year":2011,
     "nationality":"eng ENG",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":84.0,
     "age":25.0
@@ -27257,8 +27173,7 @@
     "season_year":2011,
     "nationality":"is ISL",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":74.0,
     "age":33.0
@@ -27319,7 +27234,6 @@
     "nationality":"mx MEX",
     "positions":[
       "ST",
-      "CF",
       "LW"
     ],
     "rating_overall":82.0,
@@ -27332,7 +27246,6 @@
     "nationality":"eng ENG",
     "positions":[
       "ST",
-      "CF",
       "LW"
     ],
     "rating_overall":65.0,
@@ -27369,7 +27282,7 @@
     "positions":[
       "RW",
       "LW",
-      "CF"
+      "ST"
     ],
     "rating_overall":81.0,
     "age":21.0
@@ -27569,8 +27482,7 @@
     "nationality":"eng ENG",
     "positions":[
       "RB",
-      "LB",
-      "RWB"
+      "LB"
     ],
     "rating_overall":68.0,
     "age":26.0
@@ -27669,7 +27581,7 @@
     "nationality":"ci CIV",
     "positions":[
       "RW",
-      "CF",
+      "ST",
       "LW"
     ],
     "rating_overall":67.0,
@@ -27742,8 +27654,7 @@
     "season_year":2011,
     "nationality":"hr CRO",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":80.0,
     "age":31.0
@@ -27912,8 +27823,7 @@
     "season_year":2011,
     "nationality":"eng ENG",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":65.0,
     "age":26.0
@@ -27936,8 +27846,7 @@
     "season_year":2011,
     "nationality":"ie IRL",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":78.0,
     "age":24.0
@@ -27961,7 +27870,6 @@
     "nationality":"sct SCO",
     "positions":[
       "ST",
-      "CF",
       "RM"
     ],
     "rating_overall":75.0,
@@ -27974,7 +27882,7 @@
     "nationality":"sct SCO",
     "positions":[
       "CAM",
-      "CF",
+      "ST",
       "LW"
     ],
     "rating_overall":64.0,
@@ -28196,7 +28104,7 @@
     "positions":[
       "RW",
       "LW",
-      "CF"
+      "ST"
     ],
     "rating_overall":76.0,
     "age":20.0
@@ -28232,8 +28140,7 @@
     "season_year":2011,
     "nationality":"fr FRA",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":73.0,
     "age":22.0
@@ -28336,7 +28243,7 @@
     "positions":[
       "RM",
       "LM",
-      "CF"
+      "ST"
     ],
     "rating_overall":66.0,
     "age":22.0
@@ -28360,8 +28267,7 @@
     "season_year":2011,
     "nationality":"ng NGA",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":81.0,
     "age":30.0
@@ -28499,7 +28405,6 @@
     "nationality":"nl NED",
     "positions":[
       "ST",
-      "CF",
       "RW"
     ],
     "rating_overall":99.0,
@@ -28612,7 +28517,6 @@
     "nationality":"es ESP",
     "positions":[
       "RB",
-      "RWB",
       "LB"
     ],
     "rating_overall":67.0,
@@ -28793,7 +28697,6 @@
     "season_year":2011,
     "nationality":"eng ENG",
     "positions":[
-      "CF",
       "ST"
     ],
     "rating_overall":99.0,
@@ -28865,8 +28768,7 @@
     "season_year":2011,
     "nationality":"fr FRA",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":68.0,
     "age":32.0
@@ -28888,8 +28790,7 @@
     "season_year":2011,
     "nationality":"ie IRL",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":63.0,
     "age":24.0
@@ -28913,8 +28814,7 @@
     "nationality":"it ITA",
     "positions":[
       "LB",
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":67.0,
     "age":20.0
@@ -29050,7 +28950,7 @@
     "positions":[
       "LW",
       "RW",
-      "CF"
+      "ST"
     ],
     "rating_overall":82.0,
     "age":22.0
@@ -29087,7 +28987,7 @@
     "positions":[
       "RW",
       "CAM",
-      "CF"
+      "ST"
     ],
     "rating_overall":62.0,
     "age":31.0
@@ -29111,8 +29011,7 @@
     "nationality":"nl NED",
     "positions":[
       "RB",
-      "RM",
-      "RWB"
+      "RM"
     ],
     "rating_overall":63.0,
     "age":27.0
@@ -29159,7 +29058,6 @@
     "nationality":"eng ENG",
     "positions":[
       "ST",
-      "CF",
       "RW"
     ],
     "rating_overall":84.0,
@@ -29171,7 +29069,6 @@
     "season_year":2011,
     "nationality":"uy URU",
     "positions":[
-      "CF",
       "ST",
       "RW"
     ],
@@ -29339,8 +29236,7 @@
     "season_year":2011,
     "nationality":"es ESP",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":79.0,
     "age":27.0
@@ -29427,8 +29323,7 @@
     "season_year":2011,
     "nationality":"gr GRE",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":66.0,
     "age":19.0
@@ -29487,8 +29382,7 @@
     "season_year":2011,
     "nationality":"ie IRL",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":81.0,
     "age":27.0
@@ -29549,7 +29443,6 @@
     "nationality":"eng ENG",
     "positions":[
       "ST",
-      "CF",
       "LW"
     ],
     "rating_overall":82.0,
@@ -29730,8 +29623,7 @@
     "season_year":2011,
     "nationality":"eng ENG",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":67.0,
     "age":30.0
@@ -29768,8 +29660,7 @@
     "season_year":2012,
     "nationality":"tg TOG",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":73.0,
     "age":28.0
@@ -29806,7 +29697,6 @@
     "nationality":"ar ARG",
     "positions":[
       "ST",
-      "CF",
       "CAM"
     ],
     "rating_overall":86.0,
@@ -29865,8 +29755,7 @@
     "season_year":2012,
     "nationality":"ng NGA",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":66.0,
     "age":30.0
@@ -29889,8 +29778,7 @@
     "season_year":2012,
     "nationality":"ng NGA",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":75.0,
     "age":24.0
@@ -29937,8 +29825,7 @@
     "season_year":2012,
     "nationality":"sn SEN",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":68.0,
     "age":27.0
@@ -29972,7 +29859,7 @@
     "season_year":2012,
     "nationality":"wls WAL",
     "positions":[
-      "CF",
+      "ST",
       "LW"
     ],
     "rating_overall":99.0,
@@ -30345,7 +30232,6 @@
     "nationality":"sn SEN",
     "positions":[
       "ST",
-      "CF",
       "RW"
     ],
     "rating_overall":81.0,
@@ -30512,8 +30398,7 @@
     "season_year":2012,
     "nationality":"eng ENG",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":80.0,
     "age":31.0
@@ -30771,7 +30656,6 @@
     "nationality":"es ESP",
     "positions":[
       "LB",
-      "LWB",
       "LM"
     ],
     "rating_overall":74.0,
@@ -30831,7 +30715,7 @@
     "nationality":"be BEL",
     "positions":[
       "CAM",
-      "CF"
+      "ST"
     ],
     "rating_overall":79.0,
     "age":24.0
@@ -30854,8 +30738,7 @@
     "nationality":"hn HON",
     "positions":[
       "CB",
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":74.0,
     "age":29.0
@@ -31231,7 +31114,7 @@
     "nationality":"ca CAN",
     "positions":[
       "LM",
-      "CF"
+      "ST"
     ],
     "rating_overall":68.0,
     "age":22.0
@@ -31524,7 +31407,7 @@
     "nationality":"jp JPN",
     "positions":[
       "CAM",
-      "CF",
+      "ST",
       "LM"
     ],
     "rating_overall":74.0,
@@ -31618,8 +31501,7 @@
     "season_year":2012,
     "nationality":"eng ENG",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":92.0,
     "age":30.0
@@ -31734,8 +31616,7 @@
     "season_year":2012,
     "nationality":"ie IRL",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":80.0,
     "age":25.0
@@ -31795,7 +31676,7 @@
     "nationality":"sct SCO",
     "positions":[
       "CAM",
-      "CF",
+      "ST",
       "LW"
     ],
     "rating_overall":81.0,
@@ -31929,7 +31810,7 @@
     "positions":[
       "RW",
       "LW",
-      "CF"
+      "ST"
     ],
     "rating_overall":66.0,
     "age":21.0
@@ -31952,7 +31833,6 @@
     "nationality":"es ESP",
     "positions":[
       "ST",
-      "CF",
       "CAM"
     ],
     "rating_overall":92.0,
@@ -32187,7 +32067,7 @@
     "positions":[
       "RM",
       "LM",
-      "CF"
+      "ST"
     ],
     "rating_overall":62.0,
     "age":23.0
@@ -32284,8 +32164,7 @@
     "season_year":2012,
     "nationality":"nl NED",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":99.0,
     "age":28.0
@@ -32464,7 +32343,6 @@
     "season_year":2012,
     "nationality":"eng ENG",
     "positions":[
-      "CF",
       "ST",
       "CAM"
     ],
@@ -32489,8 +32367,7 @@
     "season_year":2012,
     "nationality":"se SWE",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":66.0,
     "age":29.0
@@ -32631,8 +32508,7 @@
     "nationality":"il ISR",
     "positions":[
       "ST",
-      "RW",
-      "CF"
+      "RW"
     ],
     "rating_overall":64.0,
     "age":25.0
@@ -32645,7 +32521,7 @@
     "positions":[
       "CM",
       "CAM",
-      "CF"
+      "ST"
     ],
     "rating_overall":66.0,
     "age":20.0
@@ -32775,7 +32651,6 @@
     "season_year":2012,
     "nationality":"uy URU",
     "positions":[
-      "CF",
       "ST"
     ],
     "rating_overall":99.0,
@@ -32824,7 +32699,7 @@
     "nationality":"ma MAR",
     "positions":[
       "CAM",
-      "CF",
+      "ST",
       "LM"
     ],
     "rating_overall":77.0,
@@ -33117,7 +32992,7 @@
     "season_year":2012,
     "nationality":"ie IRL",
     "positions":[
-      "CF",
+      "ST",
       "RM"
     ],
     "rating_overall":79.0,
@@ -33154,7 +33029,6 @@
     "nationality":"eng ENG",
     "positions":[
       "ST",
-      "CF",
       "LM"
     ],
     "rating_overall":70.0,
@@ -33391,7 +33265,6 @@
     "season_year":2013,
     "nationality":"eng ENG",
     "positions":[
-      "CF",
       "ST",
       "LM"
     ],
@@ -33484,7 +33357,6 @@
     "nationality":"ng NGA",
     "positions":[
       "ST",
-      "CF",
       "RM"
     ],
     "rating_overall":67.0,
@@ -33564,8 +33436,7 @@
     "season_year":2013,
     "nationality":"es ESP",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":64.0,
     "age":25.0
@@ -33833,7 +33704,7 @@
     "nationality":"ie IRL",
     "positions":[
       "LM",
-      "LWB"
+      "LB"
     ],
     "rating_overall":64.0,
     "age":21.0
@@ -34478,8 +34349,7 @@
     "season_year":2013,
     "nationality":"se SWE",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":70.0,
     "age":32.0
@@ -34490,9 +34360,8 @@
     "season_year":2013,
     "nationality":"eg EGY",
     "positions":[
-      "RWB",
-      "RM",
-      "RB"
+      "RB",
+      "RM"
     ],
     "rating_overall":72.0,
     "age":25.0
@@ -34619,7 +34488,6 @@
     "nationality":"hn HON",
     "positions":[
       "LB",
-      "LWB",
       "CB"
     ],
     "rating_overall":67.0,
@@ -34781,7 +34649,7 @@
     "nationality":"hu HUN",
     "positions":[
       "RM",
-      "CF",
+      "ST",
       "LM"
     ],
     "rating_overall":64.0,
@@ -35220,8 +35088,7 @@
     "season_year":2013,
     "nationality":"nl NED",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":64.0,
     "age":22.0
@@ -35232,8 +35099,7 @@
     "season_year":2013,
     "nationality":"me MNE",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":69.0,
     "age":23.0
@@ -35256,7 +35122,7 @@
     "nationality":"jp JPN",
     "positions":[
       "LM",
-      "CF",
+      "ST",
       "CAM"
     ],
     "rating_overall":70.0,
@@ -35268,8 +35134,7 @@
     "season_year":2013,
     "nationality":"eng ENG",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":65.0,
     "age":20.0
@@ -35304,7 +35169,7 @@
     "positions":[
       "CAM",
       "CM",
-      "CF"
+      "ST"
     ],
     "rating_overall":65.0,
     "age":32.0
@@ -36266,7 +36131,6 @@
     "season_year":2013,
     "nationality":"eng ENG",
     "positions":[
-      "CF",
       "ST",
       "CAM"
     ],
@@ -36291,8 +36155,7 @@
     "nationality":"eng ENG",
     "positions":[
       "RB",
-      "RWB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":68.0,
     "age":29.0
@@ -36432,7 +36295,7 @@
     "nationality":"bj BEN",
     "positions":[
       "CAM",
-      "CF",
+      "ST",
       "RM"
     ],
     "rating_overall":72.0,
@@ -36585,8 +36448,7 @@
     "season_year":2013,
     "nationality":"uy URU",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":99.0,
     "age":26.0
@@ -36928,7 +36790,7 @@
     "nationality":"ie IRL",
     "positions":[
       "RM",
-      "CF"
+      "ST"
     ],
     "rating_overall":70.0,
     "age":29.0
@@ -36977,7 +36839,6 @@
     "nationality":"eng ENG",
     "positions":[
       "ST",
-      "CF",
       "LM"
     ],
     "rating_overall":78.0,
@@ -37221,7 +37082,6 @@
     "season_year":2014,
     "nationality":"eng ENG",
     "positions":[
-      "CF",
       "ST",
       "LM"
     ],
@@ -37280,9 +37140,8 @@
     "season_year":2014,
     "nationality":"ng NGA",
     "positions":[
-      "CF",
-      "RM",
-      "ST"
+      "ST",
+      "RM"
     ],
     "rating_overall":65.0,
     "age":25.0
@@ -37294,7 +37153,7 @@
     "nationality":"ar ARG",
     "positions":[
       "RM",
-      "CF"
+      "ST"
     ],
     "rating_overall":64.0,
     "age":26.0
@@ -37376,7 +37235,7 @@
     "season_year":2014,
     "nationality":"eng ENG",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":60.0,
     "age":17.0
@@ -37670,7 +37529,7 @@
     "nationality":"ie IRL",
     "positions":[
       "LM",
-      "LWB"
+      "LB"
     ],
     "rating_overall":67.0,
     "age":22.0
@@ -37882,7 +37741,6 @@
     "nationality":"ma MAR",
     "positions":[
       "ST",
-      "CF",
       "CAM"
     ],
     "rating_overall":67.0,
@@ -37928,8 +37786,7 @@
     "season_year":2014,
     "nationality":"fr FRA",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":65.0,
     "age":26.0
@@ -38413,9 +38270,8 @@
     "season_year":2014,
     "nationality":"eg EGY",
     "positions":[
-      "RWB",
-      "RM",
-      "RB"
+      "RB",
+      "RM"
     ],
     "rating_overall":75.0,
     "age":26.0
@@ -39217,8 +39073,7 @@
     "season_year":2014,
     "nationality":"eng ENG",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":98.0,
     "age":21.0
@@ -39555,7 +39410,7 @@
     "nationality":"sn SEN",
     "positions":[
       "LM",
-      "CF",
+      "ST",
       "LW"
     ],
     "rating_overall":76.0,
@@ -39836,7 +39691,6 @@
     "season_year":2014,
     "nationality":"es ESP",
     "positions":[
-      "LWB",
       "LB",
       "LM"
     ],
@@ -40337,8 +40191,7 @@
     "season_year":2014,
     "nationality":"sct SCO",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":67.0,
     "age":20.0
@@ -40386,8 +40239,7 @@
     "nationality":"eng ENG",
     "positions":[
       "RB",
-      "RWB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":61.0,
     "age":30.0
@@ -40609,8 +40461,7 @@
     "season_year":2014,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":62.0,
     "age":27.0
@@ -41345,8 +41196,7 @@
     "season_year":2015,
     "nationality":"eng ENG",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":66.0,
     "age":28.0
@@ -41781,8 +41631,7 @@
     "nationality":"ie IRL",
     "positions":[
       "LM",
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":74.0,
     "age":23.0
@@ -42094,8 +41943,7 @@
     "season_year":2015,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":70.0,
     "age":24.0
@@ -42300,8 +42148,7 @@
     "season_year":2015,
     "nationality":"eng ENG",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":91.0,
     "age":27.0
@@ -42579,9 +42426,8 @@
     "season_year":2015,
     "nationality":"br BRA",
     "positions":[
-      "CF",
-      "CAM",
-      "ST"
+      "ST",
+      "CAM"
     ],
     "rating_overall":86.0,
     "age":23.0
@@ -42660,8 +42506,7 @@
     "season_year":2015,
     "nationality":"at AUT",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":70.0,
     "age":29.0
@@ -43553,7 +43398,7 @@
     "season_year":2015,
     "nationality":"sn SEN",
     "positions":[
-      "CF",
+      "ST",
       "RM",
       "LM"
     ],
@@ -44069,8 +43914,7 @@
     "season_year":2015,
     "nationality":"jp JPN",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":74.0,
     "age":29.0
@@ -44696,7 +44540,7 @@
     "nationality":"is ISL",
     "positions":[
       "CAM",
-      "CF"
+      "ST"
     ],
     "rating_overall":81.0,
     "age":25.0
@@ -45029,8 +44873,7 @@
     "nationality":"ec ECU",
     "positions":[
       "RB",
-      "RM",
-      "RWB"
+      "RM"
     ],
     "rating_overall":65.0,
     "age":29.0
@@ -45497,7 +45340,7 @@
     "nationality":"eng ENG",
     "positions":[
       "CAM",
-      "CF",
+      "ST",
       "LM"
     ],
     "rating_overall":88.0,
@@ -45509,9 +45352,8 @@
     "season_year":2016,
     "nationality":"es ESP",
     "positions":[
-      "LWB",
-      "LM",
-      "LB"
+      "LB",
+      "LM"
     ],
     "rating_overall":75.0,
     "age":25.0
@@ -45535,7 +45377,7 @@
     "nationality":"ma MAR",
     "positions":[
       "RM",
-      "RWB",
+      "RB",
       "CAM"
     ],
     "rating_overall":72.0,
@@ -45560,7 +45402,7 @@
     "positions":[
       "ST",
       "RM",
-      "RWB"
+      "RB"
     ],
     "rating_overall":79.0,
     "age":26.0
@@ -45900,8 +45742,7 @@
     "nationality":"ie IRL",
     "positions":[
       "LM",
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":65.0,
     "age":24.0
@@ -46204,8 +46045,7 @@
     "season_year":2016,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":73.0,
     "age":25.0
@@ -46576,7 +46416,6 @@
     "nationality":"eg EGY",
     "positions":[
       "RB",
-      "RWB",
       "RM"
     ],
     "rating_overall":69.0,
@@ -46712,7 +46551,7 @@
     "positions":[
       "CM",
       "CAM",
-      "RWB"
+      "RB"
     ],
     "rating_overall":64.0,
     "age":20.0
@@ -46760,7 +46599,6 @@
     "nationality":"br BRA",
     "positions":[
       "ST",
-      "CF",
       "CAM"
     ],
     "rating_overall":88.0,
@@ -47184,8 +47022,7 @@
     "season_year":2016,
     "nationality":"gr GRE",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":74.0,
     "age":32.0
@@ -47334,8 +47171,7 @@
     "season_year":2016,
     "nationality":"nl NED",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":68.0,
     "age":27.0
@@ -47835,7 +47671,7 @@
     "positions":[
       "RM",
       "RB",
-      "CF"
+      "ST"
     ],
     "rating_overall":63.0,
     "age":22.0
@@ -47892,8 +47728,7 @@
     "season_year":2016,
     "nationality":"cd COD",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":64.0,
     "age":22.0
@@ -48349,7 +48184,6 @@
     "nationality":"jp JPN",
     "positions":[
       "ST",
-      "CF",
       "CAM"
     ],
     "rating_overall":71.0,
@@ -48654,8 +48488,7 @@
     "season_year":2016,
     "nationality":"sct SCO",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":71.0,
     "age":22.0
@@ -48736,8 +48569,7 @@
     "season_year":2016,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":69.0,
     "age":26.0
@@ -49205,8 +49037,7 @@
     "season_year":2016,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":75.0,
     "age":26.0
@@ -49571,7 +49402,7 @@
     "nationality":"eng ENG",
     "positions":[
       "CAM",
-      "CF"
+      "ST"
     ],
     "rating_overall":86.0,
     "age":21.0
@@ -49582,7 +49413,7 @@
     "season_year":2017,
     "nationality":"es ESP",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":75.0,
     "age":26.0
@@ -49722,8 +49553,7 @@
     "season_year":2017,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":68.0,
     "age":32.0
@@ -49781,7 +49611,6 @@
     "nationality":"at AUT",
     "positions":[
       "RB",
-      "RWB",
       "RM"
     ],
     "rating_overall":63.0,
@@ -49804,7 +49633,6 @@
     "season_year":2017,
     "nationality":"es ESP",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":76.0,
@@ -50142,8 +49970,7 @@
     "season_year":2017,
     "nationality":"ie IRL",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":64.0,
     "age":28.0
@@ -50212,8 +50039,7 @@
     "nationality":"eng ENG",
     "positions":[
       "CB",
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":74.0,
     "age":27.0
@@ -50235,8 +50061,7 @@
     "season_year":2017,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":71.0,
     "age":30.0
@@ -50281,8 +50106,7 @@
     "season_year":2017,
     "nationality":"wls WAL",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":74.0,
     "age":24.0
@@ -50410,7 +50234,7 @@
     "nationality":"ml MLI",
     "positions":[
       "RM",
-      "CF"
+      "ST"
     ],
     "rating_overall":59.0,
     "age":21.0
@@ -50617,7 +50441,6 @@
     "nationality":"es ESP",
     "positions":[
       "RB",
-      "RWB",
       "RM"
     ],
     "rating_overall":66.0,
@@ -50642,7 +50465,7 @@
     "positions":[
       "CAM",
       "CM",
-      "RWB"
+      "RB"
     ],
     "rating_overall":61.0,
     "age":21.0
@@ -50814,8 +50637,7 @@
     "season_year":2017,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":69.0,
     "age":27.0
@@ -50920,8 +50742,7 @@
     "season_year":2017,
     "nationality":"xk KVX",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":66.0,
     "age":23.0
@@ -50956,7 +50777,7 @@
     "nationality":"be BEL",
     "positions":[
       "LW",
-      "CF"
+      "ST"
     ],
     "rating_overall":86.0,
     "age":26.0
@@ -51081,8 +50902,7 @@
     "season_year":2017,
     "nationality":"gr GRE",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":71.0,
     "age":33.0
@@ -51094,8 +50914,7 @@
     "nationality":"jm JAM",
     "positions":[
       "CB",
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":62.0,
     "age":20.0
@@ -51143,8 +50962,7 @@
     "season_year":2017,
     "nationality":"ng NGA",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":71.0,
     "age":20.0
@@ -51201,8 +51019,7 @@
     "season_year":2017,
     "nationality":"nl NED",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":66.0,
     "age":28.0
@@ -51360,7 +51177,7 @@
     "nationality":"br BRA",
     "positions":[
       "LM",
-      "LWB"
+      "LB"
     ],
     "rating_overall":65.0,
     "age":21.0
@@ -51371,8 +51188,7 @@
     "season_year":2017,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":64.0,
     "age":20.0
@@ -51394,7 +51210,6 @@
     "season_year":2017,
     "nationality":"no NOR",
     "positions":[
-      "CF",
       "ST",
       "CAM"
     ],
@@ -51835,7 +51650,6 @@
     "season_year":2017,
     "nationality":"cd COD",
     "positions":[
-      "LWB",
       "LB",
       "LM"
     ],
@@ -52140,8 +51954,7 @@
     "season_year":2017,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":69.0,
     "age":28.0
@@ -52234,7 +52047,7 @@
     "season_year":2017,
     "nationality":"jp JPN",
     "positions":[
-      "CF",
+      "ST",
       "CAM"
     ],
     "rating_overall":75.0,
@@ -52246,8 +52059,7 @@
     "season_year":2017,
     "nationality":"se SWE",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":70.0,
     "age":29.0
@@ -52318,9 +52130,8 @@
     "season_year":2017,
     "nationality":"es ESP",
     "positions":[
-      "CF",
-      "CAM",
-      "ST"
+      "ST",
+      "CAM"
     ],
     "rating_overall":81.0,
     "age":24.0
@@ -52354,8 +52165,7 @@
     "season_year":2017,
     "nationality":"nl NED",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":67.0,
     "age":28.0
@@ -52544,8 +52354,7 @@
     "season_year":2017,
     "nationality":"sct SCO",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":72.0,
     "age":23.0
@@ -52604,8 +52413,7 @@
     "season_year":2017,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":63.0,
     "age":27.0
@@ -52870,8 +52678,7 @@
     "season_year":2017,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":70.0,
     "age":26.0
@@ -52963,7 +52770,7 @@
     "positions":[
       "RW",
       "LW",
-      "CF"
+      "ST"
     ],
     "rating_overall":94.0,
     "age":22.0
@@ -52997,8 +52804,7 @@
     "season_year":2017,
     "nationality":"at AUT",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":61.0,
     "age":30.0
@@ -53090,8 +52896,7 @@
     "season_year":2017,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":70.0,
     "age":26.0
@@ -53113,8 +52918,7 @@
     "season_year":2017,
     "nationality":"ec ECU",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":73.0,
     "age":31.0
@@ -53194,8 +52998,7 @@
     "season_year":2017,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":76.0,
     "age":27.0
@@ -53427,7 +53230,6 @@
     "nationality":"eng ENG",
     "positions":[
       "LB",
-      "LWB",
       "RB"
     ],
     "rating_overall":72.0,
@@ -53439,7 +53241,6 @@
     "season_year":2017,
     "nationality":"ar ARG",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":67.0,
@@ -53451,7 +53252,7 @@
     "season_year":2017,
     "nationality":"ci CIV",
     "positions":[
-      "CF",
+      "ST",
       "LM",
       "RM"
     ],
@@ -53464,8 +53265,7 @@
     "season_year":2017,
     "nationality":"nl NED",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":63.0,
     "age":26.0
@@ -53577,8 +53377,7 @@
     "season_year":2018,
     "nationality":"es ESP",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":72.0,
     "age":27.0
@@ -53819,8 +53618,7 @@
     "season_year":2018,
     "nationality":"es ESP",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":72.0,
     "age":23.0
@@ -53831,8 +53629,7 @@
     "season_year":2018,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":66.0,
     "age":28.0
@@ -53901,8 +53698,7 @@
     "season_year":2018,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":66.0,
     "age":28.0
@@ -54174,8 +53970,7 @@
     "season_year":2018,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":63.0,
     "age":31.0
@@ -54209,8 +54004,7 @@
     "season_year":2018,
     "nationality":"wls WAL",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":66.0,
     "age":25.0
@@ -54338,7 +54132,7 @@
     "season_year":2018,
     "nationality":"ie IRL",
     "positions":[
-      "RWB"
+      "RB"
     ],
     "rating_overall":77.0,
     "age":26.0
@@ -54406,8 +54200,7 @@
     "season_year":2018,
     "nationality":"de GER",
     "positions":[
-      "RWB",
-      "LWB",
+      "RB",
       "LB"
     ],
     "rating_overall":67.0,
@@ -54534,7 +54327,6 @@
     "season_year":2018,
     "nationality":"br BRA",
     "positions":[
-      "CF",
       "ST",
       "CAM"
     ],
@@ -54719,7 +54511,7 @@
     "nationality":"jm JAM",
     "positions":[
       "LM",
-      "CF"
+      "ST"
     ],
     "rating_overall":72.0,
     "age":22.0
@@ -54800,7 +54592,6 @@
     "season_year":2018,
     "nationality":"xk KVX",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":65.0,
@@ -54848,7 +54639,7 @@
     "nationality":"be BEL",
     "positions":[
       "LW",
-      "CF"
+      "ST"
     ],
     "rating_overall":99.0,
     "age":27.0
@@ -55035,8 +54826,7 @@
     "season_year":2018,
     "nationality":"ng NGA",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":69.0,
     "age":21.0
@@ -55288,7 +55078,6 @@
     "season_year":2018,
     "nationality":"no NOR",
     "positions":[
-      "CF",
       "ST"
     ],
     "rating_overall":86.0,
@@ -55486,8 +55275,7 @@
     "nationality":"ch SUI",
     "positions":[
       "RB",
-      "CB",
-      "RWB"
+      "CB"
     ],
     "rating_overall":60.0,
     "age":34.0
@@ -55590,7 +55378,6 @@
     "season_year":2018,
     "nationality":"de GER",
     "positions":[
-      "LWB",
       "LB"
     ],
     "rating_overall":67.0,
@@ -55670,7 +55457,7 @@
     "season_year":2018,
     "nationality":"eng ENG",
     "positions":[
-      "RWB",
+      "RB",
       "RM",
       "CM"
     ],
@@ -55745,8 +55532,7 @@
     "season_year":2018,
     "nationality":"cd COD",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":67.0,
     "age":24.0
@@ -56024,7 +55810,7 @@
     "season_year":2018,
     "nationality":"br BRA",
     "positions":[
-      "CF",
+      "ST",
       "RM",
       "LM"
     ],
@@ -56094,8 +55880,7 @@
     "season_year":2018,
     "nationality":"jp JPN",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":65.0,
     "age":26.0
@@ -56211,7 +55996,7 @@
     "positions":[
       "ST",
       "CM",
-      "RWB"
+      "RB"
     ],
     "rating_overall":70.0,
     "age":23.0
@@ -56246,7 +56031,6 @@
     "nationality":"eng ENG",
     "positions":[
       "RB",
-      "RWB",
       "LB"
     ],
     "rating_overall":60.0,
@@ -56294,7 +56078,7 @@
     "season_year":2018,
     "nationality":"es ESP",
     "positions":[
-      "CF",
+      "ST",
       "RM",
       "RW"
     ],
@@ -56454,7 +56238,7 @@
     "nationality":"sct SCO",
     "positions":[
       "RM",
-      "LWB"
+      "LB"
     ],
     "rating_overall":79.0,
     "age":28.0
@@ -56488,8 +56272,7 @@
     "season_year":2018,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":69.0,
     "age":28.0
@@ -56859,8 +56642,7 @@
     "season_year":2018,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":65.0,
     "age":22.0
@@ -56940,7 +56722,7 @@
     "nationality":"eng ENG",
     "positions":[
       "RM",
-      "CF"
+      "ST"
     ],
     "rating_overall":79.0,
     "age":27.0
@@ -56951,8 +56733,7 @@
     "season_year":2018,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":70.0,
     "age":27.0
@@ -56963,7 +56744,6 @@
     "season_year":2018,
     "nationality":"tn TUN",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":66.0,
@@ -57019,7 +56799,7 @@
     "season_year":2018,
     "nationality":"pt POR",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":63.0,
     "age":19.0
@@ -57190,8 +56970,7 @@
     "season_year":2018,
     "nationality":"us USA",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":72.0,
     "age":25.0
@@ -57236,7 +57015,7 @@
     "season_year":2018,
     "nationality":"ci CIV",
     "positions":[
-      "CF",
+      "ST",
       "LM"
     ],
     "rating_overall":83.0,
@@ -57429,8 +57208,7 @@
     "season_year":2019,
     "nationality":"es ESP",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":67.0,
     "age":28.0
@@ -57501,8 +57279,7 @@
     "season_year":2019,
     "nationality":"ci CIV",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":73.0,
     "age":26.0
@@ -57536,7 +57313,7 @@
     "season_year":2019,
     "nationality":"gr GRE",
     "positions":[
-      "RWB"
+      "RB"
     ],
     "rating_overall":74.0,
     "age":26.0
@@ -57626,8 +57403,7 @@
     "season_year":2019,
     "nationality":"es ESP",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":66.0,
     "age":24.0
@@ -57710,8 +57486,7 @@
     "season_year":2019,
     "nationality":"br BRA",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":61.0,
     "age":24.0
@@ -57722,8 +57497,7 @@
     "season_year":2019,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":69.0,
     "age":29.0
@@ -58099,8 +57873,7 @@
     "season_year":2019,
     "nationality":"wls WAL",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":63.0,
     "age":26.0
@@ -58215,7 +57988,7 @@
     "season_year":2019,
     "nationality":"ie IRL",
     "positions":[
-      "RWB"
+      "RB"
     ],
     "rating_overall":74.0,
     "age":27.0
@@ -58320,8 +58093,7 @@
     "nationality":"eg EGY",
     "positions":[
       "RB",
-      "RM",
-      "RWB"
+      "RM"
     ],
     "rating_overall":63.0,
     "age":31.0
@@ -58410,7 +58182,7 @@
     "season_year":2019,
     "nationality":"br BRA",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":87.0,
     "age":27.0
@@ -58630,7 +58402,7 @@
     "positions":[
       "LW",
       "LM",
-      "CF"
+      "ST"
     ],
     "rating_overall":58.0,
     "age":18.0
@@ -58664,7 +58436,7 @@
     "nationality":"jm JAM",
     "positions":[
       "LW",
-      "CF",
+      "ST",
       "RW"
     ],
     "rating_overall":72.0,
@@ -58713,8 +58485,7 @@
     "season_year":2019,
     "nationality":"fr FRA",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":67.0,
     "age":24.0
@@ -59051,7 +58822,7 @@
     "nationality":"pt POR",
     "positions":[
       "LW",
-      "CF"
+      "ST"
     ],
     "rating_overall":77.0,
     "age":22.0
@@ -59154,7 +58925,6 @@
     "season_year":2019,
     "nationality":"no NOR",
     "positions":[
-      "CF",
       "ST",
       "LM"
     ],
@@ -59167,8 +58937,7 @@
     "season_year":2019,
     "nationality":"ba BIH",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":67.0,
     "age":26.0
@@ -59512,7 +59281,6 @@
     "season_year":2019,
     "nationality":"eng ENG",
     "positions":[
-      "RWB",
       "RB",
       "RM"
     ],
@@ -59595,8 +59363,7 @@
     "season_year":2019,
     "nationality":"cd COD",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":65.0,
     "age":25.0
@@ -59849,8 +59616,7 @@
     "season_year":2019,
     "nationality":"es ESP",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":67.0,
     "age":28.0
@@ -59898,7 +59664,7 @@
     "nationality":"br BRA",
     "positions":[
       "RM",
-      "CF"
+      "ST"
     ],
     "rating_overall":78.0,
     "age":26.0
@@ -60003,7 +59769,7 @@
     "nationality":"pt POR",
     "positions":[
       "LW",
-      "CF",
+      "ST",
       "RW"
     ],
     "rating_overall":73.0,
@@ -60338,7 +60104,7 @@
     "nationality":"eng ENG",
     "positions":[
       "LM",
-      "CF"
+      "ST"
     ],
     "rating_overall":75.0,
     "age":25.0
@@ -60454,8 +60220,7 @@
     "season_year":2019,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":62.0,
     "age":29.0
@@ -60842,7 +60607,7 @@
     "season_year":2019,
     "nationality":"ie IRL",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":74.0,
     "age":29.0
@@ -60875,8 +60640,7 @@
     "season_year":2019,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":68.0,
     "age":23.0
@@ -61001,7 +60765,7 @@
     "nationality":"es ESP",
     "positions":[
       "RW",
-      "RWB"
+      "RB"
     ],
     "rating_overall":87.0,
     "age":23.0
@@ -61035,7 +60799,6 @@
     "season_year":2019,
     "nationality":"tn TUN",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":60.0,
@@ -61092,7 +60855,7 @@
     "season_year":2019,
     "nationality":"pt POR",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":64.0,
     "age":20.0
@@ -61149,8 +60912,7 @@
     "season_year":2019,
     "nationality":"cd COD",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":75.0,
     "age":21.0
@@ -61229,7 +60991,6 @@
     "season_year":2019,
     "nationality":"nl NED",
     "positions":[
-      "LWB",
       "LB",
       "LM"
     ],
@@ -61242,8 +61003,7 @@
     "season_year":2019,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":64.0,
     "age":18.0
@@ -61349,7 +61109,6 @@
     "season_year":2019,
     "nationality":"us USA",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":66.0,
@@ -61373,7 +61132,7 @@
     "nationality":"ci CIV",
     "positions":[
       "LM",
-      "CF"
+      "ST"
     ],
     "rating_overall":78.0,
     "age":26.0
@@ -61484,7 +61243,7 @@
     "nationality":"eng ENG",
     "positions":[
       "RM",
-      "RWB",
+      "RB",
       "RW"
     ],
     "rating_overall":74.0,
@@ -61566,7 +61325,6 @@
     "season_year":2020,
     "nationality":"es ESP",
     "positions":[
-      "LWB",
       "LB"
     ],
     "rating_overall":61.0,
@@ -61694,7 +61452,7 @@
     "season_year":2020,
     "nationality":"gr GRE",
     "positions":[
-      "RWB"
+      "RB"
     ],
     "rating_overall":68.0,
     "age":27.0
@@ -61820,8 +61578,7 @@
     "season_year":2020,
     "nationality":"es ESP",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":69.0,
     "age":25.0
@@ -61915,7 +61672,6 @@
     "season_year":2020,
     "nationality":"eng ENG",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":64.0,
@@ -62125,7 +61881,6 @@
     "season_year":2020,
     "nationality":"eng ENG",
     "positions":[
-      "LWB",
       "LB"
     ],
     "rating_overall":73.0,
@@ -62251,8 +62006,7 @@
     "season_year":2020,
     "nationality":"cz CZE",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":75.0,
     "age":27.0
@@ -62345,7 +62099,7 @@
     "positions":[
       "CM",
       "CAM",
-      "CF"
+      "ST"
     ],
     "rating_overall":90.0,
     "age":29.0
@@ -62460,8 +62214,7 @@
     "season_year":2020,
     "nationality":"ie IRL",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":64.0,
     "age":28.0
@@ -62540,8 +62293,7 @@
     "season_year":2020,
     "nationality":"eg EGY",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":59.0,
     "age":32.0
@@ -62644,7 +62396,7 @@
     "season_year":2020,
     "nationality":"br BRA",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":85.0,
     "age":28.0
@@ -62691,7 +62443,7 @@
     "nationality":"sct SCO",
     "positions":[
       "LM",
-      "CF"
+      "ST"
     ],
     "rating_overall":65.0,
     "age":26.0
@@ -62714,8 +62466,7 @@
     "season_year":2020,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":66.0,
     "age":27.0
@@ -62726,8 +62477,7 @@
     "season_year":2020,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":71.0,
     "age":24.0
@@ -62953,7 +62703,6 @@
     "season_year":2020,
     "nationality":"nl NED",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":59.0,
@@ -63012,8 +62761,7 @@
     "season_year":2020,
     "nationality":"ng NGA",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":83.0,
     "age":23.0
@@ -63084,7 +62832,7 @@
     "positions":[
       "RM",
       "LM",
-      "CF"
+      "ST"
     ],
     "rating_overall":64.0,
     "age":22.0
@@ -63095,8 +62843,7 @@
     "season_year":2020,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":71.0,
     "age":20.0
@@ -63187,8 +62934,7 @@
     "nationality":"pt POR",
     "positions":[
       "LW",
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":73.0,
     "age":23.0
@@ -63199,7 +62945,6 @@
     "season_year":2020,
     "nationality":"eng ENG",
     "positions":[
-      "LWB",
       "LB"
     ],
     "rating_overall":68.0,
@@ -63361,7 +63106,6 @@
     "season_year":2020,
     "nationality":"gh GHA",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":64.0,
@@ -63420,7 +63164,6 @@
     "nationality":"nir NIR",
     "positions":[
       "LB",
-      "LWB",
       "LM"
     ],
     "rating_overall":66.0,
@@ -63662,7 +63405,6 @@
     "season_year":2020,
     "nationality":"cd COD",
     "positions":[
-      "LWB",
       "LB"
     ],
     "rating_overall":64.0,
@@ -63942,7 +63684,7 @@
     "nationality":"br BRA",
     "positions":[
       "RM",
-      "CF"
+      "ST"
     ],
     "rating_overall":75.0,
     "age":27.0
@@ -63976,7 +63718,7 @@
     "nationality":"eng ENG",
     "positions":[
       "RM",
-      "RWB",
+      "RB",
       "RW"
     ],
     "rating_overall":68.0,
@@ -64453,7 +64195,7 @@
     "nationality":"eng ENG",
     "positions":[
       "CB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":58.0,
     "age":26.0
@@ -64649,7 +64391,6 @@
     "season_year":2020,
     "nationality":"pt POR",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":71.0,
@@ -64812,7 +64553,7 @@
     "season_year":2020,
     "nationality":"ie IRL",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":66.0,
     "age":30.0
@@ -64891,8 +64632,7 @@
     "season_year":2020,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":62.0,
     "age":19.0
@@ -64916,8 +64656,7 @@
     "nationality":"sct SCO",
     "positions":[
       "LB",
-      "CB",
-      "LWB"
+      "CB"
     ],
     "rating_overall":71.0,
     "age":23.0
@@ -64952,8 +64691,7 @@
     "season_year":2020,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":66.0,
     "age":27.0
@@ -64965,7 +64703,7 @@
     "nationality":"es ESP",
     "positions":[
       "RW",
-      "RWB"
+      "RB"
     ],
     "rating_overall":80.0,
     "age":24.0
@@ -65013,8 +64751,7 @@
     "nationality":"nl NED",
     "positions":[
       "CB",
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":71.0,
     "age":28.0
@@ -65036,9 +64773,8 @@
     "season_year":2020,
     "nationality":"cz CZE",
     "positions":[
-      "CF",
-      "CAM",
-      "ST"
+      "ST",
+      "CAM"
     ],
     "rating_overall":71.0,
     "age":28.0
@@ -65082,8 +64818,7 @@
     "season_year":2020,
     "nationality":"cd COD",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":76.0,
     "age":22.0
@@ -65295,9 +65030,8 @@
     "season_year":2020,
     "nationality":"ci CIV",
     "positions":[
-      "CF",
-      "LM",
-      "ST"
+      "ST",
+      "LM"
     ],
     "rating_overall":82.0,
     "age":27.0
@@ -65354,8 +65088,7 @@
     "season_year":2021,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":70.0,
     "age":21.0
@@ -65402,7 +65135,7 @@
     "nationality":"eng ENG",
     "positions":[
       "RM",
-      "RWB",
+      "RB",
       "RW"
     ],
     "rating_overall":67.0,
@@ -65473,7 +65206,6 @@
     "season_year":2021,
     "nationality":"es ESP",
     "positions":[
-      "LWB",
       "LB"
     ],
     "rating_overall":70.0,
@@ -65816,8 +65548,8 @@
     "nationality":"es ESP",
     "positions":[
       "LW",
-      "RWB",
-      "LWB"
+      "RB",
+      "LB"
     ],
     "rating_overall":70.0,
     "age":24.0
@@ -65828,8 +65560,7 @@
     "season_year":2021,
     "nationality":"pl POL",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":75.0,
     "age":23.0
@@ -66014,7 +65745,7 @@
     "nationality":"ci CIV",
     "positions":[
       "LM",
-      "CF",
+      "ST",
       "LB"
     ],
     "rating_overall":72.0,
@@ -66026,8 +65757,7 @@
     "season_year":2021,
     "nationality":"cz CZE",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":71.0,
     "age":28.0
@@ -66086,7 +65816,6 @@
     "nationality":"wls WAL",
     "positions":[
       "CB",
-      "LWB",
       "LB"
     ],
     "rating_overall":71.0,
@@ -66251,7 +65980,6 @@
     "season_year":2021,
     "nationality":"ie IRL",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":66.0,
@@ -66463,7 +66191,7 @@
     "season_year":2021,
     "nationality":"br BRA",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":74.0,
     "age":29.0
@@ -66474,8 +66202,7 @@
     "season_year":2021,
     "nationality":"do DOM",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":66.0,
     "age":24.0
@@ -66487,7 +66214,7 @@
     "nationality":"eng ENG",
     "positions":[
       "LW",
-      "CF",
+      "ST",
       "CAM"
     ],
     "rating_overall":81.0,
@@ -66616,8 +66343,7 @@
     "season_year":2021,
     "nationality":"gr GRE",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":65.0,
     "age":25.0
@@ -66808,7 +66534,6 @@
     "season_year":2021,
     "nationality":"jm JAM",
     "positions":[
-      "LWB",
       "LB"
     ],
     "rating_overall":72.0,
@@ -66845,7 +66570,7 @@
     "positions":[
       "LW",
       "RW",
-      "RWB"
+      "RB"
     ],
     "rating_overall":68.0,
     "age":20.0
@@ -66891,8 +66616,7 @@
     "season_year":2021,
     "nationality":"ng NGA",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":75.0,
     "age":24.0
@@ -66940,7 +66664,6 @@
     "season_year":2021,
     "nationality":"eng ENG",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":80.0,
@@ -67069,7 +66792,7 @@
     "season_year":2021,
     "nationality":"pt POR",
     "positions":[
-      "CF",
+      "ST",
       "LW"
     ],
     "rating_overall":92.0,
@@ -67347,7 +67070,6 @@
     "season_year":2021,
     "nationality":"gh GHA",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":70.0,
@@ -67439,8 +67161,7 @@
     "season_year":2021,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":68.0,
     "age":18.0
@@ -67623,7 +67344,7 @@
     "nationality":"sn SEN",
     "positions":[
       "LW",
-      "CF"
+      "ST"
     ],
     "rating_overall":85.0,
     "age":29.0
@@ -67667,8 +67388,7 @@
     "season_year":2021,
     "nationality":"cd COD",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":63.0,
     "age":27.0
@@ -67887,7 +67607,7 @@
     "season_year":2021,
     "nationality":"jp JPN",
     "positions":[
-      "CF",
+      "ST",
       "LW",
       "RW"
     ],
@@ -67972,7 +67692,7 @@
     "nationality":"eng ENG",
     "positions":[
       "RM",
-      "RWB"
+      "RB"
     ],
     "rating_overall":70.0,
     "age":26.0
@@ -67996,8 +67716,7 @@
     "season_year":2021,
     "nationality":"ua UKR",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":63.0,
     "age":22.0
@@ -68056,8 +67775,7 @@
     "season_year":2021,
     "nationality":null,
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":61.0,
     "age":20.0
@@ -68161,8 +67879,7 @@
     "season_year":2021,
     "nationality":"pt POR",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":68.0,
     "age":27.0
@@ -68420,8 +68137,7 @@
     "season_year":2021,
     "nationality":"wls WAL",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":66.0,
     "age":25.0
@@ -68478,7 +68194,6 @@
     "season_year":2021,
     "nationality":"dk DEN",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":63.0,
@@ -68734,7 +68449,7 @@
     "positions":[
       "LW",
       "LM",
-      "LWB"
+      "LB"
     ],
     "rating_overall":64.0,
     "age":27.0
@@ -68745,7 +68460,6 @@
     "season_year":2021,
     "nationality":"pt POR",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":68.0,
@@ -68757,7 +68471,6 @@
     "season_year":2021,
     "nationality":"eng ENG",
     "positions":[
-      "LWB",
       "LB",
       "LW"
     ],
@@ -68957,7 +68670,6 @@
     "season_year":2021,
     "nationality":"eng ENG",
     "positions":[
-      "RWB",
       "RB",
       "CB"
     ],
@@ -69037,8 +68749,7 @@
     "season_year":2021,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":65.0,
     "age":20.0
@@ -69129,8 +68840,7 @@
     "season_year":2021,
     "nationality":"gr GRE",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":65.0,
     "age":25.0
@@ -69188,8 +68898,7 @@
     "nationality":"nl NED",
     "positions":[
       "CB",
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":74.0,
     "age":29.0
@@ -69223,7 +68932,6 @@
     "season_year":2021,
     "nationality":"cz CZE",
     "positions":[
-      "CF",
       "ST"
     ],
     "rating_overall":69.0,
@@ -69467,7 +69175,7 @@
     "nationality":"ci CIV",
     "positions":[
       "LW",
-      "CF"
+      "ST"
     ],
     "rating_overall":82.0,
     "age":28.0
@@ -69571,8 +69279,7 @@
     "season_year":2022,
     "nationality":"dz ALG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":65.0,
     "age":21.0
@@ -69769,8 +69476,7 @@
     "season_year":2022,
     "nationality":"ci CIV",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":65.0,
     "age":29.0
@@ -70049,8 +69755,7 @@
     "season_year":2022,
     "nationality":"es ESP",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":64.0,
     "age":19.0
@@ -70144,8 +69849,7 @@
     "season_year":2022,
     "nationality":"pl POL",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":67.0,
     "age":24.0
@@ -70156,8 +69860,7 @@
     "season_year":2022,
     "nationality":"be BEL",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":73.0,
     "age":26.0
@@ -70194,7 +69897,6 @@
     "season_year":2022,
     "nationality":"eng ENG",
     "positions":[
-      "LWB",
       "LB"
     ],
     "rating_overall":68.0,
@@ -70220,7 +69922,7 @@
     "positions":[
       "CM",
       "CAM",
-      "CF"
+      "ST"
     ],
     "rating_overall":59.0,
     "age":18.0
@@ -70254,7 +69956,7 @@
     "nationality":"eng ENG",
     "positions":[
       "CDM",
-      "LWB",
+      "LB",
       "CM"
     ],
     "rating_overall":55.0,
@@ -70266,8 +69968,7 @@
     "season_year":2022,
     "nationality":"ie IRL",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":63.0,
     "age":33.0
@@ -70336,7 +70037,7 @@
     "nationality":"ci CIV",
     "positions":[
       "LM",
-      "CF"
+      "ST"
     ],
     "rating_overall":62.0,
     "age":25.0
@@ -70442,8 +70143,7 @@
     "nationality":"wls WAL",
     "positions":[
       "CB",
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":72.0,
     "age":29.0
@@ -70816,7 +70516,6 @@
     "season_year":2022,
     "nationality":"pt POR",
     "positions":[
-      "CF",
       "ST"
     ],
     "rating_overall":70.0,
@@ -70828,8 +70527,7 @@
     "season_year":2022,
     "nationality":"ie IRL",
     "positions":[
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":72.0,
     "age":17.0
@@ -70865,7 +70563,7 @@
     "season_year":2022,
     "nationality":"br BRA",
     "positions":[
-      "CF"
+      "ST"
     ],
     "rating_overall":83.0,
     "age":30.0
@@ -70876,8 +70574,7 @@
     "season_year":2022,
     "nationality":"do DOM",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":65.0,
     "age":25.0
@@ -70958,8 +70655,7 @@
     "season_year":2022,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":63.0,
     "age":29.0
@@ -70982,7 +70678,7 @@
     "season_year":2022,
     "nationality":"nl NED",
     "positions":[
-      "CF",
+      "ST",
       "LW"
     ],
     "rating_overall":77.0,
@@ -71177,7 +70873,7 @@
     "nationality":"eng ENG",
     "positions":[
       "CAM",
-      "CF",
+      "ST",
       "CM"
     ],
     "rating_overall":63.0,
@@ -71296,7 +70992,6 @@
     "season_year":2022,
     "nationality":"jm JAM",
     "positions":[
-      "LWB",
       "LB"
     ],
     "rating_overall":73.0,
@@ -71308,9 +71003,8 @@
     "season_year":2022,
     "nationality":"sct SCO",
     "positions":[
-      "RWB",
-      "LB",
-      "RB"
+      "RB",
+      "LB"
     ],
     "rating_overall":66.0,
     "age":20.0
@@ -71413,7 +71107,6 @@
     "season_year":2022,
     "nationality":"eng ENG",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":66.0,
@@ -71533,7 +71226,7 @@
     "season_year":2022,
     "nationality":"pt POR",
     "positions":[
-      "CF",
+      "ST",
       "LW"
     ],
     "rating_overall":78.0,
@@ -71697,7 +71390,6 @@
     "nationality":"dk DEN",
     "positions":[
       "RB",
-      "RWB",
       "CB"
     ],
     "rating_overall":68.0,
@@ -71722,8 +71414,7 @@
     "season_year":2022,
     "nationality":"gh GHA",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":65.0,
     "age":21.0
@@ -71862,7 +71553,6 @@
     "nationality":"br BRA",
     "positions":[
       "LB",
-      "LWB",
       "LM"
     ],
     "rating_overall":68.0,
@@ -71981,9 +71671,8 @@
     "season_year":2022,
     "nationality":"eng ENG",
     "positions":[
-      "RWB",
-      "CM",
-      "RB"
+      "RB",
+      "CM"
     ],
     "rating_overall":64.0,
     "age":24.0
@@ -72382,8 +72071,7 @@
     "season_year":2022,
     "nationality":"ua UKR",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":67.0,
     "age":23.0
@@ -72597,7 +72285,7 @@
     "positions":[
       "CAM",
       "RW",
-      "CF"
+      "ST"
     ],
     "rating_overall":59.0,
     "age":20.0
@@ -72632,8 +72320,7 @@
     "season_year":2022,
     "nationality":"sct SCO",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":63.0,
     "age":20.0
@@ -72644,8 +72331,7 @@
     "season_year":2022,
     "nationality":"pt POR",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":63.0,
     "age":28.0
@@ -72725,7 +72411,7 @@
     "season_year":2022,
     "nationality":"es ESP",
     "positions":[
-      "RWB",
+      "RB",
       "RM"
     ],
     "rating_overall":69.0,
@@ -72738,7 +72424,7 @@
     "nationality":"be BEL",
     "positions":[
       "CAM",
-      "CF",
+      "ST",
       "CM"
     ],
     "rating_overall":67.0,
@@ -72882,7 +72568,6 @@
     "season_year":2022,
     "nationality":"dk DEN",
     "positions":[
-      "RWB",
       "RB",
       "CB"
     ],
@@ -72918,7 +72603,7 @@
     "season_year":2022,
     "nationality":"fr FRA",
     "positions":[
-      "CF",
+      "ST",
       "RW"
     ],
     "rating_overall":62.0,
@@ -73106,8 +72791,7 @@
     "season_year":2022,
     "nationality":"pt POR",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":70.0,
     "age":28.0
@@ -73140,7 +72824,6 @@
     "season_year":2022,
     "nationality":"eng ENG",
     "positions":[
-      "LWB",
       "LB"
     ],
     "rating_overall":65.0,
@@ -73222,7 +72905,6 @@
     "nationality":"eng ENG",
     "positions":[
       "RB",
-      "RWB",
       "LB"
     ],
     "rating_overall":67.0,
@@ -73280,8 +72962,7 @@
     "season_year":2022,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":60.0,
     "age":26.0
@@ -73434,8 +73115,7 @@
     "season_year":2022,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":62.0,
     "age":21.0
@@ -73469,8 +73149,7 @@
     "season_year":2022,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":62.0,
     "age":26.0
@@ -73540,7 +73219,7 @@
     "season_year":2022,
     "nationality":"be BEL",
     "positions":[
-      "CF",
+      "ST",
       "LM"
     ],
     "rating_overall":74.0,
@@ -73633,7 +73312,6 @@
     "nationality":"uy URU",
     "positions":[
       "LB",
-      "LWB",
       "CB"
     ],
     "rating_overall":63.0,
@@ -73771,7 +73449,6 @@
     "nationality":"wls WAL",
     "positions":[
       "RB",
-      "RWB",
       "LB"
     ],
     "rating_overall":67.0,
@@ -73878,7 +73555,7 @@
     "nationality":"ci CIV",
     "positions":[
       "LW",
-      "CF",
+      "ST",
       "LM"
     ],
     "rating_overall":78.0,
@@ -73890,8 +73567,7 @@
     "season_year":2022,
     "nationality":"zw ZIM",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":64.0,
     "age":22.0
@@ -74018,7 +73694,6 @@
     "nationality":"ng NGA",
     "positions":[
       "LB",
-      "LWB",
       "LM"
     ],
     "rating_overall":66.0,
@@ -74030,9 +73705,8 @@
     "season_year":2023,
     "nationality":"dz ALG",
     "positions":[
-      "LWB",
-      "LM",
-      "LB"
+      "LB",
+      "LM"
     ],
     "rating_overall":71.0,
     "age":22.0
@@ -74272,7 +73946,7 @@
     "season_year":2023,
     "nationality":"gr GRE",
     "positions":[
-      "RWB"
+      "RB"
     ],
     "rating_overall":62.0,
     "age":30.0
@@ -74332,7 +74006,7 @@
     "nationality":"jm JAM",
     "positions":[
       "CB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":65.0,
     "age":29.0
@@ -74472,7 +74146,6 @@
     "season_year":2023,
     "nationality":"eng ENG",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":70.0,
@@ -74518,8 +74191,7 @@
     "season_year":2023,
     "nationality":"nir NIR",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":66.0,
     "age":20.0
@@ -74601,7 +74273,6 @@
     "season_year":2023,
     "nationality":"es ESP",
     "positions":[
-      "LWB",
       "LB"
     ],
     "rating_overall":63.0,
@@ -74716,7 +74387,6 @@
     "nationality":"pl POL",
     "positions":[
       "RB",
-      "RWB",
       "RM"
     ],
     "rating_overall":70.0,
@@ -74751,8 +74421,7 @@
     "season_year":2023,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":63.0,
     "age":26.0
@@ -74765,7 +74434,7 @@
     "positions":[
       "RM",
       "CM",
-      "CF"
+      "ST"
     ],
     "rating_overall":69.0,
     "age":23.0
@@ -74790,7 +74459,7 @@
     "nationality":"eng ENG",
     "positions":[
       "CM",
-      "CF",
+      "ST",
       "CDM"
     ],
     "rating_overall":66.0,
@@ -74814,8 +74483,7 @@
     "season_year":2023,
     "nationality":"ie IRL",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":59.0,
     "age":34.0
@@ -74883,8 +74551,7 @@
     "season_year":2023,
     "nationality":"es ESP",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":66.0,
     "age":25.0
@@ -74908,8 +74575,7 @@
     "nationality":"br BRA",
     "positions":[
       "ST",
-      "CAM",
-      "CF"
+      "CAM"
     ],
     "rating_overall":88.0,
     "age":24.0
@@ -75003,8 +74669,7 @@
     "nationality":"fr FRA",
     "positions":[
       "RW",
-      "ST",
-      "CF"
+      "ST"
     ],
     "rating_overall":87.0,
     "age":24.0
@@ -75072,7 +74737,6 @@
     "season_year":2023,
     "nationality":"ie IRL",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":65.0,
@@ -75402,7 +75066,7 @@
     "season_year":2023,
     "nationality":"nl NED",
     "positions":[
-      "CF",
+      "ST",
       "LW"
     ],
     "rating_overall":83.0,
@@ -75451,8 +75115,8 @@
     "nationality":"ir IRN",
     "positions":[
       "CM",
-      "LWB",
-      "RWB"
+      "LB",
+      "RB"
     ],
     "rating_overall":63.0,
     "age":29.0
@@ -75656,8 +75320,7 @@
     "season_year":2023,
     "nationality":"fr FRA",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":73.0,
     "age":20.0
@@ -75726,7 +75389,7 @@
     "season_year":2023,
     "nationality":"jp JPN",
     "positions":[
-      "RWB",
+      "RB",
       "CB"
     ],
     "rating_overall":59.0,
@@ -75865,8 +75528,7 @@
     "season_year":2023,
     "nationality":"eng ENG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":64.0,
     "age":23.0
@@ -75994,7 +75656,7 @@
     "season_year":2023,
     "nationality":"pt POR",
     "positions":[
-      "CF",
+      "ST",
       "LW"
     ],
     "rating_overall":81.0,
@@ -76006,7 +75668,6 @@
     "season_year":2023,
     "nationality":"bf BFA",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":68.0,
@@ -76211,7 +75872,6 @@
     "nationality":"gh GHA",
     "positions":[
       "RB",
-      "RWB",
       "LB"
     ],
     "rating_overall":68.0,
@@ -76223,7 +75883,7 @@
     "season_year":2023,
     "nationality":"dz ALG",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":60.0,
     "age":22.0
@@ -76363,7 +76023,7 @@
     "season_year":2023,
     "nationality":"eng ENG",
     "positions":[
-      "LWB"
+      "LB"
     ],
     "rating_overall":61.0,
     "age":26.0
@@ -76676,8 +76336,7 @@
     "season_year":2023,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":73.0,
     "age":23.0
@@ -76712,8 +76371,7 @@
     "season_year":2023,
     "nationality":"ar ARG",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":65.0,
     "age":26.0
@@ -76770,7 +76428,6 @@
     "season_year":2023,
     "nationality":"co COL",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":68.0,
@@ -76959,8 +76616,8 @@
     "nationality":"ie IRL",
     "positions":[
       "RM",
-      "RWB",
-      "CF"
+      "RB",
+      "ST"
     ],
     "rating_overall":68.0,
     "age":26.0
@@ -77125,8 +76782,7 @@
     "season_year":2023,
     "nationality":"sct SCO",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":65.0,
     "age":21.0
@@ -77359,7 +77015,6 @@
     "season_year":2023,
     "nationality":"dk DEN",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":68.0,
@@ -77486,7 +77141,6 @@
     "season_year":2023,
     "nationality":"es ESP",
     "positions":[
-      "CF",
       "ST",
       "RW"
     ],
@@ -77558,7 +77212,6 @@
     "season_year":2023,
     "nationality":"pt POR",
     "positions":[
-      "RWB",
       "RB"
     ],
     "rating_overall":70.0,
@@ -77785,8 +77438,7 @@
     "season_year":2023,
     "nationality":"eng ENG",
     "positions":[
-      "LB",
-      "LWB"
+      "LB"
     ],
     "rating_overall":68.0,
     "age":27.0
@@ -77832,7 +77484,7 @@
     "nationality":"eng ENG",
     "positions":[
       "RM",
-      "CF"
+      "ST"
     ],
     "rating_overall":71.0,
     "age":32.0
@@ -77890,7 +77542,7 @@
     "season_year":2023,
     "nationality":"be BEL",
     "positions":[
-      "CF",
+      "ST",
       "LW"
     ],
     "rating_overall":85.0,
@@ -78179,8 +77831,7 @@
     "season_year":2023,
     "nationality":"wls WAL",
     "positions":[
-      "RB",
-      "RWB"
+      "RB"
     ],
     "rating_overall":66.0,
     "age":22.0
@@ -78286,7 +77937,6 @@
     "nationality":"it ITA",
     "positions":[
       "RM",
-      "CF",
       "ST"
     ],
     "rating_overall":68.0,
