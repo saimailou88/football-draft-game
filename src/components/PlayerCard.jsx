@@ -1,4 +1,4 @@
-function PlayerCard({ player }) {
+function PlayerCard({ player, cost }) {
   return (
     <div className="player-card">
       <h2 className="player-name">{player.player_name}</h2>
@@ -10,6 +10,7 @@ function PlayerCard({ player }) {
       </div>
 
       <p className="player-rating">Overall: {player.rating_overall}</p>
+      {cost !== undefined && <p className="player-cost">£{cost}m</p>}
     </div>
   );
 }

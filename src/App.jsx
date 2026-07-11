@@ -6,6 +6,8 @@ import { formations } from './data/formations';
 import './App.css';
 
 const MAX_TEAM_REROLLS = 3;
+const TOTAL_BUDGET = 100;
+const MIN_PLAYER_COST = 1;
 
 const POSITION_CATEGORY = {
   GK: "GK",
@@ -14,7 +16,26 @@ const POSITION_CATEGORY = {
   LW: "FWD", RW: "FWD", ST: "FWD",
 };
 
+function formatSeasonLabel(season) {
+  const nextYearShort = (season + 1).toString().slice(-2);
+  return `${season}-${nextYearShort}`;
+}
+
+function getPlayerCost(ratingOverall) {
+  if (ratingOverall >= 95) return 20;
+  if (ratingOverall >= 90) return 17;
+  if (ratingOverall >= 85) return 14;
+  if (ratingOverall >= 80) return 12;
+  if (ratingOverall >= 75) return 10;
+  if (ratingOverall >= 70) return 7.5;
+  if (ratingOverall >= 65) return 5;
+  if (ratingOverall >= 60) return 3.5;
+  if (ratingOverall >= 55) return 2;
+  return 1;
+}
+
 function App() {
+  const [selectedSeason, setSelectedSeason] = useState(null);
   const [selectedFormation, setSelectedFormation] = useState(null);
 
   const [currentSquad, setCurrentSquad] = useState(null);
@@ -24,17 +45,53 @@ function App() {
   const [draftedSlots, setDraftedSlots] = useState({}); // { slotId: player }
   const [draftedPlayerNames, setDraftedPlayerNames] = useState([]);
 
-  function spinTeam() {
-    const randomIndex = Math.floor(Math.random() * teamsData.length);
-    const chosenTeamSeason = teamsData[randomIndex];
+  // All distinct seasons available in the data, sorted ascending
+  const availableSeasons = [...new Set(teamsData.map((t) => t.season))].sort(
+    (a, b) => a - b
+  );
 
-    const squad = playersData
-      .filter(
-        (player) =>
-          player.club === chosenTeamSeason.team &&
-          player.season_year === chosenTeamSeason.season
-      )
-      .sort((a, b) => b.rating_overall - a.rating_overall);
+  function calculateBudgetRemaining() {
+    const spent = Object.values(draftedSlots).reduce(
+      (sum, player) => sum + getPlayerCost(player.rating_overall),
+      0
+    );
+    return TOTAL_BUDGET - spent;
+  }
+
+  function getSquadForTeamSeason(teamSeason) {
+    return playersData.filter(
+      (player) =>
+        player.club === teamSeason.team && player.season_year === teamSeason.season
+    );
+  }
+
+  function teamHasViablePlayer(teamSeason, budgetRemaining) {
+    const squad = getSquadForTeamSeason(teamSeason);
+    return squad.some((player) => {
+      if (draftedPlayerNames.includes(player.player_name)) return false;
+      if (getPlayerCost(player.rating_overall) > budgetRemaining) return false;
+      return formations[selectedFormation].some(
+        (slot) =>
+          !draftedSlots[slot.id] &&
+          slot.eligiblePositions.some((pos) => player.positions.includes(pos))
+      );
+    });
+  }
+
+  function spinTeam() {
+    const budgetRemaining = calculateBudgetRemaining();
+    const viableTeams = teamsData.filter((ts) =>
+      teamHasViablePlayer(ts, budgetRemaining)
+    );
+    // Fallback to full pool only in the unlikely case nothing qualifies
+    const pool = viableTeams.length > 0 ? viableTeams : teamsData;
+
+    const randomIndex = Math.floor(Math.random() * pool.length);
+    const chosenTeamSeason = pool[randomIndex];
+
+    const squad = getSquadForTeamSeason(chosenTeamSeason).sort(
+      (a, b) => b.rating_overall - a.rating_overall
+    );
 
     setCurrentTeamSeason(chosenTeamSeason);
     setCurrentSquad(squad);
@@ -50,20 +107,30 @@ function App() {
   }
 
   function getEligibleSlots(player) {
-    if (!player || !selectedFormation) return [];
-    return formations[selectedFormation].filter(
-      (slot) =>
-        !draftedSlots[slot.id] &&
-        slot.eligiblePositions.some((pos) => player.positions.includes(pos))
-    );
-  }
+  if (!player || !selectedFormation) return [];
+  const budgetRemaining = calculateBudgetRemaining();
+  const cost = getPlayerCost(player.rating_overall);
+  if (cost > budgetRemaining) return [];
 
-  function assignToSlot(player, slotId) {
-  setDraftedSlots((prev) => ({ ...prev, [slotId]: player }));
-  setDraftedPlayerNames((prev) => [...prev, player.player_name]);
-  setCurrentTeamSeason(null);
-  setCurrentSquad(null);
+  const totalSlots = formations[selectedFormation].length;
+  const filledSlotsCount = Object.keys(draftedSlots).length;
+  const openSlotsAfterThisPick = totalSlots - filledSlotsCount - 1;
+  const budgetAfterThisPick = budgetRemaining - cost;
+
+  if (budgetAfterThisPick < openSlotsAfterThisPick * MIN_PLAYER_COST) return [];
+
+  return formations[selectedFormation].filter(
+    (slot) =>
+      !draftedSlots[slot.id] &&
+      slot.eligiblePositions.some((pos) => player.positions.includes(pos))
+  );
 }
+  function assignToSlot(player, slotId) {
+    setDraftedSlots((prev) => ({ ...prev, [slotId]: player }));
+    setDraftedPlayerNames((prev) => [...prev, player.player_name]);
+    setCurrentTeamSeason(null);
+    setCurrentSquad(null);
+  }
 
   function calculateTeamStats() {
     const filledPlayers = Object.entries(draftedSlots).map(([slotId, player]) => {
@@ -72,19 +139,19 @@ function App() {
     });
 
     function averageFor(category) {
-  const group = filledPlayers.filter((entry) => entry.category === category);
-  if (group.length === 0) return null;
-  const total = group.reduce((sum, entry) => sum + entry.player.rating_overall, 0);
-  return Math.round(total / group.length);
-}
+      const group = filledPlayers.filter((entry) => entry.category === category);
+      if (group.length === 0) return null;
+      const total = group.reduce((sum, entry) => sum + entry.player.rating_overall, 0);
+      return Math.round(total / group.length);
+    }
 
-const overall =
-  filledPlayers.length > 0
-    ? Math.round(
-        filledPlayers.reduce((sum, entry) => sum + entry.player.rating_overall, 0) /
-          filledPlayers.length
-      )
-    : null;
+    const overall =
+      filledPlayers.length > 0
+        ? Math.round(
+            filledPlayers.reduce((sum, entry) => sum + entry.player.rating_overall, 0) /
+              filledPlayers.length
+          )
+        : null;
 
     return {
       gk: averageFor("GK"),
@@ -101,98 +168,152 @@ const overall =
 
   return (
     <div className="App">
-      {/* Formation picker */}
-      <div className="formation-picker">
-        <p>Choose a formation:</p>
-        {Object.keys(formations).map((formationName) => (
-          <button
-            key={formationName}
-            onClick={() => setSelectedFormation(formationName)}
+      {/* Step 1: Season selector -- picks which real league your squad will play against later */}
+      {!selectedSeason && (
+        <div className="season-picker">
+          <p>Choose a season to play against:</p>
+          <select
+            onChange={(e) => setSelectedSeason(Number(e.target.value))}
+            defaultValue=""
           >
-            {formationName}
-          </button>
-        ))}
-      </div>
-
-      {/* Empty slot layout appears as soon as a formation is picked */}
-      {selectedFormation && (
-        <>
-          <h3>Formation: {selectedFormation}</h3>
-
-          <div className="team-stats">
-  {(() => {
-    const stats = calculateTeamStats();
-    return (
-      <>
-        <span style={{ marginRight: '16px' }}>GK: {stats.gk ?? "–"}</span>
-        <span style={{ marginRight: '16px' }}>DEF: {stats.def ?? "–"}</span>
-        <span style={{ marginRight: '16px' }}>MID: {stats.mid ?? "–"}</span>
-        <span style={{ marginRight: '16px' }}>FWD: {stats.fwd ?? "–"}</span>
-        <span>Overall: {stats.overall ?? "–"}</span>
-      </>
-    );
-  })()}
-</div>
-
-          <div className="slot-grid">
-            {formations[selectedFormation].map((slot) => (
-              <div key={slot.id} className="slot">
-                {draftedSlots[slot.id] ? (
-                  <PlayerCard player={draftedSlots[slot.id]} />
-                ) : (
-                  <span>{slot.label} (empty)</span>
-                )}
-              </div>
+            <option value="" disabled>
+              Select a season
+            </option>
+            {availableSeasons.map((season) => (
+              <option key={season} value={season}>
+                {formatSeasonLabel(season)}
+              </option>
             ))}
-          </div>
-
-          {!currentTeamSeason && <button onClick={spinTeam}>Spin Team</button>}
-        </>
-      )}
-
-      {/* Team/season + reroll */}
-      {currentTeamSeason && !allSlotsFilled && (
-        <>
-          <h2>
-            {currentTeamSeason.team} — {currentTeamSeason.season}
-          </h2>
-          <button onClick={handleTeamReroll} disabled={teamRerollsLeft <= 0}>
-            Reroll Club/Season ({teamRerollsLeft} left)
-          </button>
-        </>
-      )}
-
-      {/* Squad list to pick from */}
-      {currentSquad && !allSlotsFilled && (
-        <div className="squad-list">
-          {currentSquad
-            .filter((player) => !draftedPlayerNames.includes(player.player_name))
-            .map((player, index) => {
-              const eligibleSlots = getEligibleSlots(player);
-              return (
-                <div key={index} className="squad-list-item">
-                  <PlayerCard player={player} />
-                  {eligibleSlots.length > 0 ? (
-                    <div className="eligible-slots">
-                      {eligibleSlots.map((slot) => (
-                        <button
-                          key={slot.id}
-                          onClick={() => assignToSlot(player, slot.id)}
-                        >
-                          Place in {slot.label}
-                        </button>
-                      ))}
-                    </div>
-                  ) : (
-                    <span className="no-slot">No open matching slot</span>
-                  )}
-                </div>
-              );
-            })}
+          </select>
         </div>
       )}
 
-      {allSlotsFilled && <h3>Squad complete!</h3>}
+      {selectedSeason && (
+        <>
+          <p>Playing against the {formatSeasonLabel(selectedSeason)} season</p>
+
+          {/* Step 2: Formation picker */}
+          <div className="formation-picker">
+            <p>Choose a formation:</p>
+            {Object.keys(formations).map((formationName) => (
+              <button
+                key={formationName}
+                onClick={() => setSelectedFormation(formationName)}
+              >
+                {formationName}
+              </button>
+            ))}
+          </div>
+
+          {/* Empty slot layout appears as soon as a formation is picked */}
+          {selectedFormation && (
+            <>
+              <h3>Formation: {selectedFormation}</h3>
+
+              <p>Budget remaining: £{calculateBudgetRemaining()}m</p>
+
+              <div className="team-stats">
+                {(() => {
+                  const stats = calculateTeamStats();
+                  return (
+                    <>
+                      <span style={{ marginRight: '16px' }}>GK: {stats.gk ?? "–"}</span>
+                      <span style={{ marginRight: '16px' }}>DEF: {stats.def ?? "–"}</span>
+                      <span style={{ marginRight: '16px' }}>MID: {stats.mid ?? "–"}</span>
+                      <span style={{ marginRight: '16px' }}>FWD: {stats.fwd ?? "–"}</span>
+                      <span>Overall: {stats.overall ?? "–"}</span>
+                    </>
+                  );
+                })()}
+              </div>
+
+              <div className="slot-grid">
+                {formations[selectedFormation].map((slot) => (
+                  <div key={slot.id} className="slot">
+                    {draftedSlots[slot.id] ? (
+                      <PlayerCard
+                        player={draftedSlots[slot.id]}
+                        cost={getPlayerCost(draftedSlots[slot.id].rating_overall)}
+                      />
+                    ) : (
+                      <span>{slot.label} (empty)</span>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {!currentTeamSeason && !allSlotsFilled && (
+                <button onClick={spinTeam}>Spin Team</button>
+              )}
+            </>
+          )}
+
+          {/* Team/season + reroll */}
+          {currentTeamSeason && !allSlotsFilled && (
+            <>
+              <h2>
+                {currentTeamSeason.team} — {formatSeasonLabel(currentTeamSeason.season)}
+              </h2>
+              <button onClick={handleTeamReroll} disabled={teamRerollsLeft <= 0}>
+                Reroll Club/Season ({teamRerollsLeft} left)
+              </button>
+            </>
+          )}
+
+          {/* Squad list to pick from */}
+          {currentSquad && !allSlotsFilled && (
+            <div className="squad-list">
+              {currentSquad
+                .filter((player) => !draftedPlayerNames.includes(player.player_name))
+                .slice() // avoid mutating the original array
+                .sort((a, b) => {
+                  const budgetRemaining = calculateBudgetRemaining();
+
+                  const aFits = getEligibleSlots(a).length > 0 ? 1 : 0;
+                  const bFits = getEligibleSlots(b).length > 0 ? 1 : 0;
+                  if (aFits !== bFits) return bFits - aFits;
+
+                  const aAfford = getPlayerCost(a.rating_overall) <= budgetRemaining ? 1 : 0;
+                  const bAfford = getPlayerCost(b.rating_overall) <= budgetRemaining ? 1 : 0;
+                  if (aAfford !== bAfford) return bAfford - aAfford;
+
+                  return b.rating_overall - a.rating_overall;
+                })
+                .map((player, index) => {
+                  const eligibleSlots = getEligibleSlots(player);
+                  return (
+                    <div key={index} className="squad-list-item">
+                      <PlayerCard
+                        player={player}
+                        cost={getPlayerCost(player.rating_overall)}
+                      />
+                      {eligibleSlots.length > 0 ? (
+                        <div className="eligible-slots">
+                          {eligibleSlots.map((slot) => (
+                            <button
+                              key={slot.id}
+                              onClick={() => assignToSlot(player, slot.id)}
+                            >
+                              Place in {slot.label}
+                            </button>
+                          ))}
+                        </div>
+                      ) : (
+                        <span className="no-slot">
+                          {getPlayerCost(player.rating_overall) > calculateBudgetRemaining()
+                            ? "Can't afford"
+                            : "No open matching slot"}
+                        </span>
+                      )}
+                    </div>
+                  );
+                })}
+            </div>
+          )}
+
+          {allSlotsFilled && <h3>Squad complete!</h3>}
+        </>
+      )}
     </div>
   );
 }
