@@ -22,16 +22,25 @@ function formatSeasonLabel(season) {
 }
 
 function getPlayerCost(ratingOverall) {
-  if (ratingOverall >= 95) return 20;
-  if (ratingOverall >= 90) return 17;
-  if (ratingOverall >= 85) return 14;
-  if (ratingOverall >= 80) return 12;
-  if (ratingOverall >= 75) return 10;
-  if (ratingOverall >= 70) return 7.5;
-  if (ratingOverall >= 65) return 5;
-  if (ratingOverall >= 60) return 3.5;
-  if (ratingOverall >= 55) return 2;
-  return 1;
+  if (ratingOverall >= 99) return 20.0;
+  if (ratingOverall >= 97) return 18.0;
+  if (ratingOverall >= 94) return 16.0;
+  if (ratingOverall >= 91) return 14.0;
+  if (ratingOverall >= 88) return 12.0;
+  if (ratingOverall >= 85) return 10.5;
+  if (ratingOverall >= 82) return 9.0;
+  if (ratingOverall >= 79) return 8.0;
+  if (ratingOverall >= 76) return 7.0;
+  if (ratingOverall >= 73) return 6.0;
+  if (ratingOverall >= 70) return 5.0;
+  if (ratingOverall >= 67) return 4.0;
+  if (ratingOverall >= 64) return 3.0;
+  if (ratingOverall >= 61) return 2.0;
+  if (ratingOverall >= 58) return 1.5;
+  if (ratingOverall >= 55) return 1.0;
+  if (ratingOverall >= 52) return 1.0;
+  if (ratingOverall >= 49) return 0.5;
+  return 0.5;
 }
 
 function App() {
