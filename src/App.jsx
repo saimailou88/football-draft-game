@@ -7,7 +7,6 @@ import './App.css';
 
 const MAX_TEAM_REROLLS = 3;
 const TOTAL_BUDGET = 100;
-const MIN_PLAYER_COST = 1;
 
 const POSITION_CATEGORY = {
   GK: "GK",
@@ -92,7 +91,6 @@ function App() {
     const viableTeams = teamsData.filter((ts) =>
       teamHasViablePlayer(ts, budgetRemaining)
     );
-    // Fallback to full pool only in the unlikely case nothing qualifies
     const pool = viableTeams.length > 0 ? viableTeams : teamsData;
 
     const randomIndex = Math.floor(Math.random() * pool.length);
@@ -104,9 +102,6 @@ function App() {
 
     setCurrentTeamSeason(chosenTeamSeason);
     setCurrentSquad(squad);
-    // Note: draftedSlots and draftedPlayerNames are NOT reset here on purpose --
-    // rerolling swaps the club/season/players, but keeps whatever you've
-    // already drafted into slots so far.
   }
 
   function handleTeamReroll() {
@@ -116,24 +111,25 @@ function App() {
   }
 
   function getEligibleSlots(player) {
-  if (!player || !selectedFormation) return [];
-  const budgetRemaining = calculateBudgetRemaining();
-  const cost = getPlayerCost(player.rating_overall);
-  if (cost > budgetRemaining) return [];
+    if (!player || !selectedFormation) return [];
+    const budgetRemaining = calculateBudgetRemaining();
+    const cost = getPlayerCost(player.rating_overall);
+    if (cost > budgetRemaining) return [];
 
-  const totalSlots = formations[selectedFormation].length;
-  const filledSlotsCount = Object.keys(draftedSlots).length;
-  const openSlotsAfterThisPick = totalSlots - filledSlotsCount - 1;
-  const budgetAfterThisPick = budgetRemaining - cost;
+    const totalSlots = formations[selectedFormation].length;
+    const filledSlotsCount = Object.keys(draftedSlots).length;
+    const openSlotsAfterThisPick = totalSlots - filledSlotsCount - 1;
+    const budgetAfterThisPick = budgetRemaining - cost;
 
-  if (budgetAfterThisPick < openSlotsAfterThisPick * MIN_PLAYER_COST) return [];
+    if (budgetAfterThisPick < openSlotsAfterThisPick * 1) return [];
 
-  return formations[selectedFormation].filter(
-    (slot) =>
-      !draftedSlots[slot.id] &&
-      slot.eligiblePositions.some((pos) => player.positions.includes(pos))
-  );
-}
+    return formations[selectedFormation].filter(
+      (slot) =>
+        !draftedSlots[slot.id] &&
+        slot.eligiblePositions.some((pos) => player.positions.includes(pos))
+    );
+  }
+
   function assignToSlot(player, slotId) {
     setDraftedSlots((prev) => ({ ...prev, [slotId]: player }));
     setDraftedPlayerNames((prev) => [...prev, player.player_name]);
@@ -169,6 +165,16 @@ function App() {
       fwd: averageFor("FWD"),
       overall,
     };
+  }
+
+  function restartDraft() {
+    setSelectedSeason(null);
+    setSelectedFormation(null);
+    setCurrentSquad(null);
+    setCurrentTeamSeason(null);
+    setTeamRerollsLeft(MAX_TEAM_REROLLS);
+    setDraftedSlots({});
+    setDraftedPlayerNames([]);
   }
 
   const allSlotsFilled =
@@ -274,7 +280,7 @@ function App() {
             <div className="squad-list">
               {currentSquad
                 .filter((player) => !draftedPlayerNames.includes(player.player_name))
-                .slice() // avoid mutating the original array
+                .slice()
                 .sort((a, b) => {
                   const budgetRemaining = calculateBudgetRemaining();
 
@@ -320,7 +326,22 @@ function App() {
             </div>
           )}
 
-          {allSlotsFilled && <h3>Squad complete!</h3>}
+          {allSlotsFilled && (
+            <>
+              <h3>Squad complete!</h3>
+              <button
+                onClick={() =>
+                  console.log('Play Season clicked - simulation UI comes next')
+                }
+              >
+                Play Season
+              </button>
+            </>
+          )}
+
+          <div className="restart-section" style={{ marginTop: '24px' }}>
+            <button onClick={restartDraft}>Restart Draft</button>
+          </div>
         </>
       )}
     </div>
