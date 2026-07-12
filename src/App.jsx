@@ -1,8 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PlayerCard from './components/PlayerCard';
 import playersData from './data/players.json';
 import teamsData from './data/teams.json';
 import { formations } from './data/formations';
+import {
+  generateFixtures,
+  simulateMatch,
+  createEmptyYourRecord,
+  applyResultToYourRecord,
+  createEmptyOpponentSupplement,
+  applyResultToOpponentSupplement,
+  buildProgressiveTable,
+} from './data/simulation';
 import './App.css';
 
 const MAX_TEAM_REROLLS = 3;
@@ -53,7 +62,14 @@ function App() {
   const [draftedSlots, setDraftedSlots] = useState({}); // { slotId: player }
   const [draftedPlayerNames, setDraftedPlayerNames] = useState([]);
 
-  // All distinct seasons available in the data, sorted ascending
+  const [gamePhase, setGamePhase] = useState('drafting'); // 'drafting' | 'simulating' | 'finished'
+  const [opponents, setOpponents] = useState([]);
+  const [fixtures, setFixtures] = useState([]);
+  const [currentMatchdayIndex, setCurrentMatchdayIndex] = useState(0);
+  const [yourRecord, setYourRecord] = useState(createEmptyYourRecord());
+  const [opponentSupplement, setOpponentSupplement] = useState(createEmptyOpponentSupplement());
+  const [matchHistory, setMatchHistory] = useState([]);
+
   const availableSeasons = [...new Set(teamsData.map((t) => t.season))].sort(
     (a, b) => a - b
   );
@@ -73,11 +89,11 @@ function App() {
     );
   }
 
-  function teamHasViablePlayer(teamSeason, budgetRemaining) {
+  function teamHasPositionMatch(teamSeason, requireAffordable, budgetRemaining) {
     const squad = getSquadForTeamSeason(teamSeason);
     return squad.some((player) => {
       if (draftedPlayerNames.includes(player.player_name)) return false;
-      if (getPlayerCost(player.rating_overall) > budgetRemaining) return false;
+      if (requireAffordable && getPlayerCost(player.rating_overall) > budgetRemaining) return false;
       return formations[selectedFormation].some(
         (slot) =>
           !draftedSlots[slot.id] &&
@@ -88,10 +104,16 @@ function App() {
 
   function spinTeam() {
     const budgetRemaining = calculateBudgetRemaining();
-    const viableTeams = teamsData.filter((ts) =>
-      teamHasViablePlayer(ts, budgetRemaining)
-    );
-    const pool = viableTeams.length > 0 ? viableTeams : teamsData;
+
+    let pool = teamsData.filter((ts) => teamHasPositionMatch(ts, true, budgetRemaining));
+
+    if (pool.length === 0) {
+      pool = teamsData.filter((ts) => teamHasPositionMatch(ts, false, budgetRemaining));
+    }
+
+    if (pool.length === 0) {
+      pool = teamsData;
+    }
 
     const randomIndex = Math.floor(Math.random() * pool.length);
     const chosenTeamSeason = pool[randomIndex];
@@ -121,7 +143,7 @@ function App() {
     const openSlotsAfterThisPick = totalSlots - filledSlotsCount - 1;
     const budgetAfterThisPick = budgetRemaining - cost;
 
-    if (budgetAfterThisPick < openSlotsAfterThisPick * 1) return [];
+    if (budgetAfterThisPick < openSlotsAfterThisPick * 0.5) return [];
 
     return formations[selectedFormation].filter(
       (slot) =>
@@ -175,7 +197,71 @@ function App() {
     setTeamRerollsLeft(MAX_TEAM_REROLLS);
     setDraftedSlots({});
     setDraftedPlayerNames([]);
+    setGamePhase('drafting');
+    setOpponents([]);
+    setFixtures([]);
+    setCurrentMatchdayIndex(0);
+    setYourRecord(createEmptyYourRecord());
+    setOpponentSupplement(createEmptyOpponentSupplement());
+    setMatchHistory([]);
   }
+
+  function startSeason() {
+    const seasonOpponents = teamsData.filter((t) => t.season === selectedSeason);
+    const newFixtures = generateFixtures(seasonOpponents);
+
+    setOpponents(seasonOpponents);
+    setFixtures(newFixtures);
+    setYourRecord(createEmptyYourRecord());
+    setOpponentSupplement(createEmptyOpponentSupplement());
+    setCurrentMatchdayIndex(0);
+    setMatchHistory([]);
+    setGamePhase('simulating');
+  }
+
+  function playNextMatchday() {
+    if (currentMatchdayIndex >= fixtures.length) return;
+
+    const yourStats = calculateTeamStats();
+    const { opponent, isHome } = fixtures[currentMatchdayIndex];
+
+    const { yourGoals, theirGoals } = simulateMatch(yourStats, opponent, isHome);
+    const updatedRecord = applyResultToYourRecord(yourRecord, yourGoals, theirGoals);
+    const updatedSupplement = applyResultToOpponentSupplement(
+      opponentSupplement,
+      opponent.team,
+      yourGoals,
+      theirGoals
+    );
+
+    setYourRecord(updatedRecord);
+    setOpponentSupplement(updatedSupplement);
+    setMatchHistory((prev) => [
+      ...prev,
+      {
+        matchday: currentMatchdayIndex + 1,
+        opponent: opponent.team,
+        isHome,
+        yourGoals,
+        theirGoals,
+      },
+    ]);
+    setCurrentMatchdayIndex((prev) => prev + 1);
+
+    if (currentMatchdayIndex + 1 >= fixtures.length) {
+      setGamePhase('finished');
+    }
+  }
+
+  useEffect(() => {
+    if (gamePhase !== 'simulating') return;
+
+    const timer = setInterval(() => {
+      playNextMatchday();
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [gamePhase, currentMatchdayIndex, fixtures, yourRecord, opponentSupplement]);
 
   const allSlotsFilled =
     selectedFormation &&
@@ -183,7 +269,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* Step 1: Season selector -- picks which real league your squad will play against later */}
       {!selectedSeason && (
         <div className="season-picker">
           <p>Choose a season to play against:</p>
@@ -207,7 +292,6 @@ function App() {
         <>
           <p>Playing against the {formatSeasonLabel(selectedSeason)} season</p>
 
-          {/* Step 2: Formation picker */}
           <div className="formation-picker">
             <p>Choose a formation:</p>
             {Object.keys(formations).map((formationName) => (
@@ -220,7 +304,6 @@ function App() {
             ))}
           </div>
 
-          {/* Empty slot layout appears as soon as a formation is picked */}
           {selectedFormation && (
             <>
               <h3>Formation: {selectedFormation}</h3>
@@ -257,14 +340,13 @@ function App() {
                 ))}
               </div>
 
-              {!currentTeamSeason && !allSlotsFilled && (
+              {!currentTeamSeason && !allSlotsFilled && gamePhase === 'drafting' && (
                 <button onClick={spinTeam}>Spin Team</button>
               )}
             </>
           )}
 
-          {/* Team/season + reroll */}
-          {currentTeamSeason && !allSlotsFilled && (
+          {currentTeamSeason && !allSlotsFilled && gamePhase === 'drafting' && (
             <>
               <h2>
                 {currentTeamSeason.team} — {formatSeasonLabel(currentTeamSeason.season)}
@@ -275,8 +357,7 @@ function App() {
             </>
           )}
 
-          {/* Squad list to pick from */}
-          {currentSquad && !allSlotsFilled && (
+          {currentSquad && !allSlotsFilled && gamePhase === 'drafting' && (
             <div className="squad-list">
               {currentSquad
                 .filter((player) => !draftedPlayerNames.includes(player.player_name))
@@ -326,17 +407,71 @@ function App() {
             </div>
           )}
 
-          {allSlotsFilled && (
+          {allSlotsFilled && gamePhase === 'drafting' && (
             <>
               <h3>Squad complete!</h3>
-              <button
-                onClick={() =>
-                  console.log('Play Season clicked - simulation UI comes next')
-                }
-              >
-                Play Season
-              </button>
+              <button onClick={startSeason}>Play Season</button>
             </>
+          )}
+
+          {(gamePhase === 'simulating' || gamePhase === 'finished') && (
+            <div className="simulation-view">
+              <h3>
+                Matchday {currentMatchdayIndex} / {fixtures.length}
+              </h3>
+
+              {gamePhase === 'simulating' ? (
+                <p>Simulating...</p>
+              ) : (
+                <h3>Season complete!</h3>
+              )}
+
+              <h4>League Table</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Rank</th>
+                    <th>Team</th>
+                    <th>Played</th>
+                    <th>Goals For</th>
+                    <th>Goals Against</th>
+                    <th>Points</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {buildProgressiveTable(
+                    opponents,
+                    yourRecord,
+                    opponentSupplement,
+                    currentMatchdayIndex,
+                    fixtures.length
+                  ).map((row, index) => (
+                    <tr key={row.name} className={row.name === 'Your Team' ? 'your-row' : ''}>
+                      <td>{index + 1}</td>
+                      <td>{row.name}</td>
+                      <td>{row.played}</td>
+                      <td>{row.goalsFor}</td>
+                      <td>{row.goalsAgainst}</td>
+                      <td>{row.points}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              <h4>Match History</h4>
+              {matchHistory
+                .slice()
+                .reverse()
+                .map((match, index) => (
+                  <p key={index}>
+                    MD{match.matchday}: {match.isHome ? 'Your Team' : match.opponent}{' '}
+                    {match.isHome ? match.yourGoals : match.theirGoals}
+                    {' - '}
+                    {match.isHome ? match.theirGoals : match.yourGoals}{' '}
+                    {match.isHome ? match.opponent : 'Your Team'}
+                  </p>
+                ))}
+            </div>
           )}
 
           <div className="restart-section" style={{ marginTop: '24px' }}>
