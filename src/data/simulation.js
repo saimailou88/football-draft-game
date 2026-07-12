@@ -79,20 +79,29 @@ export function applyResultToYourRecord(record, yourGoals, theirGoals) {
 
 // --- Tracking each opponent's supplemental record from playing against you ---
 export function createEmptyOpponentSupplement() {
-  return {}; // { teamName: { played, goalsFor, goalsAgainst, points } }
+  return {}; // { teamName: { played, won, drawn, lost, goalsFor, goalsAgainst, points } }
 }
 
 export function applyResultToOpponentSupplement(supplement, opponentName, yourGoals, theirGoals) {
   const updated = { ...supplement };
-  const current = updated[opponentName] || { played: 0, goalsFor: 0, goalsAgainst: 0, points: 0 };
+  const current = updated[opponentName] || {
+    played: 0, won: 0, drawn: 0, lost: 0, goalsFor: 0, goalsAgainst: 0, points: 0,
+  };
 
   const newEntry = { ...current };
   newEntry.played += 1;
   newEntry.goalsFor += theirGoals; // from the opponent's own perspective
   newEntry.goalsAgainst += yourGoals;
 
-  if (theirGoals > yourGoals) newEntry.points += 3;
-  else if (theirGoals === yourGoals) newEntry.points += 1;
+  if (theirGoals > yourGoals) {
+    newEntry.won += 1;
+    newEntry.points += 3;
+  } else if (theirGoals === yourGoals) {
+    newEntry.drawn += 1;
+    newEntry.points += 1;
+  } else {
+    newEntry.lost += 1;
+  }
 
   updated[opponentName] = newEntry;
   return updated;
@@ -107,8 +116,13 @@ export function buildProgressiveTable(opponents, yourRecord, opponentSupplement,
     const scaledGoalsAgainst = Math.round(opp.goals_against * progress);
     const scaledPlayed = Math.round(38 * progress);
     const scaledPoints = Math.round(opp.points * progress);
+    const scaledWins = Math.round(opp.wins * progress);
+    const scaledDraws = Math.round(opp.draws * progress);
+    const scaledLosses = Math.round(opp.losses * progress);
 
-    const supplement = opponentSupplement[opp.team] || { played: 0, goalsFor: 0, goalsAgainst: 0, points: 0 };
+    const supplement = opponentSupplement[opp.team] || {
+      played: 0, won: 0, drawn: 0, lost: 0, goalsFor: 0, goalsAgainst: 0, points: 0,
+    };
 
     const goalsFor = scaledGoalsFor + supplement.goalsFor;
     const goalsAgainst = scaledGoalsAgainst + supplement.goalsAgainst;
@@ -116,6 +130,9 @@ export function buildProgressiveTable(opponents, yourRecord, opponentSupplement,
     return {
       name: opp.team,
       played: scaledPlayed + supplement.played,
+      won: scaledWins + supplement.won,
+      drawn: scaledDraws + supplement.drawn,
+      lost: scaledLosses + supplement.lost,
       points: scaledPoints + supplement.points,
       goalsFor,
       goalsAgainst,
@@ -126,6 +143,9 @@ export function buildProgressiveTable(opponents, yourRecord, opponentSupplement,
   table.push({
     name: "Your Team",
     played: yourRecord.played,
+    won: yourRecord.won,
+    drawn: yourRecord.drawn,
+    lost: yourRecord.lost,
     points: yourRecord.points,
     goalsFor: yourRecord.goalsFor,
     goalsAgainst: yourRecord.goalsAgainst,

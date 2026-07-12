@@ -21,8 +21,8 @@ export const formations = {
     { id: "cdm", label: "CDM", eligiblePositions: ["CDM"] },
     { id: "cm1", label: "CM", eligiblePositions: ["CM"] },
     { id: "cm2", label: "CM", eligiblePositions: ["CM"] },
-    { id: "lw", label: "LW", eligiblePositions: ["LW"] },
-    { id: "rw", label: "RW", eligiblePositions: ["RW"] },
+    { id: "lw", label: "LW", eligiblePositions: ["LW", "LM"] },
+    { id: "rw", label: "RW", eligiblePositions: ["RW", "RM"] },
     { id: "st", label: "ST", eligiblePositions: ["ST"] },
   ],
   "3-5-2": [
@@ -47,8 +47,8 @@ export const formations = {
     { id: "cdm1", label: "CDM", eligiblePositions: ["CDM"] },
     { id: "cdm2", label: "CDM", eligiblePositions: ["CDM"] },
     { id: "cam", label: "CAM", eligiblePositions: ["CAM"] },
-    { id: "lw", label: "LW", eligiblePositions: ["LW"] },
-    { id: "rw", label: "RW", eligiblePositions: ["RW"] },
+    { id: "lw", label: "LW", eligiblePositions: ["LW", "LM"] },
+    { id: "rw", label: "RW", eligiblePositions: ["RW", "RM"] },
     { id: "st", label: "ST", eligiblePositions: ["ST"] },
   ],
   "4-5-1": [
@@ -73,8 +73,8 @@ export const formations = {
     { id: "cm1", label: "CM", eligiblePositions: ["CM"] },
     { id: "cm2", label: "CM", eligiblePositions: ["CM"] },
     { id: "rm", label: "RM", eligiblePositions: ["RM", "RW"] },
-    { id: "lw", label: "LW", eligiblePositions: ["LW"] },
-    { id: "rw", label: "RW", eligiblePositions: ["RW"] },
+    { id: "lw", label: "LW", eligiblePositions: ["LW", "LM"] },
+    { id: "rw", label: "RW", eligiblePositions: ["RW", "RM"] },
     { id: "st", label: "ST", eligiblePositions: ["ST"] },
   ],
   "5-3-2": [

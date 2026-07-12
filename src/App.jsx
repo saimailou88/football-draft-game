@@ -189,7 +189,8 @@ function App() {
     };
   }
 
-  function restartDraft() {
+  // Full reset -- season, formation, everything
+  function newGame() {
     setSelectedSeason(null);
     setSelectedFormation(null);
     setCurrentSquad(null);
@@ -204,6 +205,15 @@ function App() {
     setYourRecord(createEmptyYourRecord());
     setOpponentSupplement(createEmptyOpponentSupplement());
     setMatchHistory([]);
+  }
+
+  // Squad-only reset -- keeps season and formation, clears the 11 drafted players
+  function restartDraft() {
+    setCurrentSquad(null);
+    setCurrentTeamSeason(null);
+    setTeamRerollsLeft(MAX_TEAM_REROLLS);
+    setDraftedSlots({});
+    setDraftedPlayerNames([]);
   }
 
   function startSeason() {
@@ -332,6 +342,11 @@ function App() {
                       <PlayerCard
                         player={draftedSlots[slot.id]}
                         cost={getPlayerCost(draftedSlots[slot.id].rating_overall)}
+                        assignedPosition={slot.label}
+                        origin={{
+                          club: draftedSlots[slot.id].club,
+                          season: formatSeasonLabel(draftedSlots[slot.id].season_year),
+                        }}
                       />
                     ) : (
                       <span>{slot.label} (empty)</span>
@@ -433,6 +448,9 @@ function App() {
                     <th>Rank</th>
                     <th>Team</th>
                     <th>Played</th>
+                    <th>Won</th>
+                    <th>Drawn</th>
+                    <th>Lost</th>
                     <th>Goals For</th>
                     <th>Goals Against</th>
                     <th>Points</th>
@@ -450,6 +468,9 @@ function App() {
                       <td>{index + 1}</td>
                       <td>{row.name}</td>
                       <td>{row.played}</td>
+                      <td>{row.won}</td>
+                      <td>{row.drawn}</td>
+                      <td>{row.lost}</td>
                       <td>{row.goalsFor}</td>
                       <td>{row.goalsAgainst}</td>
                       <td>{row.points}</td>
@@ -475,7 +496,10 @@ function App() {
           )}
 
           <div className="restart-section" style={{ marginTop: '24px' }}>
-            <button onClick={restartDraft}>Restart Draft</button>
+            {gamePhase === 'drafting' && (
+              <button onClick={restartDraft}>Restart Draft</button>
+            )}
+            <button onClick={newGame} style={{ marginLeft: '12px' }}>New Game</button>
           </div>
         </>
       )}
