@@ -182,3 +182,193 @@
     border-right-color: var(--border);
   }
 }
+
+/* --- Transfer Window (temporary functional styling, replace in the full styling pass) --- */
+
+.transfer-window-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.transfer-window-modal {
+  background: white;
+  color: #1a1a1a;
+  border-radius: 8px;
+  padding: 24px 32px;
+  max-width: 480px;
+  width: 90%;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+.transfer-window-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.transfer-window-averages {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: #f5f5f5;
+  border-radius: 6px;
+}
+
+.average-stat-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.average-stat-row.highlight {
+  font-weight: bold;
+  border-top: 1px solid #ddd;
+  padding-top: 4px;
+  margin-top: 4px;
+}
+
+.average-stat-delta.positive {
+  color: #2a9d3f;
+}
+
+.average-stat-delta.negative {
+  color: #d64545;
+}
+
+.transfer-window-history {
+  margin-bottom: 12px;
+}
+
+.transfer-window-confirmation {
+  text-align: center;
+  font-size: 14px;
+  color: #2a9d3f;
+  margin: 4px 0;
+}
+
+.transfer-window-offer-list {
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.offer-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.offer-slot-label {
+  font-weight: bold;
+  min-width: 32px;
+}
+
+.no-offers-left {
+  text-align: center;
+  color: #666;
+}
+
+.transfer-window-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.transfer-window-buttons button {
+  padding: 8px 20px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.transfer-button {
+  background: #1a1a1a;
+  color: white;
+}
+
+.transfer-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.no-transfer-button {
+  background: white;
+}
+
+/* --- End of Season Summary (temporary functional styling, replace in the full styling pass) --- */
+
+.end-of-season-summary {
+  background: #f5f5f5;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+}
+
+.final-position {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.final-position-number {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.final-position-label {
+  color: #666;
+}
+
+.final-record {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #333;
+}
+
+.rating-comparison {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: white;
+  border-radius: 6px;
+}
+
+.transfer-recap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.transfer-recap-row {
+  font-size: 14px;
+  color: #333;
+}
+
+.no-transfers-made {
+  color: #666;
+  font-style: italic;
+}

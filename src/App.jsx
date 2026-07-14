@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import PlayerCard from './components/PlayerCard';
+import TransferWindow from './components/TransferWindow';
+import EndOfSeasonSummary from './components/EndOfSeasonSummary';
 import playersData from './data/players.json';
 import teamsData from './data/teams.json';
 import { formations } from './data/formations';
@@ -15,7 +17,9 @@ import {
 import './App.css';
 
 const MAX_TEAM_REROLLS = 3;
-const TOTAL_BUDGET = 100;
+const MIN_BUDGET = 80;
+const MAX_BUDGET = 120;
+const TRANSFER_WINDOW_MATCHDAY = 20;
 
 const POSITION_CATEGORY = {
   GK: "GK",
@@ -30,25 +34,29 @@ function formatSeasonLabel(season) {
 }
 
 function getPlayerCost(ratingOverall) {
-  if (ratingOverall >= 99) return 20.0;
-  if (ratingOverall >= 97) return 18.0;
-  if (ratingOverall >= 94) return 16.0;
-  if (ratingOverall >= 91) return 14.0;
-  if (ratingOverall >= 88) return 12.0;
-  if (ratingOverall >= 85) return 10.5;
-  if (ratingOverall >= 82) return 9.0;
-  if (ratingOverall >= 79) return 8.0;
-  if (ratingOverall >= 76) return 7.0;
-  if (ratingOverall >= 73) return 6.0;
-  if (ratingOverall >= 70) return 5.0;
-  if (ratingOverall >= 67) return 4.0;
-  if (ratingOverall >= 64) return 3.0;
-  if (ratingOverall >= 61) return 2.0;
-  if (ratingOverall >= 58) return 1.5;
-  if (ratingOverall >= 55) return 1.0;
+  if (ratingOverall >= 97) return 20.0;
+  if (ratingOverall >= 94) return 18.0;
+  if (ratingOverall >= 91) return 16.0;
+  if (ratingOverall >= 88) return 14.0;
+  if (ratingOverall >= 85) return 12.0;
+  if (ratingOverall >= 82) return 10.5;
+  if (ratingOverall >= 79) return 9.0;
+  if (ratingOverall >= 76) return 8.0;
+  if (ratingOverall >= 73) return 7.0;
+  if (ratingOverall >= 70) return 6.0;
+  if (ratingOverall >= 67) return 5.0;
+  if (ratingOverall >= 64) return 4.0;
+  if (ratingOverall >= 61) return 3.0;
+  if (ratingOverall >= 58) return 2.0;
+  if (ratingOverall >= 55) return 1.5;
   if (ratingOverall >= 52) return 1.0;
-  if (ratingOverall >= 49) return 0.5;
+  if (ratingOverall >= 49) return 1.0;
   return 0.5;
+}
+
+// Random integer between MIN_BUDGET and MAX_BUDGET, inclusive
+function rollRandomBudget() {
+  return Math.floor(Math.random() * (MAX_BUDGET - MIN_BUDGET + 1)) + MIN_BUDGET;
 }
 
 function App() {
@@ -70,6 +78,12 @@ function App() {
   const [opponentSupplement, setOpponentSupplement] = useState(createEmptyOpponentSupplement());
   const [matchHistory, setMatchHistory] = useState([]);
 
+  const [showTransferWindow, setShowTransferWindow] = useState(false);
+  const [originalDraftAverages, setOriginalDraftAverages] = useState(null);
+  const [transferHistory, setTransferHistory] = useState([]);
+
+  const [totalBudget, setTotalBudget] = useState(null); // null until rolled
+
   const availableSeasons = [...new Set(teamsData.map((t) => t.season))].sort(
     (a, b) => a - b
   );
@@ -79,7 +93,7 @@ function App() {
       (sum, player) => sum + getPlayerCost(player.rating_overall),
       0
     );
-    return TOTAL_BUDGET - spent;
+    return (totalBudget ?? 0) - spent; // falls back to 0 if not rolled yet, so nothing is affordable before rolling
   }
 
   function getSquadForTeamSeason(teamSeason) {
@@ -130,6 +144,12 @@ function App() {
     if (teamRerollsLeft <= 0) return;
     setTeamRerollsLeft((prev) => prev - 1);
     spinTeam();
+  }
+
+  // Rolls the budget once, after a formation is chosen. No reroll -- this is
+  // called exactly once per draft, from the "Roll Budget" gate screen.
+  function handleRollBudget() {
+    setTotalBudget(rollRandomBudget());
   }
 
   function getEligibleSlots(player) {
@@ -205,9 +225,15 @@ function App() {
     setYourRecord(createEmptyYourRecord());
     setOpponentSupplement(createEmptyOpponentSupplement());
     setMatchHistory([]);
+    setShowTransferWindow(false);
+    setOriginalDraftAverages(null);
+    setTransferHistory([]);
+    setTotalBudget(null);
   }
 
-  // Squad-only reset -- keeps season and formation, clears the 11 drafted players
+  // Squad-only reset -- keeps season and formation, clears the 11 drafted
+  // players. Budget is NOT reset here -- no reroll mechanic exists for it,
+  // so restarting the squad keeps whatever budget was already rolled.
   function restartDraft() {
     setCurrentSquad(null);
     setCurrentTeamSeason(null);
@@ -226,6 +252,8 @@ function App() {
     setOpponentSupplement(createEmptyOpponentSupplement());
     setCurrentMatchdayIndex(0);
     setMatchHistory([]);
+    setOriginalDraftAverages(calculateTeamStats());
+    setTransferHistory([]);
     setGamePhase('simulating');
   }
 
@@ -256,22 +284,36 @@ function App() {
         theirGoals,
       },
     ]);
-    setCurrentMatchdayIndex((prev) => prev + 1);
 
-    if (currentMatchdayIndex + 1 >= fixtures.length) {
+    const newIndex = currentMatchdayIndex + 1;
+    setCurrentMatchdayIndex(newIndex);
+
+    if (newIndex === TRANSFER_WINDOW_MATCHDAY && newIndex < fixtures.length) {
+      setShowTransferWindow(true);
+    }
+
+    if (newIndex >= fixtures.length) {
       setGamePhase('finished');
     }
   }
 
+  function handleTransferWindowComplete(updatedSlots, history) {
+    setDraftedSlots(updatedSlots);
+    setDraftedPlayerNames(Object.values(updatedSlots).map((p) => p.player_name));
+    setTransferHistory(history);
+    setShowTransferWindow(false);
+  }
+
   useEffect(() => {
     if (gamePhase !== 'simulating') return;
+    if (showTransferWindow) return;
 
     const timer = setInterval(() => {
       playNextMatchday();
-    }, 1000);
+    }, 700);
 
     return () => clearInterval(timer);
-  }, [gamePhase, currentMatchdayIndex, fixtures, yourRecord, opponentSupplement]);
+  }, [gamePhase, currentMatchdayIndex, fixtures, yourRecord, opponentSupplement, showTransferWindow]);
 
   const allSlotsFilled =
     selectedFormation &&
@@ -279,6 +321,17 @@ function App() {
 
   return (
     <div className="App">
+      {showTransferWindow && (
+        <TransferWindow
+          draftedSlots={draftedSlots}
+          formationSlots={formations[selectedFormation]}
+          allPlayers={playersData}
+          draftedPlayerNames={draftedPlayerNames}
+          positionCategory={POSITION_CATEGORY}
+          onComplete={handleTransferWindowComplete}
+        />
+      )}
+
       {!selectedSeason && (
         <div className="season-picker">
           <p>Choose a season to play against:</p>
@@ -314,11 +367,19 @@ function App() {
             ))}
           </div>
 
-          {selectedFormation && (
+          {/* Budget roll gate -- shown after a formation is picked but before totalBudget is set */}
+          {selectedFormation && totalBudget === null && gamePhase === 'drafting' && (
+            <div className="budget-roll-section">
+              <p>Roll your draft budget (£{MIN_BUDGET}m–£{MAX_BUDGET}m):</p>
+              <button onClick={handleRollBudget}>Roll Budget</button>
+            </div>
+          )}
+
+          {selectedFormation && totalBudget !== null && (
             <>
               <h3>Formation: {selectedFormation}</h3>
 
-              <p>Budget remaining: £{calculateBudgetRemaining()}m</p>
+              <p>Budget remaining: £{calculateBudgetRemaining()}m / £{totalBudget}m</p>
 
               <div className="team-stats">
                 {(() => {
@@ -436,9 +497,25 @@ function App() {
               </h3>
 
               {gamePhase === 'simulating' ? (
-                <p>Simulating...</p>
+                <p>{showTransferWindow ? 'Transfer window open...' : 'Simulating...'}</p>
               ) : (
                 <h3>Season complete!</h3>
+              )}
+
+              {gamePhase === 'finished' && originalDraftAverages && (
+                <EndOfSeasonSummary
+                  leagueTable={buildProgressiveTable(
+                    opponents,
+                    yourRecord,
+                    opponentSupplement,
+                    currentMatchdayIndex,
+                    fixtures.length
+                  )}
+                  yourRecord={yourRecord}
+                  originalAverages={originalDraftAverages}
+                  currentAverages={calculateTeamStats()}
+                  transferHistory={transferHistory}
+                />
               )}
 
               <h4>League Table</h4>
