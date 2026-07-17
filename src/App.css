@@ -1,374 +1,980 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+/* ===========================================
+   FONTS
+   =========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600;700&display=swap');
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+/* ===========================================
+   COLOR & SPACING TOKENS
+   =========================================== */
+:root {
+  --bg: #141423;
+  --btn-dark: #24243A;
+  --bluey-purple: #5349C2;
+  --accent-purple: #C084FC;
+  --blue: #3B82F6;
+  --red: #F16C6C;
+  --yellow: #F2C382;
+  --green: #A3D16E;
+  --grey-text: #C9C3BF;
+  --white-text: #F8F2EE;
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
-}
-
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
+/* ===========================================
+   RESET
+   =========================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
   padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
 }
 
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
-}
-
-/* --- Transfer Window (temporary functional styling, replace in the full styling pass) --- */
-
-.transfer-window-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+html, body {
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
 }
 
-.transfer-window-modal {
-  background: white;
-  color: #1a1a1a;
-  border-radius: 8px;
-  padding: 24px 32px;
+body {
+  background: var(--bg);
+  color: var(--white-text);
+  font-family: 'Space Grotesk', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===========================================
+   MOBILE SAFE AREA
+   =========================================== */
+#root {
+  min-height: 100vh;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
   max-width: 480px;
-  width: 90%;
-  max-height: 85vh;
-  overflow-y: auto;
+  margin: 0 auto;
 }
 
-.transfer-window-subtitle {
+/* ===========================================
+   TYPE SCALE
+   =========================================== */
+.game-title {
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 56px;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  color: var(--white-text);
   text-align: center;
-  color: #666;
-  margin-bottom: 12px;
 }
 
-.transfer-window-averages {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  margin-bottom: 16px;
-  padding: 12px;
-  background: #f5f5f5;
-  border-radius: 6px;
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--white-text);
 }
 
-.average-stat-row {
-  display: flex;
-  justify-content: space-between;
+.label-mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey-text);
+}
+
+/* ===========================================
+   BUTTONS
+   =========================================== */
+.btn {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
   font-size: 14px;
-}
-
-.average-stat-row.highlight {
-  font-weight: bold;
-  border-top: 1px solid #ddd;
-  padding-top: 4px;
-  margin-top: 4px;
-}
-
-.average-stat-delta.positive {
-  color: #2a9d3f;
-}
-
-.average-stat-delta.negative {
-  color: #d64545;
-}
-
-.transfer-window-history {
-  margin-bottom: 12px;
-}
-
-.transfer-window-confirmation {
+  letter-spacing: 0.03em;
   text-align: center;
-  font-size: 14px;
-  color: #2a9d3f;
-  margin: 4px 0;
-}
-
-.transfer-window-offer-list {
-  margin: 16px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.offer-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.offer-slot-label {
-  font-weight: bold;
-  min-width: 32px;
-}
-
-.no-offers-left {
-  text-align: center;
-  color: #666;
-}
-
-.transfer-window-buttons {
-  display: flex;
-  gap: 12px;
-  margin-top: 16px;
-  justify-content: center;
-}
-
-.transfer-window-buttons button {
-  padding: 8px 20px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+  padding: 14px 20px;
+  border-radius: 10px;
   cursor: pointer;
-  font-size: 14px;
+  border: 2px solid transparent;
+  transition: transform 0.1s ease;
 }
 
-.transfer-button {
-  background: #1a1a1a;
-  color: white;
+.btn:active {
+  transform: scale(0.97);
 }
 
-.transfer-button:disabled {
-  background: #ccc;
+.btn:disabled {
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
-.no-transfer-button {
-  background: white;
+.btn-primary {
+  background: rgba(192, 132, 252, 0.75);
+  border-color: var(--accent-purple);
+  color: var(--white-text);
 }
 
-/* --- End of Season Summary (temporary functional styling, replace in the full styling pass) --- */
-
-.end-of-season-summary {
-  background: #f5f5f5;
-  border-radius: 8px;
-  padding: 20px 24px;
-  margin-bottom: 24px;
+.btn-secondary {
+  background: rgba(83, 73, 194, 0.75);
+  border-color: var(--bluey-purple);
+  color: var(--white-text);
 }
 
-.final-position {
+.btn-dark {
+  background: rgba(36, 36, 58, 0.75);
+  border-color: var(--btn-dark);
+  color: var(--grey-text);
+}
+
+/* ===========================================
+   PLAYER CARD
+   =========================================== */
+.player-card {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+}
+
+.player-card .rating {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--white-text);
+  flex-shrink: 0;
+  width: 34px;
+  text-align: center;
+}
+
+.player-card .pos-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--bg);
+  border-radius: 5px;
+  padding: 3px 6px;
+  flex-shrink: 0;
+}
+
+.player-card .info {
+  flex: 1;
+  min-width: 0;
+}
+
+.player-card .name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--white-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-card .meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--white-text);
+  margin-top: 1px;
+}
+
+.player-card .price {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--white-text);
+  flex-shrink: 0;
+}
+
+.player-card.gk  { background: rgba(242, 195, 130, 0.75); border-color: var(--yellow); }
+.player-card.gk  .pos-badge { background: var(--yellow); }
+
+.player-card.def { background: rgba(59, 130, 246, 0.75); border-color: var(--blue); }
+.player-card.def .pos-badge { background: var(--blue); }
+
+.player-card.mid { background: rgba(163, 209, 110, 0.75); border-color: var(--green); }
+.player-card.mid .pos-badge { background: var(--green); }
+
+.player-card.att { background: rgba(241, 108, 108, 0.75); border-color: var(--red); }
+.player-card.att .pos-badge { background: var(--red); }
+
+.player-card.unavailable {
+  background: rgba(36, 36, 58, 0.75);
+  border-color: var(--btn-dark);
+}
+.player-card.unavailable .pos-badge {
+  background: var(--grey-text);
+  color: var(--bg);
+}
+.player-card.unavailable .rating,
+.player-card.unavailable .name,
+.player-card.unavailable .meta {
+  color: var(--grey-text);
+}
+.player-card.unavailable .price {
+  color: var(--red);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}
+
+/* ===========================================
+   FIELD LABEL + SUBTEXT
+   =========================================== */
+.field-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey-text);
   margin-bottom: 8px;
 }
 
-.final-position-number {
-  font-size: 32px;
-  font-weight: bold;
+.field-subtext {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  color: var(--grey-text);
+  text-align: center;
+  margin-top: 6px;
 }
 
-.final-position-label {
-  color: #666;
+/* ===========================================
+   DIFFICULTY BUTTON GROUP
+   =========================================== */
+.difficulty-option {
+  flex: 1;
 }
 
-.final-record {
+/* ===========================================
+   SEASON DROPDOWN
+   =========================================== */
+.season-select {
+  width: 100%;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: rgba(36, 36, 58, 0.75);
+  border: 2px solid var(--btn-dark);
+  color: var(--white-text);
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* ===========================================
+   FORMATION CHIPS
+   =========================================== */
+.formation-chip-row {
   display: flex;
-  gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 16px;
-  font-size: 14px;
-  color: #333;
+  gap: 8px;
 }
 
-.rating-comparison {
+.formation-chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: rgba(36, 36, 58, 0.75);
+  border: 2px solid var(--btn-dark);
+  color: var(--grey-text);
+  cursor: pointer;
+}
+
+.formation-chip.selected {
+  background: rgba(192, 132, 252, 0.75);
+  border-color: var(--accent-purple);
+  color: var(--white-text);
+}
+
+/* ===========================================
+   PITCH PREVIEW
+   =========================================== */
+.pitch-preview {
+  position: relative;
+  background: radial-gradient(ellipse at center, #2f5f3f 0%, #1e4229 100%);
+  border: 2px solid rgba(248, 242, 238, 0.25);
+  border-radius: 14px;
+  width: 100%;
+  height: 200px;
+}
+
+.pitch-preview::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 4%; right: 4%;
+  height: 1px;
+  background: rgba(248, 242, 238, 0.25);
+}
+
+.pitch-preview::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 60px; height: 60px;
+  border: 1px solid rgba(248, 242, 238, 0.25);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pitch-dot {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #b7e6c3, #4f9463 70%);
+  border: 2px solid rgba(248, 242, 238, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  color: #0e2417;
+}
+
+/* Filled pitch dot -- shown once a player is drafted into that slot,
+   colored to match that position's player-card color. */
+.pitch-dot-filled {
+  font-size: 8px;
+  border-width: 2px;
+  border-color: rgba(248, 242, 238, 0.6);
+  color: #14210f;
+}
+
+.pitch-dot-gk  { background: radial-gradient(circle at 35% 30%, #FADFB4, #D9A455 70%); }
+.pitch-dot-def { background: radial-gradient(circle at 35% 30%, #8FB9FF, #2E5FD8 70%); }
+.pitch-dot-mid { background: radial-gradient(circle at 35% 30%, #C7EAA4, #6E9E48 70%); }
+.pitch-dot-att { background: radial-gradient(circle at 35% 30%, #F8A9A9, #D14747 70%); }
+
+/* ===========================================
+   BUDGET DISPLAY (post-roll) + SPIN STATE
+   =========================================== */
+.budget-display {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--white-text);
+  text-align: center;
+  padding: 14px;
+  background: rgba(36, 36, 58, 0.75);
+  border: 2px solid var(--btn-dark);
+  border-radius: 10px;
+}
+
+.budget-spinning {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.02em;
+}
+
+/* ===========================================
+   DRAFTING SCREEN: STATS + BUDGET
+   =========================================== */
+.stats-budget-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(36, 36, 58, 0.75);
+  border: 2px solid var(--btn-dark);
+  border-radius: 10px;
+  padding: 14px 18px;
+}
+
+.stats-column {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin-bottom: 16px;
-  padding: 12px;
-  background: white;
+  gap: 8px;
+  flex: 1;
+  margin-right: 16px;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+}
+.stat-row .stat-label {
+  color: var(--grey-text);
+  width: 28px;
+  flex-shrink: 0;
+}
+.stat-row .stat-value {
+  color: var(--white-text);
+  font-weight: 700;
+  width: 20px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.stat-bar-track {
+  flex: 1;
+  height: 4px;
+  background: rgba(248, 242, 238, 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.stat-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+}
+.stat-bar-fill.gk  { background: var(--yellow); }
+.stat-bar-fill.def { background: var(--blue); }
+.stat-bar-fill.mid { background: var(--green); }
+.stat-bar-fill.fwd { background: var(--red); }
+
+.overall-display {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 40px;
+  color: var(--accent-purple);
+}
+
+.budget-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--white-text);
+  text-align: center;
+}
+.budget-low {
+  color: var(--red);
+}
+
+/* ===========================================
+   SLOT LIST (formation slots being filled)
+   =========================================== */
+.slot-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.slot-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  border-radius: 8px;
+  border: 2px dashed var(--btn-dark);
+  color: var(--grey-text);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+}
+
+/* ===========================================
+   DRAFT POP-UP (team reveal + squad candidates)
+   =========================================== */
+.draft-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 20, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.draft-popup-modal {
+  width: 100%;
+  max-width: 480px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background: var(--bg);
+  border: 2px solid var(--btn-dark);
+  border-radius: 20px;
+  padding: 24px 20px 32px;
+}
+
+.draft-popup-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--white-text);
+  margin-bottom: 12px;
+}
+
+.draft-popup-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.draft-popup-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.eligible-slots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.no-slot-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--grey-text);
+  padding-left: 4px;
+}
+
+/* ===========================================
+   FOOTER NAV BUTTONS (Restart Draft / New Game
+   -- same quiet style as the back buttons)
+   =========================================== */
+.footer-nav-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+/* ===========================================
+   SIMULATION STATUS
+   =========================================== */
+.sim-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--accent-purple);
+  text-align: center;
+}
+.sim-status-done {
+  color: var(--green);
+}
+
+/* ===========================================
+   LEAGUE TABLE
+   =========================================== */
+.league-table {
+  background: rgba(36, 36, 58, 0.75);
+  border: 2px solid var(--btn-dark);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.league-table-header,
+.league-table-row {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+}
+
+.league-table-header {
+  color: var(--grey-text);
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--btn-dark);
+}
+
+.league-table-row {
+  color: var(--white-text);
+  border-bottom: 1px solid rgba(36, 36, 58, 0.6);
+}
+.league-table-row:last-child {
+  border-bottom: none;
+}
+
+.lt-rank {
+  width: 24px;
+  flex-shrink: 0;
+}
+.lt-team {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.lt-stat {
+  width: 34px;
+  flex-shrink: 0;
+  text-align: right;
+}
+.lt-pts {
+  font-weight: 700;
+  color: var(--accent-purple);
+}
+
+/* ===========================================
+   MATCH HISTORY FEED
+   =========================================== */
+.match-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.match-feed-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
   border-radius: 6px;
+  border-left: 3px solid var(--btn-dark);
+  background: rgba(36, 36, 58, 0.5);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
 }
 
-.transfer-recap-list {
+.match-feed-md {
+  color: var(--grey-text);
+  flex-shrink: 0;
+  width: 40px;
+}
+.match-feed-score {
+  color: var(--white-text);
+}
+
+.match-feed-win  { border-left-color: var(--green); }
+.match-feed-draw { border-left-color: var(--grey-text); }
+.match-feed-loss { border-left-color: var(--red); }
+
+/* ===========================================
+   LEAGUE TABLE: YOUR TEAM MOVEMENT HIGHLIGHT
+   =========================================== */
+.your-row-same {
+  background: rgba(192, 132, 252, 0.2);
+  font-weight: 700;
+}
+.your-row-up {
+  background: rgba(163, 209, 110, 0.35);
+  font-weight: 700;
+}
+.your-row-down {
+  background: rgba(241, 108, 108, 0.35);
+  font-weight: 700;
+}
+
+/* ===========================================
+   MATCH FEED: WIDER STRIP + YELLOW DRAW
+   =========================================== */
+.match-feed-row {
+  padding: 12px 16px;
+  border-left-width: 5px;
+}
+.match-feed-draw {
+  border-left-color: var(--yellow);
+}
+
+/* ===========================================
+   PITCH DOT: TRANSFERRED (accent purple)
+   =========================================== */
+.pitch-dot-transferred {
+  background: radial-gradient(circle at 35% 30%, #E5C2FB, #A855D8 70%);
+}
+
+/* ===========================================
+   PLAYER CARD: TRANSFERRED VARIANT
+   Used in Simulating.jsx's "Show Team Players"
+   comparison rows.
+   =========================================== */
+.player-card.transferred {
+  background: rgba(192, 132, 252, 0.75);
+  border-color: var(--accent-purple);
+}
+.player-card.transferred .pos-badge {
+  background: var(--accent-purple);
+  color: var(--bg);
+}
+/* ===========================================
+   PLAYER COMPARISON (original -> transferred)
+   Arrow/label color reflects whether the swap
+   was an upgrade (green), downgrade (red), or
+   neutral/unknown (bluey-purple default).
+   =========================================== */
+.player-comparison-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.comparison-arrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--bluey-purple);
+  text-align: center;
+}
+.comparison-arrow.upgrade {
+  color: var(--green);
+}
+.comparison-arrow.downgrade {
+  color: var(--red);
+}
+
+/* ===========================================
+   TRANSFER WINDOW: SQUAD AVERAGES
+   =========================================== */
+.tw-averages {
+  background: rgba(36, 36, 58, 0.75);
+  border: 2px solid var(--btn-dark);
+  border-radius: 10px;
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tw-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+}
+.tw-stat-label {
+  color: var(--grey-text);
+}
+.tw-stat-value {
+  color: var(--white-text);
+  font-weight: 700;
+}
+.tw-stat-delta.positive {
+  color: var(--green);
+}
+.tw-stat-delta.negative {
+  color: var(--red);
+}
+.tw-stat-current {
+  color: var(--white-text);
+}
+.tw-stat-highlight .tw-stat-label,
+.tw-stat-highlight .tw-stat-value {
+  color: var(--accent-purple);
+  font-size: 14px;
+}
+
+/* Direction coloring applies to every stat row, not just OVR. Declared
+   after .tw-stat-highlight so it wins on the OVR row when there's an
+   actual change (same specificity, later rule takes priority). */
+.tw-stat-up .tw-stat-label,
+.tw-stat-up .tw-stat-value,
+.tw-stat-up .tw-stat-current {
+  color: var(--green);
+}
+.tw-stat-down .tw-stat-label,
+.tw-stat-down .tw-stat-value,
+.tw-stat-down .tw-stat-current {
+  color: var(--red);
+}
+
+/* ===========================================
+   SIMULATING SCREEN: OVERALL SCORE DIRECTION
+   Reflects change from draft-day average, so
+   green after an upgrade, red after a downgrade.
+   =========================================== */
+.overall-display.overall-up {
+  color: var(--green);
+}
+.overall-display.overall-down {
+  color: var(--red);
+}
+/* ===========================================
+   TRANSFER WINDOW: COMPACT ROW LIST
+   position -> your player (rating) -> arrow ->
+   offered player (rating) club · season
+   =========================================== */
+.tw-row-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.transfer-row {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(36, 36, 58, 0.75);
+  border: 2px solid var(--btn-dark);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--white-text);
+  transition: background 0.08s ease, border-color 0.08s ease;
 }
 
-.transfer-recap-row {
-  font-size: 14px;
-  color: #333;
+.transfer-row-main {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 6px;
 }
 
-.no-transfers-made {
-  color: #666;
+.transfer-row-pos {
+  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 10px;
+  padding: 3px 6px;
+  border-radius: 5px;
+  color: var(--bg);
+}
+.pos-badge-gk  { background: var(--yellow); }
+.pos-badge-def { background: var(--blue); }
+.pos-badge-mid { background: var(--green); }
+.pos-badge-att { background: var(--red); }
+
+.transfer-row-your {
+  flex-shrink: 0;
+  max-width: 42%;
+  color: var(--grey-text);
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+.transfer-row-arrow {
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.transfer-row-offered-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+
+.transfer-row-offered {
+  color: inherit;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.transfer-row-meta {
+  color: var(--grey-text);
+  font-weight: 400;
+  font-size: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.transfer-row-none {
+  color: var(--grey-text);
+  font-weight: 400;
   font-style: italic;
+}
+
+/* Slot-machine highlight while spinning through offers */
+.transfer-row-highlight {
+  background: rgba(83, 73, 194, 0.9);
+  border-color: var(--bluey-purple);
+}
+
+/* Completed transfer result coloring -- whole row text, not just the arrow */
+.transfer-row-upgrade {
+  color: var(--green);
+}
+.transfer-row-downgrade {
+  color: var(--red);
+}
+
+/* ===========================================
+   END OF SEASON SUMMARY -- ONE CARD
+   =========================================== */
+.eos-box {
+  background: rgba(36, 36, 58, 0.75);
+  border: 2px solid var(--btn-dark);
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 8px;
+}
+
+.eos-headline {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 0 4px;
+}
+
+.eos-position {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+.eos-position-number {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 36px;
+  color: var(--accent-purple);
+  line-height: 1;
+}
+
+.eos-record-grid {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+}
+.eos-record-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.eos-record-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--white-text);
+}
+.eos-record-value.eos-pts {
+  color: var(--accent-purple);
+}
+.eos-record-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--grey-text);
+  letter-spacing: 0.05em;
+}
+
+/* ===========================================
+   RATING COMPARISON ROWS (before -> after)
+   =========================================== */
+.eos-rating-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 4px;
+}
+
+.eos-rating-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--white-text);
+}
+.eos-rating-label {
+  color: var(--grey-text);
+}
+.eos-rating-values {
+  font-weight: 700;
+}
+.eos-rating-arrow {
+  color: var(--grey-text);
+  font-weight: 400;
+  margin: 0 2px;
+}
+
+.eos-rating-highlight {
+  font-size: 15px;
+  margin-top: 2px;
+  padding-top: 6px;
+  border-top: 1px solid var(--btn-dark);
+}
+.eos-rating-highlight .eos-rating-label {
+  color: var(--accent-purple);
+}
+
+.eos-rating-up .eos-rating-values {
+  color: var(--green);
+}
+.eos-rating-down .eos-rating-values {
+  color: var(--red);
 }

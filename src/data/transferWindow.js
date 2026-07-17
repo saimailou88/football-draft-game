@@ -39,27 +39,57 @@ function pickRandomSlotIds(slotIds, count) {
 // Each offer in the window is assigned a TIER, defined as a rating delta
 // range relative to the OUTGOING player's own rating (not an absolute
 // band). This means "very high" always means a real, meaningful upgrade
-// for that specific player, and "bad" always means a real downgrade --
+// for that specific player, and "very bad" always means a real downgrade --
 // regardless of whether the outgoing player happens to be a 55 or an 85.
 // =====================================================================
 
 const TIERS = {
-  veryHigh: { min: 15, max: 25 },   // a genuine star upgrade
-  good: { min: 5, max: 14 },        // a solid, noticeable upgrade
-  mediocre: { min: -4, max: 4 },    // roughly a sidegrade either way
-  bad: { min: -25, max: -5 },       // a real downgrade
+  veryHigh: { min: 20, max: 40 },   // a massive star upgrade
+  good: { min: 8, max: 19 },        // a solid, noticeable upgrade
+  mediocre: { min: -6, max: 6 },    // roughly a sidegrade either way -- kept defined but no longer used in PATTERNS below
+  bad: { min: -19, max: -8 },       // a real downgrade
+  veryBad: { min: -40, max: -20 },  // a brutal downgrade
 };
 
 // Each pattern is the "shape" of one full 5-offer batch. A pattern is
 // picked once per transfer window, then its 5 tiers are shuffled across
 // the 5 chosen slots -- so the big upgrade isn't always offer #1.
+//
+// Curated deliberately from veryHigh/good/bad/veryBad only (no mediocre),
+// spanning a broad range of risk profiles: near-guaranteed jackpot batches,
+// near-certain-doom batches, and everything mixed in between. This is a
+// representative selection rather than every one of the 56 mathematically
+// possible 4-tier/5-slot combinations, since many of those would feel
+// nearly identical in practice.
 const PATTERNS = [
+  // Jackpot-leaning (mostly upside)
+  ['veryHigh', 'veryHigh', 'veryHigh', 'veryHigh', 'veryBad'],
+  ['veryHigh', 'veryHigh', 'veryHigh', 'veryBad', 'veryBad'],
+  ['veryHigh', 'veryHigh', 'good', 'good', 'veryBad'],
+  ['veryHigh', 'veryHigh', 'good', 'veryBad', 'bad'],
+  ['veryHigh', 'good', 'good', 'good', 'veryBad'],
+  ['veryHigh', 'veryHigh', 'good', 'good', 'good'],
+
+  // Doom-leaning (mostly downside)
+  ['veryBad', 'veryBad', 'veryBad', 'veryBad', 'veryHigh'],
+  ['veryBad', 'veryBad', 'veryBad', 'bad', 'veryHigh'],
+  ['bad', 'bad', 'bad', 'bad', 'veryHigh'],
+  ['veryBad', 'veryBad', 'bad', 'bad', 'good'],
+  ['veryBad', 'veryBad', 'veryBad', 'good', 'good'],
+  ['bad', 'bad', 'bad', 'bad', 'bad'],
+
+  // Balanced high-stakes mixes
+  ['veryHigh', 'veryHigh', 'veryBad', 'veryBad', 'veryBad'],
+  ['veryHigh', 'good', 'veryBad', 'veryBad', 'bad'],
+  ['veryHigh', 'veryHigh', 'bad', 'veryBad', 'veryBad'],
+  ['good', 'good', 'veryBad', 'veryBad', 'veryBad'],
+  ['veryHigh', 'good', 'bad', 'bad', 'veryBad'],
+  ['veryHigh', 'good', 'good', 'veryBad', 'veryBad'],
+  ['good', 'good', 'bad', 'bad', 'veryBad'],
   ['veryHigh', 'bad', 'bad', 'bad', 'bad'],
-  ['good', 'good', 'bad', 'bad', 'bad'],
-  ['veryHigh', 'good', 'bad', 'bad', 'bad'],
-  ['good', 'mediocre', 'bad', 'bad', 'bad'],
-  ['veryHigh', 'mediocre', 'bad', 'bad', 'bad'],
-  ['good', 'bad', 'bad', 'bad', 'bad'],
+  ['veryHigh', 'veryHigh', 'bad', 'bad', 'veryBad'],
+  ['good', 'good', 'good', 'bad', 'veryBad'],
+  ['veryHigh', 'veryHigh', 'good', 'bad', 'veryBad'],
 ];
 
 function pickRandomPattern() {

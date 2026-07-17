@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
 import PlayerCard from './components/PlayerCard';
 import TransferWindow from './components/TransferWindow';
-import EndOfSeasonSummary from './components/EndOfSeasonSummary';
+import Homepage from './components/Homepage';
+import HowToPlay from './components/HowToPlay';
+import PlayPrem from './components/PlayPrem';
+import Drafting from './components/Drafting';
+import Simulating from './components/Simulating';
 import playersData from './data/players.json';
 import teamsData from './data/teams.json';
 import { formations } from './data/formations';
@@ -60,8 +64,11 @@ function rollRandomBudget() {
 }
 
 function App() {
+  const [screen, setScreen] = useState('home'); // 'home' | 'howToPlay' | 'game'
   const [selectedSeason, setSelectedSeason] = useState(null);
+  const [difficulty, setDifficulty] = useState(null); // 'easy' | 'hard'
   const [selectedFormation, setSelectedFormation] = useState(null);
+  const [setupComplete, setSetupComplete] = useState(false);
 
   const [currentSquad, setCurrentSquad] = useState(null);
   const [currentTeamSeason, setCurrentTeamSeason] = useState(null);
@@ -80,6 +87,7 @@ function App() {
 
   const [showTransferWindow, setShowTransferWindow] = useState(false);
   const [originalDraftAverages, setOriginalDraftAverages] = useState(null);
+  const [originalDraftedSlots, setOriginalDraftedSlots] = useState(null);
   const [transferHistory, setTransferHistory] = useState([]);
 
   const [totalBudget, setTotalBudget] = useState(null); // null until rolled
@@ -88,12 +96,14 @@ function App() {
     (a, b) => a - b
   );
 
+  const hideRating = difficulty === 'hard';
+
   function calculateBudgetRemaining() {
     const spent = Object.values(draftedSlots).reduce(
       (sum, player) => sum + getPlayerCost(player.rating_overall),
       0
     );
-    return (totalBudget ?? 0) - spent; // falls back to 0 if not rolled yet, so nothing is affordable before rolling
+    return (totalBudget ?? 0) - spent;
   }
 
   function getSquadForTeamSeason(teamSeason) {
@@ -146,10 +156,25 @@ function App() {
     spinTeam();
   }
 
-  // Rolls the budget once, after a formation is chosen. No reroll -- this is
-  // called exactly once per draft, from the "Roll Budget" gate screen.
-  function handleRollBudget() {
-    setTotalBudget(rollRandomBudget());
+  // Closes the team-spin pop-up without a pick being made -- used when the
+  // player has run out of rerolls and every candidate in the current squad
+  // is either unaffordable or has no open matching slot. Returns them to
+  // the drafting screen where Restart Draft / New Game are reachable.
+  function dismissTeamSpin() {
+    setCurrentTeamSeason(null);
+    setCurrentSquad(null);
+  }
+
+  // Generates the real budget value immediately -- called the instant the
+  // player taps the button, so the spin animation in PlayPrem is always
+  // cycling toward a value that's already decided.
+  function generateBudget() {
+    return rollRandomBudget();
+  }
+
+  // Commits the budget once PlayPrem's 2-second spin animation finishes.
+  function handleBudgetRolled(value) {
+    setTotalBudget(value);
   }
 
   function getEligibleSlots(player) {
@@ -209,10 +234,12 @@ function App() {
     };
   }
 
-  // Full reset -- season, formation, everything
   function newGame() {
+    setScreen('home');
     setSelectedSeason(null);
+    setDifficulty(null);
     setSelectedFormation(null);
+    setSetupComplete(false);
     setCurrentSquad(null);
     setCurrentTeamSeason(null);
     setTeamRerollsLeft(MAX_TEAM_REROLLS);
@@ -227,13 +254,11 @@ function App() {
     setMatchHistory([]);
     setShowTransferWindow(false);
     setOriginalDraftAverages(null);
+    setOriginalDraftedSlots(null);
     setTransferHistory([]);
     setTotalBudget(null);
   }
 
-  // Squad-only reset -- keeps season and formation, clears the 11 drafted
-  // players. Budget is NOT reset here -- no reroll mechanic exists for it,
-  // so restarting the squad keeps whatever budget was already rolled.
   function restartDraft() {
     setCurrentSquad(null);
     setCurrentTeamSeason(null);
@@ -253,6 +278,7 @@ function App() {
     setCurrentMatchdayIndex(0);
     setMatchHistory([]);
     setOriginalDraftAverages(calculateTeamStats());
+    setOriginalDraftedSlots({ ...draftedSlots });
     setTransferHistory([]);
     setGamePhase('simulating');
   }
@@ -319,265 +345,133 @@ function App() {
     selectedFormation &&
     formations[selectedFormation].every((slot) => draftedSlots[slot.id]);
 
+  // In Hard Mode, ratings stay hidden only while actively drafting -- once
+  // the full squad is complete, they reveal. Rewards finishing the draft
+  // rather than leaving the player guessing indefinitely.
+  const hideRatingWhileDrafting = hideRating && !allSlotsFilled;
+
   return (
     <div className="App">
-      {showTransferWindow && (
-        <TransferWindow
-          draftedSlots={draftedSlots}
-          formationSlots={formations[selectedFormation]}
-          allPlayers={playersData}
-          draftedPlayerNames={draftedPlayerNames}
-          positionCategory={POSITION_CATEGORY}
-          onComplete={handleTransferWindowComplete}
+      {screen === 'home' && (
+        <Homepage
+          onPlayClick={() => setScreen('game')}
+          onHowToPlayClick={() => setScreen('howToPlay')}
         />
       )}
 
-      {!selectedSeason && (
-        <div className="season-picker">
-          <p>Choose a season to play against:</p>
-          <select
-            onChange={(e) => setSelectedSeason(Number(e.target.value))}
-            defaultValue=""
-          >
-            <option value="" disabled>
-              Select a season
-            </option>
-            {availableSeasons.map((season) => (
-              <option key={season} value={season}>
-                {formatSeasonLabel(season)}
-              </option>
-            ))}
-          </select>
-        </div>
+      {screen === 'howToPlay' && (
+        <HowToPlay onBack={() => setScreen('home')} />
       )}
 
-      {selectedSeason && (
+      {screen === 'game' && (
         <>
-          <p>Playing against the {formatSeasonLabel(selectedSeason)} season</p>
-
-          <div className="formation-picker">
-            <p>Choose a formation:</p>
-            {Object.keys(formations).map((formationName) => (
-              <button
-                key={formationName}
-                onClick={() => setSelectedFormation(formationName)}
-              >
-                {formationName}
-              </button>
-            ))}
-          </div>
-
-          {/* Budget roll gate -- shown after a formation is picked but before totalBudget is set */}
-          {selectedFormation && totalBudget === null && gamePhase === 'drafting' && (
-            <div className="budget-roll-section">
-              <p>Roll your draft budget (£{MIN_BUDGET}m–£{MAX_BUDGET}m):</p>
-              <button onClick={handleRollBudget}>Roll Budget</button>
-            </div>
+          {showTransferWindow && (
+            <TransferWindow
+              draftedSlots={draftedSlots}
+              formationSlots={formations[selectedFormation]}
+              allPlayers={playersData}
+              draftedPlayerNames={draftedPlayerNames}
+              positionCategory={POSITION_CATEGORY}
+              hideRating={hideRating}
+              getPlayerCost={getPlayerCost}
+              onComplete={handleTransferWindowComplete}
+            />
           )}
 
-          {selectedFormation && totalBudget !== null && (
+          {!setupComplete && (
+            <PlayPrem
+              difficulty={difficulty}
+              onSelectDifficulty={setDifficulty}
+              availableSeasons={availableSeasons}
+              selectedSeason={selectedSeason}
+              onSelectSeason={setSelectedSeason}
+              formations={formations}
+              selectedFormation={selectedFormation}
+              onSelectFormation={setSelectedFormation}
+              totalBudget={totalBudget}
+              minBudget={MIN_BUDGET}
+              maxBudget={MAX_BUDGET}
+              onGenerateBudget={generateBudget}
+              onBudgetRolled={handleBudgetRolled}
+              onConfirmPlay={() => setSetupComplete(true)}
+              onBack={() => setScreen('home')}
+            />
+          )}
+
+          {setupComplete && (
             <>
-              <h3>Formation: {selectedFormation}</h3>
-
-              <p>Budget remaining: £{calculateBudgetRemaining()}m / £{totalBudget}m</p>
-
-              <div className="team-stats">
-                {(() => {
-                  const stats = calculateTeamStats();
-                  return (
-                    <>
-                      <span style={{ marginRight: '16px' }}>GK: {stats.gk ?? "–"}</span>
-                      <span style={{ marginRight: '16px' }}>DEF: {stats.def ?? "–"}</span>
-                      <span style={{ marginRight: '16px' }}>MID: {stats.mid ?? "–"}</span>
-                      <span style={{ marginRight: '16px' }}>FWD: {stats.fwd ?? "–"}</span>
-                      <span>Overall: {stats.overall ?? "–"}</span>
-                    </>
-                  );
-                })()}
-              </div>
-
-              <div className="slot-grid">
-                {formations[selectedFormation].map((slot) => (
-                  <div key={slot.id} className="slot">
-                    {draftedSlots[slot.id] ? (
-                      <PlayerCard
-                        player={draftedSlots[slot.id]}
-                        cost={getPlayerCost(draftedSlots[slot.id].rating_overall)}
-                        assignedPosition={slot.label}
-                        origin={{
-                          club: draftedSlots[slot.id].club,
-                          season: formatSeasonLabel(draftedSlots[slot.id].season_year),
-                        }}
-                      />
-                    ) : (
-                      <span>{slot.label} (empty)</span>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              {!currentTeamSeason && !allSlotsFilled && gamePhase === 'drafting' && (
-                <button onClick={spinTeam}>Spin Team</button>
-              )}
-            </>
-          )}
-
-          {currentTeamSeason && !allSlotsFilled && gamePhase === 'drafting' && (
-            <>
-              <h2>
-                {currentTeamSeason.team} — {formatSeasonLabel(currentTeamSeason.season)}
-              </h2>
-              <button onClick={handleTeamReroll} disabled={teamRerollsLeft <= 0}>
-                Reroll Club/Season ({teamRerollsLeft} left)
-              </button>
-            </>
-          )}
-
-          {currentSquad && !allSlotsFilled && gamePhase === 'drafting' && (
-            <div className="squad-list">
-              {currentSquad
-                .filter((player) => !draftedPlayerNames.includes(player.player_name))
-                .slice()
-                .sort((a, b) => {
-                  const budgetRemaining = calculateBudgetRemaining();
-
-                  const aFits = getEligibleSlots(a).length > 0 ? 1 : 0;
-                  const bFits = getEligibleSlots(b).length > 0 ? 1 : 0;
-                  if (aFits !== bFits) return bFits - aFits;
-
-                  const aAfford = getPlayerCost(a.rating_overall) <= budgetRemaining ? 1 : 0;
-                  const bAfford = getPlayerCost(b.rating_overall) <= budgetRemaining ? 1 : 0;
-                  if (aAfford !== bAfford) return bAfford - aAfford;
-
-                  return b.rating_overall - a.rating_overall;
-                })
-                .map((player, index) => {
-                  const eligibleSlots = getEligibleSlots(player);
-                  return (
-                    <div key={index} className="squad-list-item">
-                      <PlayerCard
-                        player={player}
-                        cost={getPlayerCost(player.rating_overall)}
-                      />
-                      {eligibleSlots.length > 0 ? (
-                        <div className="eligible-slots">
-                          {eligibleSlots.map((slot) => (
-                            <button
-                              key={slot.id}
-                              onClick={() => assignToSlot(player, slot.id)}
-                            >
-                              Place in {slot.label}
-                            </button>
-                          ))}
-                        </div>
-                      ) : (
-                        <span className="no-slot">
-                          {getPlayerCost(player.rating_overall) > calculateBudgetRemaining()
-                            ? "Can't afford"
-                            : "No open matching slot"}
-                        </span>
-                      )}
-                    </div>
-                  );
-                })}
-            </div>
-          )}
-
-          {allSlotsFilled && gamePhase === 'drafting' && (
-            <>
-              <h3>Squad complete!</h3>
-              <button onClick={startSeason}>Play Season</button>
-            </>
-          )}
-
-          {(gamePhase === 'simulating' || gamePhase === 'finished') && (
-            <div className="simulation-view">
-              <h3>
-                Matchday {currentMatchdayIndex} / {fixtures.length}
-              </h3>
-
-              {gamePhase === 'simulating' ? (
-                <p>{showTransferWindow ? 'Transfer window open...' : 'Simulating...'}</p>
-              ) : (
-                <h3>Season complete!</h3>
-              )}
-
-              {gamePhase === 'finished' && originalDraftAverages && (
-                <EndOfSeasonSummary
-                  leagueTable={buildProgressiveTable(
-                    opponents,
-                    yourRecord,
-                    opponentSupplement,
-                    currentMatchdayIndex,
-                    fixtures.length
-                  )}
-                  yourRecord={yourRecord}
-                  originalAverages={originalDraftAverages}
-                  currentAverages={calculateTeamStats()}
-                  transferHistory={transferHistory}
+              {gamePhase === 'drafting' && (
+                <Drafting
+                  selectedFormation={selectedFormation}
+                  formations={formations}
+                  selectedSeason={selectedSeason}
+                  totalBudget={totalBudget}
+                  budgetRemaining={calculateBudgetRemaining()}
+                  teamStats={calculateTeamStats()}
+                  hideRating={hideRatingWhileDrafting}
+                  draftedSlots={draftedSlots}
+                  currentTeamSeason={currentTeamSeason}
+                  currentSquad={currentSquad}
+                  teamRerollsLeft={teamRerollsLeft}
+                  draftedPlayerNames={draftedPlayerNames}
+                  allSlotsFilled={allSlotsFilled}
+                  teamsData={teamsData}
+                  getPlayerCost={getPlayerCost}
+                  getEligibleSlots={getEligibleSlots}
+                  assignToSlot={assignToSlot}
+                  spinTeam={spinTeam}
+                  handleTeamReroll={handleTeamReroll}
+                  dismissTeamSpin={dismissTeamSpin}
+                  startSeason={startSeason}
+                  formatSeasonLabel={formatSeasonLabel}
                 />
               )}
 
-              <h4>League Table</h4>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Rank</th>
-                    <th>Team</th>
-                    <th>Played</th>
-                    <th>Won</th>
-                    <th>Drawn</th>
-                    <th>Lost</th>
-                    <th>Goals For</th>
-                    <th>Goals Against</th>
-                    <th>Points</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {buildProgressiveTable(
-                    opponents,
-                    yourRecord,
-                    opponentSupplement,
-                    currentMatchdayIndex,
-                    fixtures.length
-                  ).map((row, index) => (
-                    <tr key={row.name} className={row.name === 'Your Team' ? 'your-row' : ''}>
-                      <td>{index + 1}</td>
-                      <td>{row.name}</td>
-                      <td>{row.played}</td>
-                      <td>{row.won}</td>
-                      <td>{row.drawn}</td>
-                      <td>{row.lost}</td>
-                      <td>{row.goalsFor}</td>
-                      <td>{row.goalsAgainst}</td>
-                      <td>{row.points}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              {(gamePhase === 'simulating' || gamePhase === 'finished') && (
+                <Simulating
+                  selectedFormation={selectedFormation}
+                  formations={formations}
+                  selectedSeason={selectedSeason}
+                  draftedSlots={draftedSlots}
+                  gamePhase={gamePhase}
+                  showTransferWindow={showTransferWindow}
+                  currentMatchdayIndex={currentMatchdayIndex}
+                  fixtures={fixtures}
+                  opponents={opponents}
+                  yourRecord={yourRecord}
+                  opponentSupplement={opponentSupplement}
+                  matchHistory={matchHistory}
+                  hideRating={hideRating}
+                  getPlayerCost={getPlayerCost}
+                  formatSeasonLabel={formatSeasonLabel}
+                  buildProgressiveTable={buildProgressiveTable}
+                  originalDraftAverages={originalDraftAverages}
+                  calculateTeamStats={calculateTeamStats}
+                  transferHistory={transferHistory}
+                  originalDraftedSlots={originalDraftedSlots}
+                />
+              )}
 
-              <h4>Match History</h4>
-              {matchHistory
-                .slice()
-                .reverse()
-                .map((match, index) => (
-                  <p key={index}>
-                    MD{match.matchday}: {match.isHome ? 'Your Team' : match.opponent}{' '}
-                    {match.isHome ? match.yourGoals : match.theirGoals}
-                    {' - '}
-                    {match.isHome ? match.theirGoals : match.yourGoals}{' '}
-                    {match.isHome ? match.opponent : 'Your Team'}
-                  </p>
-                ))}
-            </div>
-          )}
-
-          <div className="restart-section" style={{ marginTop: '24px' }}>
+              <div className="footer-nav-row" style={{ padding: '0 24px' }}>
             {gamePhase === 'drafting' && (
-              <button onClick={restartDraft}>Restart Draft</button>
+              <button
+                className="btn btn-dark"
+                onClick={restartDraft}
+                style={{ padding: '10px 16px', fontSize: '13px', flex: 1 }}
+              >
+                RESTART DRAFT
+              </button>
             )}
-            <button onClick={newGame} style={{ marginLeft: '12px' }}>New Game</button>
+            <button
+              className="btn btn-dark"
+              onClick={newGame}
+              style={{ padding: '10px 16px', fontSize: '13px', flex: 1 }}
+            >
+              NEW GAME
+            </button>
           </div>
+            </>
+          )}
         </>
       )}
     </div>
