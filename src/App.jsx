@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import PlayerCard from './components/PlayerCard';
-import TransferWindow from './components/transferWindow';
+import TransferWindow from './components/TransferWindow';
 import Homepage from './components/Homepage';
 import HowToPlay from './components/HowToPlay';
 import PlayPrem from './components/PlayPrem';
