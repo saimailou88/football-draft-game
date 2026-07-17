@@ -5,7 +5,7 @@ import {
   applyTransfer,
   removeOfferFromPool,
   calculateSlotAverages,
-} from '../data/transferWindow';
+} from '../data/TransferWindow';
 
 function formatSeasonLabel(season) {
   const nextYearShort = (season + 1).toString().slice(-2);
