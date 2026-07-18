@@ -1106,3 +1106,171 @@ body {
   color: var(--grey-text);
   opacity: 0.5;
 }
+
+/* ===========================================
+   LEAGUE HISTORY PAGE
+   =========================================== */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.history-entry {
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(36, 36, 58, 0.75);
+  border: 2px solid var(--btn-dark);
+}
+
+.history-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  cursor: pointer;
+}
+
+.history-season {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--white-text);
+  flex: 1;
+}
+
+.history-rank {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--accent-purple);
+  margin-right: 12px;
+}
+.history-rank-champion {
+  color: var(--yellow);
+}
+
+.history-rank-unplayed {
+  color: var(--grey-text);
+}
+
+.history-toggle {
+  color: var(--grey-text);
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.history-expanded {
+  padding: 4px 16px 20px;
+  border-top: 1px solid var(--btn-dark);
+}
+
+.history-rating-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 28px;
+  color: var(--white-text);
+  text-align: center;
+  margin: 16px 0 12px;
+}
+.history-rating-arrow {
+  color: var(--grey-text);
+  font-weight: 400;
+  margin: 0 6px;
+}
+.history-rating-up {
+  color: var(--green);
+}
+.history-rating-down {
+  color: var(--red);
+}
+
+.history-wdl-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.history-wdl-chip {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 6px;
+  border-radius: 8px;
+  border: 2px solid var(--btn-dark);
+  background: rgba(20, 20, 35, 0.5);
+}
+.history-wdl-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--white-text);
+}
+.history-wdl-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  color: var(--grey-text);
+  margin-top: 2px;
+}
+.history-wdl-win {
+  border-color: var(--green);
+}
+.history-wdl-draw {
+  border-color: var(--yellow);
+}
+.history-wdl-loss {
+  border-color: var(--red);
+}
+
+.history-stat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.history-stat-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--white-text);
+}
+.history-stat-label {
+  color: var(--grey-text);
+  margin-right: 6px;
+}
+.history-stat-arrow {
+  color: var(--grey-text);
+  margin: 0 4px;
+}
+.history-stat-delta {
+  font-size: 11px;
+  margin-left: 4px;
+}
+.history-stat-up {
+  color: var(--green);
+}
+.history-stat-down {
+  color: var(--red);
+}
+
+.history-divider {
+  border-top: 1px solid var(--btn-dark);
+  margin: 16px 0;
+}
+
+.history-meta-line {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--grey-text);
+  text-align: left;
+  margin-bottom: 4px;
+}
+
+.history-team-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--accent-purple);
+  text-align: left;
+  margin-bottom: 6px;
+}
