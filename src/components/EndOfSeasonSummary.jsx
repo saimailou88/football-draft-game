@@ -1,4 +1,4 @@
-import { TransferRow } from './TransferWindow';
+import { TransferRow } from './transferWindow';
 
 function round1(value) {
   return Math.round(value);
