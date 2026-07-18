@@ -16,6 +16,10 @@ function round1(value) {
   return Math.round(value);
 }
 
+// Player can complete at most this many swaps per transfer window, even
+// though up to 5 offers are generated for them to browse.
+const MAX_TRANSFERS = 3;
+
 function getPositionCategory(position) {
   if (position === 'GK') return 'gk';
   if (['CB', 'LB', 'RB'].includes(position)) return 'def';
@@ -80,8 +84,10 @@ export default function TransferWindow({
   const beforeAverages = calculateSlotAverages(draftedSlots, formationSlots, positionCategory);
   const currentAverages = calculateSlotAverages(currentSlots, formationSlots, positionCategory);
 
+  const transfersRemaining = MAX_TRANSFERS - transferHistory.length;
+
   function handleTransferClick() {
-    if (offerPool.length === 0 || isSpinning) return;
+    if (offerPool.length === 0 || isSpinning || transfersRemaining <= 0) return;
 
     // Decide the real outcome immediately -- the highlight animation below
     // is purely visual, always landing on this pre-decided offer.
@@ -120,7 +126,7 @@ export default function TransferWindow({
       <div className="draft-popup-modal">
         <h2 className="draft-popup-title">TRANSFER WINDOW</h2>
         <p className="field-subtext" style={{ textAlign: 'left', marginBottom: '20px' }}>
-          MATCHDAY 20 · {offerPool.length} OFFER{offerPool.length !== 1 ? 'S' : ''} REMAINING
+          MATCHDAY 20 · {offerPool.length} OFFER{offerPool.length !== 1 ? 'S' : ''} REMAINING · {transfersRemaining} TRANSFER{transfersRemaining !== 1 ? 'S' : ''} LEFT
         </p>
 
         {/* Team average stats always show real numbers, in every difficulty --
@@ -185,9 +191,9 @@ export default function TransferWindow({
             className="btn btn-primary"
             style={{ flex: 1 }}
             onClick={handleTransferClick}
-            disabled={offerPool.length === 0 || isSpinning}
+            disabled={offerPool.length === 0 || isSpinning || transfersRemaining <= 0}
           >
-            {isSpinning ? 'SELECTING...' : 'TRANSFER'}
+            {isSpinning ? 'SELECTING...' : `TRANSFER (${transfersRemaining})`}
           </button>
         </div>
       </div>
@@ -202,8 +208,6 @@ function AverageStat({ label, before, current, highlight }) {
   const deltaDisplay = delta === 0 ? '' : ` (${delta > 0 ? '+' : ''}${delta})`;
   const deltaClass = delta > 0 ? 'positive' : delta < 0 ? 'negative' : '';
 
-  // Every row -- not just OVR -- reflects its own direction: green text if
-  // that position group improved, red if it dropped.
   let directionClass = '';
   if (delta > 0) directionClass = 'tw-stat-up';
   else if (delta < 0) directionClass = 'tw-stat-down';

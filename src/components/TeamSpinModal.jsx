@@ -29,13 +29,16 @@ function TeamSpinModal({
   );
 
   const sorted = candidates.slice().sort((a, b) => {
-    const aFits = getEligibleSlots(a).length > 0 ? 1 : 0;
-    const bFits = getEligibleSlots(b).length > 0 ? 1 : 0;
-    if (aFits !== bFits) return bFits - aFits;
+    // Unavailable players (no open matching slot, which already accounts
+    // for affordability -- see getEligibleSlots) always sink to the bottom.
+    const aAvailable = getEligibleSlots(a).length > 0 ? 1 : 0;
+    const bAvailable = getEligibleSlots(b).length > 0 ? 1 : 0;
+    if (aAvailable !== bAvailable) return bAvailable - aAvailable;
 
-    const aAfford = getPlayerCost(a) <= budgetRemaining ? 1 : 0;
-    const bAfford = getPlayerCost(b) <= budgetRemaining ? 1 : 0;
-    if (aAfford !== bAfford) return bAfford - aAfford;
+    // Among available players: highest cost first, then highest rating.
+    const aCost = getPlayerCost(a);
+    const bCost = getPlayerCost(b);
+    if (aCost !== bCost) return bCost - aCost;
 
     return b.rating_overall - a.rating_overall;
   });
@@ -55,8 +58,6 @@ function TeamSpinModal({
   }, [isStuck]);
 
   if (isStuck) {
-    // Render nothing this frame -- the useEffect above will close the
-    // pop-up on the next tick, this just avoids a flash of dead-end content.
     return null;
   }
 
@@ -114,7 +115,7 @@ function TeamSpinModal({
                     {eligibleSlots.map((slot) => (
                       <button
                         key={slot.id}
-                        className="formation-chip"
+                        className="place-in-slot-btn"
                         onClick={() => assignToSlot(player, slot.id)}
                       >
                         PLACE IN {slot.label}

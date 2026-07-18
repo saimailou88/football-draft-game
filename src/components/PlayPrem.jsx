@@ -10,6 +10,8 @@ function formatSeasonLabel(season) {
 function PlayPrem({
   difficulty,
   onSelectDifficulty,
+  teamName,
+  onTeamNameChange,
   availableSeasons,
   selectedSeason,
   onSelectSeason,
@@ -28,8 +30,6 @@ function PlayPrem({
   const [displayBudget, setDisplayBudget] = useState(null);
   const spinIntervalRef = useRef(null);
 
-  // Cleans up the interval if the component unmounts mid-spin (e.g. player
-  // navigates away), so it doesn't keep firing on a screen that's gone.
   useEffect(() => {
     return () => clearInterval(spinIntervalRef.current);
   }, []);
@@ -44,8 +44,6 @@ function PlayPrem({
   function handleRollBudgetClick() {
     if (!canRollBudget || isRolling || totalBudget !== null) return;
 
-    // Decide the real value right away -- the spin is purely visual from
-    // here, cycling toward a number that's already locked in behind the scenes.
     const finalValue = onGenerateBudget();
 
     setIsRolling(true);
@@ -100,6 +98,17 @@ function PlayPrem({
           <p className="field-subtext">HIDDEN RATINGS</p>
         </div>
       </div>
+
+      <p className="field-label">Team Name</p>
+      <input
+        type="text"
+        className="season-select"
+        style={{ marginBottom: '28px' }}
+        placeholder="Enter your team name"
+        maxLength={24}
+        value={teamName}
+        onChange={(e) => onTeamNameChange(e.target.value)}
+      />
 
       <p className="field-label">Season</p>
       <select

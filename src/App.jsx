@@ -123,6 +123,7 @@ function App() {
   const [screen, setScreen] = useState('home'); // 'home' | 'howToPlay' | 'game'
   const [selectedSeason, setSelectedSeason] = useState(null);
   const [difficulty, setDifficulty] = useState(null); // 'easy' | 'hard'
+  const [teamName, setTeamName] = useState('');
   const [selectedFormation, setSelectedFormation] = useState(null);
   const [setupComplete, setSetupComplete] = useState(false);
 
@@ -298,6 +299,7 @@ function App() {
     setScreen('home');
     setSelectedSeason(null);
     setDifficulty(null);
+    setTeamName('');
     setSelectedFormation(null);
     setSetupComplete(false);
     setCurrentSquad(null);
@@ -449,6 +451,8 @@ function App() {
             <PlayPrem
               difficulty={difficulty}
               onSelectDifficulty={setDifficulty}
+              teamName={teamName}
+              onTeamNameChange={setTeamName}
               availableSeasons={availableSeasons}
               selectedSeason={selectedSeason}
               onSelectSeason={setSelectedSeason}
@@ -472,6 +476,7 @@ function App() {
                   selectedFormation={selectedFormation}
                   formations={formations}
                   selectedSeason={selectedSeason}
+                  teamName={teamName}
                   totalBudget={totalBudget}
                   budgetRemaining={calculateBudgetRemaining()}
                   teamStats={calculateTeamStats()}
@@ -494,11 +499,12 @@ function App() {
                 />
               )}
 
-              {(gamePhase === 'simulating' || gamePhase === 'finished') && (
+             {(gamePhase === 'simulating' || gamePhase === 'finished') && (
                 <Simulating
                   selectedFormation={selectedFormation}
                   formations={formations}
                   selectedSeason={selectedSeason}
+                  teamName={teamName}
                   draftedSlots={draftedSlots}
                   gamePhase={gamePhase}
                   showTransferWindow={showTransferWindow}

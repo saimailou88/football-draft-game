@@ -7,6 +7,7 @@ function Drafting({
   selectedFormation,
   formations,
   selectedSeason,
+  teamName,
   totalBudget,
   budgetRemaining,
   teamStats,
@@ -88,12 +89,14 @@ function Drafting({
         />
       )}
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
-        <h1 className="section-title" style={{ fontSize: '30px' }}>{selectedFormation}</h1>
-        <div>
-          <p className="field-subtext" style={{ textAlign: 'right' }}>SEASON {formatSeasonLabel(selectedSeason)}</p>
-          <p className="field-subtext" style={{ textAlign: 'right' }}>POSITIONS FILLED: {filledCount}/{totalSlots}</p>
-        </div>
+      <h1 className="section-title" style={{ fontSize: '30px', marginBottom: '12px' }}>{teamName || 'YOUR TEAM'}</h1>
+
+      <div className="info-row" style={{ marginBottom: '16px' }}>
+        <span className="info-item">SEASON {formatSeasonLabel(selectedSeason)}</span>
+        <span className="info-dot">·</span>
+        <span className="info-item">{selectedFormation}</span>
+        <span className="info-dot">·</span>
+        <span className="info-item">POS. FILLED: {filledCount}/{totalSlots}</span>
       </div>
 
       <div style={{ marginBottom: '16px' }}>

@@ -292,6 +292,27 @@ body {
 }
 
 /* ===========================================
+   PLACE IN [POSITION] BUTTON (draft pop-up)
+   White outline + white text so it stands out
+   against the dark player-card rows below it.
+   =========================================== */
+.place-in-slot-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: rgba(36, 36, 58, 0.75);
+  border: 2px solid var(--white-text);
+  color: var(--white-text);
+  cursor: pointer;
+}
+
+.place-in-slot-btn:active {
+  transform: scale(0.97);
+}
+
+/* ===========================================
    PITCH PREVIEW
    =========================================== */
 .pitch-preview {
@@ -639,6 +660,28 @@ body {
 .match-feed-win  { border-left-color: var(--green); }
 .match-feed-draw { border-left-color: var(--grey-text); }
 .match-feed-loss { border-left-color: var(--red); }
+
+/* Compact, left-aligned version -- team name, score, team name, all
+   sitting together right after the matchday label rather than
+   stretching across the row. */
+.match-feed-grid {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  color: var(--white-text);
+}
+.match-feed-team {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+.match-feed-score-center {
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
 
 /* ===========================================
    LEAGUE TABLE: YOUR TEAM MOVEMENT HIGHLIGHT
@@ -1034,4 +1077,32 @@ body {
   font-weight: 400;
   font-size: 10px;
   color: var(--grey-text);
+}
+
+/* ===========================================
+   INFO ROW (Drafting + Simulating headers)
+   One line of evenly-spaced meta info -- e.g.
+   season, formation, positions filled/matchday --
+   sitting above the pitch and stat blocks.
+   =========================================== */
+.info-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.info-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--grey-text);
+}
+
+.info-dot {
+  color: var(--grey-text);
+  opacity: 0.5;
 }

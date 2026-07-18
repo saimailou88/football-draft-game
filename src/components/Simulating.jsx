@@ -15,6 +15,7 @@ function Simulating({
   selectedFormation,
   formations,
   selectedSeason,
+  teamName,
   draftedSlots,
   gamePhase,
   showTransferWindow,
@@ -73,16 +74,22 @@ function Simulating({
     });
   }
 
+  // Falls back to a generic label if the player left the team name field
+  // blank -- used everywhere "Your Team" would otherwise be shown.
+  const displayTeamName = teamName || 'YOUR TEAM';
+
   return (
     <div style={{ padding: '20px 24px 60px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
-        <h1 className="section-title" style={{ fontSize: '30px' }}>{selectedFormation}</h1>
-        <div>
-          <p className="field-subtext" style={{ textAlign: 'right' }}>SEASON {formatSeasonLabel(selectedSeason)}</p>
-          <p className="field-subtext" style={{ textAlign: 'right' }}>
-            MATCHDAY {currentMatchdayIndex}/{fixtures.length}
-          </p>
-        </div>
+      <h1 className="section-title" style={{ fontSize: '30px', marginBottom: '12px' }}>{displayTeamName}</h1>
+
+      <div className="info-row" style={{ marginBottom: '16px' }}>
+        <span className="info-item">SEASON {formatSeasonLabel(selectedSeason)}</span>
+        <span className="info-dot">·</span>
+        <span className="info-item">{selectedFormation}</span>
+        <span className="info-dot">·</span>
+        <span className="info-item">
+          MATCHDAY {currentMatchdayIndex}/{fixtures.length}
+        </span>
       </div>
 
       <div style={{ marginBottom: '12px' }}>
@@ -181,7 +188,6 @@ function Simulating({
                   <div className="comparison-arrow">↓ TRANSFERRED ↓</div>
                   <PlayerCard
                     player={player}
-                    cost={getPlayerCost(player)}
                     assignedPosition={slot.label}
                     origin={{ club: player.club, season: formatSeasonLabel(player.season_year) }}
                     hideRating={false}
@@ -242,7 +248,7 @@ function Simulating({
           return (
             <div key={row.name} className={`league-table-row ${rowClass}`}>
               <span className="lt-rank">{index + 1}</span>
-              <span className="lt-team">{row.name}</span>
+              <span className="lt-team">{row.name === 'Your Team' ? displayTeamName : row.name}</span>
               <span className="lt-stat">{row.played}</span>
               <span className="lt-stat">{row.goalsFor - row.goalsAgainst}</span>
               <span className="lt-stat lt-pts">{row.points}</span>
@@ -259,13 +265,19 @@ function Simulating({
           .map((match, index) => (
             <div key={index} className={`match-feed-row match-feed-${resultType(match)}`}>
               <span className="match-feed-md">MD{match.matchday}</span>
-              <span className="match-feed-score">
-                {match.isHome ? 'Your Team' : match.opponent}{' '}
-                {match.isHome ? match.yourGoals : match.theirGoals}
-                {' - '}
-                {match.isHome ? match.theirGoals : match.yourGoals}{' '}
-                {match.isHome ? match.opponent : 'Your Team'}
-              </span>
+              <div className="match-feed-grid">
+                <span className="match-feed-team match-feed-team-left">
+                  {match.isHome ? displayTeamName : match.opponent}
+                </span>
+                <span className="match-feed-score-center">
+                  {match.isHome ? match.yourGoals : match.theirGoals}
+                  {' - '}
+                  {match.isHome ? match.theirGoals : match.yourGoals}
+                </span>
+                <span className="match-feed-team match-feed-team-right">
+                  {match.isHome ? match.opponent : displayTeamName}
+                </span>
+              </div>
             </div>
           ))}
       </div>
