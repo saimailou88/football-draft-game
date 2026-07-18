@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Footer from './Footer';
 
 const STEPS = [
   {
@@ -11,7 +12,7 @@ const STEPS = [
   },
   {
     number: 3,
-    text: "Spin to reveal a random club and season. Reroll up to 3 times if you don't like what comes up — the position you're filling stays locked, only the club/season changes.",
+    text: "Spin to reveal a random club and season. Reroll up to 3 times if you don't like what comes up — the position you're filling stays locked, only the club/season changes. Cost of players are randomised every new game.",
   },
   {
     number: 4,
@@ -63,7 +64,7 @@ function HowToPlay({ onBack }) {
         WELCOME!
       </h1>
       <p className="label-mono" style={{ marginBottom: '32px', lineHeight: 1.6 }}>
-        DRAFT A SQUAD FROM PREMIER LEAGUE HISTORY AND TRY TO WIN THE TITLE.
+        DRAFT A SQUAD FROM HISTORIC SEASONS AND TRY TO WIN THE TITLE.
       </p>
 
       <h2 className="label-mono" style={{ marginBottom: '16px', fontSize: '13px' }}>
@@ -138,6 +139,8 @@ function HowToPlay({ onBack }) {
       <button className="btn btn-dark" onClick={onBack} style={{ width: '100%' }}>
         BACK TO HOME
       </button>
+
+      <Footer />
     </div>
   );
 }

@@ -27,7 +27,7 @@ function getPositionCategory(position) {
 // Single compact row: position badge -> your player (rating) -> arrow ->
 // offered player (rating) stacked above its club · season, all on one
 // horizontal line (no-wrap) so nothing drops to a second row.
-function TransferRow({ offer, hideRating, highlighted, resultClass }) {
+export function TransferRow({ offer, hideRating, highlighted, resultClass }) {
   const category = getPositionCategory(offer.slotLabel);
   const replacementRatingText = offer.replacement
     ? (hideRating ? '??' : offer.replacement.rating_overall)
@@ -35,11 +35,13 @@ function TransferRow({ offer, hideRating, highlighted, resultClass }) {
 
   return (
     <div className={`transfer-row ${highlighted ? 'transfer-row-highlight' : ''} ${resultClass || ''}`}>
-      <div className="transfer-row-main">
-        <span className={`transfer-row-pos pos-badge-${category}`}>{offer.slotLabel}</span>
-        <span className="transfer-row-your">
-          {offer.outgoingPlayer.player_name} ({offer.outgoingPlayer.rating_overall})
-        </span>
+      <div className="transfer-row-grid">
+        <div className="transfer-row-your-col">
+          <span className={`transfer-row-pos pos-badge-${category}`}>{offer.slotLabel}</span>
+          <span className="transfer-row-your">
+            {offer.outgoingPlayer.player_name} ({offer.outgoingPlayer.rating_overall})
+          </span>
+        </div>
         <span className="transfer-row-arrow">→</span>
         {offer.replacement ? (
           <div className="transfer-row-offered-col">

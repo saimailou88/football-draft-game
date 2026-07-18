@@ -33,8 +33,8 @@ function TeamSpinModal({
     const bFits = getEligibleSlots(b).length > 0 ? 1 : 0;
     if (aFits !== bFits) return bFits - aFits;
 
-    const aAfford = getPlayerCost(a.rating_overall) <= budgetRemaining ? 1 : 0;
-    const bAfford = getPlayerCost(b.rating_overall) <= budgetRemaining ? 1 : 0;
+    const aAfford = getPlayerCost(a) <= budgetRemaining ? 1 : 0;
+    const bAfford = getPlayerCost(b) <= budgetRemaining ? 1 : 0;
     if (aAfford !== bAfford) return bAfford - aAfford;
 
     return b.rating_overall - a.rating_overall;
@@ -66,7 +66,16 @@ function TeamSpinModal({
         <h2 className="draft-popup-title">
           {currentTeamSeason.team} {formatSeasonLabel(currentTeamSeason.season)}
         </h2>
-        <p className="field-subtext" style={{ textAlign: 'left', marginBottom: '4px' }}>
+        <p
+          className="field-subtext"
+          style={{
+            textAlign: 'left',
+            marginBottom: '4px',
+            fontWeight: 700,
+            fontSize: '14px',
+            color: 'var(--accent-purple)',
+          }}
+        >
           BUDGET: £{budgetRemaining}M / £{totalBudget}M
         </p>
         <p className="field-subtext" style={{ textAlign: 'left', marginBottom: '16px' }}>
@@ -90,13 +99,13 @@ function TeamSpinModal({
               <div key={index} className="draft-popup-row">
                 <PlayerCard
                   player={player}
-                  cost={getPlayerCost(player.rating_overall)}
+                  cost={getPlayerCost(player)}
                   hideRating={hideRating}
                   unavailable={isUnavailable}
                 />
                 {isUnavailable ? (
                   <p className="no-slot-text">
-                    {getPlayerCost(player.rating_overall) > budgetRemaining
+                    {getPlayerCost(player) > budgetRemaining
                       ? "Can't afford"
                       : 'No open matching slot'}
                   </p>

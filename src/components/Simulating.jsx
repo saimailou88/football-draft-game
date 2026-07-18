@@ -167,25 +167,25 @@ function Simulating({
             if (wasTransferred) {
               const isUpgrade = player.rating_overall > original.rating_overall;
               const isDowngrade = player.rating_overall < original.rating_overall;
-              const arrowClass = isUpgrade ? 'upgrade' : isDowngrade ? 'downgrade' : '';
+              const tradeResult = isUpgrade ? 'upgrade' : isDowngrade ? 'downgrade' : null;
 
               return (
                 <div key={slot.id} className="player-comparison-row">
                   <PlayerCard
                     player={original}
-                    cost={getPlayerCost(original.rating_overall)}
+                    cost={getPlayerCost(original)}
                     assignedPosition={slot.label}
                     origin={{ club: original.club, season: formatSeasonLabel(original.season_year) }}
                     hideRating={false}
                   />
-                  <div className={`comparison-arrow ${arrowClass}`}>↓ TRANSFERRED ↓</div>
+                  <div className="comparison-arrow">↓ TRANSFERRED ↓</div>
                   <PlayerCard
                     player={player}
-                    cost={getPlayerCost(player.rating_overall)}
+                    cost={getPlayerCost(player)}
                     assignedPosition={slot.label}
                     origin={{ club: player.club, season: formatSeasonLabel(player.season_year) }}
                     hideRating={false}
-                    transferred
+                    tradeResult={tradeResult}
                   />
                 </div>
               );
@@ -195,7 +195,7 @@ function Simulating({
               <PlayerCard
                 key={slot.id}
                 player={player}
-                cost={getPlayerCost(player.rating_overall)}
+                cost={getPlayerCost(player)}
                 assignedPosition={slot.label}
                 origin={{ club: player.club, season: formatSeasonLabel(player.season_year) }}
                 hideRating={false}

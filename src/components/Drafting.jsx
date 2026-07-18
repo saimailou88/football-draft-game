@@ -173,7 +173,7 @@ function Drafting({
             {draftedSlots[slot.id] ? (
               <PlayerCard
                 player={draftedSlots[slot.id]}
-                cost={getPlayerCost(draftedSlots[slot.id].rating_overall)}
+                cost={getPlayerCost(draftedSlots[slot.id])}
                 assignedPosition={slot.label}
                 origin={{
                   club: draftedSlots[slot.id].club,

@@ -1,24 +1,12 @@
+import { TransferRow } from './TransferWindow';
+
 function round1(value) {
   return Math.round(value);
 }
 
-function getPositionCategory(position) {
-  if (position === 'GK') return 'gk';
-  if (['CB', 'LB', 'RB'].includes(position)) return 'def';
-  if (['CDM', 'CM', 'CAM', 'LM', 'RM'].includes(position)) return 'mid';
-  if (['LW', 'RW', 'ST'].includes(position)) return 'att';
-  return 'mid';
-}
-
-function formatSeasonLabel(season) {
-  const nextYearShort = (season + 1).toString().slice(-2);
-  return `${season}-${nextYearShort}`;
-}
-
 // Shows final position, record, squad rating comparison (pre/post transfer
 // window), and the transfer window recap -- rendered above the league table
-// once gamePhase is 'finished'. Everything lives inside one bordered card
-// rather than several separate boxes.
+// once gamePhase is 'finished'. Everything lives inside one bordered card.
 export default function EndOfSeasonSummary({
   leagueTable,
   yourRecord,
@@ -66,26 +54,8 @@ export default function EndOfSeasonSummary({
             const isUpgrade = offer.replacement.rating_overall > offer.outgoingPlayer.rating_overall;
             const isDowngrade = offer.replacement.rating_overall < offer.outgoingPlayer.rating_overall;
             const resultClass = isUpgrade ? 'transfer-row-upgrade' : isDowngrade ? 'transfer-row-downgrade' : '';
-            const category = getPositionCategory(offer.slotLabel);
-
             return (
-              <div key={index} className={`transfer-row ${resultClass}`}>
-                <div className="transfer-row-main">
-                  <span className={`transfer-row-pos pos-badge-${category}`}>{offer.slotLabel}</span>
-                  <span className="transfer-row-your">
-                    {offer.outgoingPlayer.player_name} ({offer.outgoingPlayer.rating_overall})
-                  </span>
-                  <span className="transfer-row-arrow">→</span>
-                  <div className="transfer-row-offered-col">
-                    <span className="transfer-row-offered">
-                      {offer.replacement.player_name} ({offer.replacement.rating_overall})
-                    </span>
-                    <span className="transfer-row-meta">
-                      {offer.replacement.club} · {formatSeasonLabel(offer.replacement.season_year)}
-                    </span>
-                  </div>
-                </div>
-              </div>
+              <TransferRow key={index} offer={offer} hideRating={false} resultClass={resultClass} />
             );
           })}
         </div>
@@ -94,9 +64,6 @@ export default function EndOfSeasonSummary({
   );
 }
 
-// One row: label, before rating, arrow, after rating -- colored green if
-// the position improved over the season, red if it dropped, purple/neutral
-// if unchanged. OVR row renders slightly larger via the `highlight` flag.
 function RatingCompareRow({ label, before, after, highlight }) {
   if (before === null || after === null) return null;
   const delta = round1(after - before);

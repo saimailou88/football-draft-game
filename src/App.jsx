@@ -6,6 +6,7 @@ import HowToPlay from './components/HowToPlay';
 import PlayPrem from './components/PlayPrem';
 import Drafting from './components/Drafting';
 import Simulating from './components/Simulating';
+import Footer from './components/Footer';
 import playersData from './data/players.json';
 import teamsData from './data/teams.json';
 import { formations } from './data/formations';
@@ -37,7 +38,20 @@ function formatSeasonLabel(season) {
   return `${season}-${nextYearShort}`;
 }
 
-function getPlayerCost(ratingOverall) {
+// Builds a stable identity key for a player -- prefers player_id if present,
+// otherwise falls back to name + club + season_year, which is unique per
+// player-season in this dataset. This matters because players.json rows
+// don't currently have a player_id field, so relying on player.player_id
+// alone would silently give every player the exact same randomized cost
+// (undefined hashes to the same value every time).
+function getPlayerKey(player) {
+  if (player.player_id) return player.player_id;
+  return `${player.player_name}|${player.club}|${player.season_year}`;
+}
+
+// Base cost lookup by rating tier -- this is your original table, now just
+// the starting point before the per-game randomization is applied on top.
+function getBaseCost(ratingOverall) {
   if (ratingOverall >= 97) return 20.0;
   if (ratingOverall >= 94) return 18.0;
   if (ratingOverall >= 91) return 16.0;
@@ -56,6 +70,48 @@ function getPlayerCost(ratingOverall) {
   if (ratingOverall >= 52) return 1.0;
   if (ratingOverall >= 49) return 1.0;
   return 0.5;
+}
+
+// Seeded PRNG (mulberry32) -- same seed always produces the same sequence
+// of "random" numbers. This is what lets a player's cost stay fixed for an
+// entire draft session instead of changing every time it's looked up.
+function mulberry32(seed) {
+  return function () {
+    seed |= 0;
+    seed = (seed + 0x6D2B79F5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296; // float between 0 and 1
+  };
+}
+
+// Turns a string (the player key) into a number, since mulberry32 needs a
+// numeric seed.
+function hashString(str) {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash << 5) - hash + str.charCodeAt(i);
+    hash |= 0; // keep it a 32-bit integer
+  }
+  return hash;
+}
+
+// Final cost: base tier value randomized by +/-30%, using a seed built from
+// this game's session seed + this specific player's key. Same player +
+// same game session = same cost every time it's looked up. New game
+// session (new gameSeed) = a freshly rolled cost. Takes the whole player
+// object (not just rating) so it can build the identity key itself.
+function getPlayerCost(player, gameSeed) {
+  const baseCost = getBaseCost(player.rating_overall);
+
+  const combinedSeed = hashString(`${gameSeed}-${getPlayerKey(player)}`);
+  const rand = mulberry32(combinedSeed)();
+
+  const variance = 0.30;
+  const multiplier = 1 - variance + rand * (variance * 2); // maps 0-1 onto 0.7-1.3
+
+  const finalCost = baseCost * multiplier;
+  return Math.round(finalCost * 4) / 4; // round to nearest 0.25m
 }
 
 // Random integer between MIN_BUDGET and MAX_BUDGET, inclusive
@@ -91,6 +147,10 @@ function App() {
   const [transferHistory, setTransferHistory] = useState([]);
 
   const [totalBudget, setTotalBudget] = useState(null); // null until rolled
+  // Fixed for the whole game session -- every player's randomized cost is
+  // derived from this seed, so costs stay stable during a draft/season and
+  // only reshuffle when a brand new game starts (see newGame()).
+  const [gameSeed, setGameSeed] = useState(() => Math.floor(Math.random() * 1000000));
 
   const availableSeasons = [...new Set(teamsData.map((t) => t.season))].sort(
     (a, b) => a - b
@@ -100,7 +160,7 @@ function App() {
 
   function calculateBudgetRemaining() {
     const spent = Object.values(draftedSlots).reduce(
-      (sum, player) => sum + getPlayerCost(player.rating_overall),
+      (sum, player) => sum + getPlayerCost(player, gameSeed),
       0
     );
     return (totalBudget ?? 0) - spent;
@@ -117,7 +177,7 @@ function App() {
     const squad = getSquadForTeamSeason(teamSeason);
     return squad.some((player) => {
       if (draftedPlayerNames.includes(player.player_name)) return false;
-      if (requireAffordable && getPlayerCost(player.rating_overall) > budgetRemaining) return false;
+      if (requireAffordable && getPlayerCost(player, gameSeed) > budgetRemaining) return false;
       return formations[selectedFormation].some(
         (slot) =>
           !draftedSlots[slot.id] &&
@@ -180,7 +240,7 @@ function App() {
   function getEligibleSlots(player) {
     if (!player || !selectedFormation) return [];
     const budgetRemaining = calculateBudgetRemaining();
-    const cost = getPlayerCost(player.rating_overall);
+    const cost = getPlayerCost(player, gameSeed);
     if (cost > budgetRemaining) return [];
 
     const totalSlots = formations[selectedFormation].length;
@@ -257,6 +317,7 @@ function App() {
     setOriginalDraftedSlots(null);
     setTransferHistory([]);
     setTotalBudget(null);
+    setGameSeed(Math.floor(Math.random() * 1000000));
   }
 
   function restartDraft() {
@@ -341,6 +402,12 @@ function App() {
     return () => clearInterval(timer);
   }, [gamePhase, currentMatchdayIndex, fixtures, yourRecord, opponentSupplement, showTransferWindow]);
 
+  // Bound version of getPlayerCost for child components -- they call it as
+  // getPlayerCostForSquad(player) and never need to know gameSeed exists.
+  function getPlayerCostForSquad(player) {
+    return getPlayerCost(player, gameSeed);
+  }
+
   const allSlotsFilled =
     selectedFormation &&
     formations[selectedFormation].every((slot) => draftedSlots[slot.id]);
@@ -373,7 +440,7 @@ function App() {
               draftedPlayerNames={draftedPlayerNames}
               positionCategory={POSITION_CATEGORY}
               hideRating={hideRating}
-              getPlayerCost={getPlayerCost}
+              getPlayerCost={getPlayerCostForSquad}
               onComplete={handleTransferWindowComplete}
             />
           )}
@@ -416,7 +483,7 @@ function App() {
                   draftedPlayerNames={draftedPlayerNames}
                   allSlotsFilled={allSlotsFilled}
                   teamsData={teamsData}
-                  getPlayerCost={getPlayerCost}
+                  getPlayerCost={getPlayerCostForSquad}
                   getEligibleSlots={getEligibleSlots}
                   assignToSlot={assignToSlot}
                   spinTeam={spinTeam}
@@ -442,7 +509,7 @@ function App() {
                   opponentSupplement={opponentSupplement}
                   matchHistory={matchHistory}
                   hideRating={hideRating}
-                  getPlayerCost={getPlayerCost}
+                  getPlayerCost={getPlayerCostForSquad}
                   formatSeasonLabel={formatSeasonLabel}
                   buildProgressiveTable={buildProgressiveTable}
                   originalDraftAverages={originalDraftAverages}
@@ -453,23 +520,25 @@ function App() {
               )}
 
               <div className="footer-nav-row" style={{ padding: '0 24px' }}>
-            {gamePhase === 'drafting' && (
-              <button
-                className="btn btn-dark"
-                onClick={restartDraft}
-                style={{ padding: '10px 16px', fontSize: '13px', flex: 1 }}
-              >
-                RESTART DRAFT
-              </button>
-            )}
-            <button
-              className="btn btn-dark"
-              onClick={newGame}
-              style={{ padding: '10px 16px', fontSize: '13px', flex: 1 }}
-            >
-              NEW GAME
-            </button>
-          </div>
+                {gamePhase === 'drafting' && (
+                  <button
+                    className="btn btn-dark"
+                    onClick={restartDraft}
+                    style={{ padding: '10px 16px', fontSize: '13px', flex: 1 }}
+                  >
+                    RESTART DRAFT
+                  </button>
+                )}
+                <button
+                  className="btn btn-dark"
+                  onClick={newGame}
+                  style={{ padding: '10px 16px', fontSize: '13px', flex: 1 }}
+                >
+                  NEW GAME
+                </button>
+              </div>
+
+              <Footer />
             </>
           )}
         </>

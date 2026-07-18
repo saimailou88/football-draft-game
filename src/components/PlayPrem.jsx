@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import PitchPreview from './PitchPreview';
+import Footer from './Footer';
 
 function formatSeasonLabel(season) {
   const nextYearShort = (season + 1).toString().slice(-2);
@@ -73,7 +74,7 @@ function PlayPrem({
       </button>
 
       <h1 className="section-title" style={{ fontSize: '24px', marginBottom: '24px' }}>
-        PLAY PREM
+        PREMIER LEAGUE
       </h1>
 
       <p className="field-label">Difficulty</p>
@@ -159,6 +160,8 @@ function PlayPrem({
       >
         PLAY SEASON
       </button>
+
+      <Footer />
     </div>
   );
 }
