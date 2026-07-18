@@ -38,6 +38,10 @@ const FAQS = [
     answer: "Not yet — each run is one sitting, start to finish. Save/resume may come in a future update.",
   },
   {
+    question: "Is my season history saved anywhere?",
+    answer: "Your best result for each season is saved automatically in this browser, so you can check your History page any time you come back. It's tied to this device and browser though — clearing your browser data, using private/incognito mode, or switching devices will lose it. You can back it up any time from the History page using Export, and load it back in with Import if needed.",
+  },
+  {
     question: "What happens if I run out of budget mid-draft?",
     answer: "You'll only be offered players you can afford, and slots you can't realistically fill get flagged so you don't get stuck.",
   },

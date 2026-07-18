@@ -6,6 +6,7 @@ import HowToPlay from './components/HowToPlay';
 import PlayPrem from './components/PlayPrem';
 import Drafting from './components/Drafting';
 import Simulating from './components/Simulating';
+import HistoryPage from './components/HistoryPage';
 import Footer from './components/Footer';
 import playersData from './data/players.json';
 import teamsData from './data/teams.json';
@@ -19,6 +20,7 @@ import {
   applyResultToOpponentSupplement,
   buildProgressiveTable,
 } from './data/simulation';
+import { saveSeasonResult } from './data/history';
 import './App.css';
 
 const MAX_TEAM_REROLLS = 3;
@@ -120,7 +122,7 @@ function rollRandomBudget() {
 }
 
 function App() {
-  const [screen, setScreen] = useState('home'); // 'home' | 'howToPlay' | 'game'
+  const [screen, setScreen] = useState('home'); // 'home' | 'howToPlay' | 'history' | 'game'
   const [selectedSeason, setSelectedSeason] = useState(null);
   const [difficulty, setDifficulty] = useState(null); // 'easy' | 'hard'
   const [teamName, setTeamName] = useState('');
@@ -404,6 +406,48 @@ function App() {
     return () => clearInterval(timer);
   }, [gamePhase, currentMatchdayIndex, fixtures, yourRecord, opponentSupplement, showTransferWindow]);
 
+  // Records this season's result to local history the moment it finishes.
+  // saveSeasonResult only keeps the better of two runs for the same
+  // season, so replaying a season safely updates -- never downgrades --
+  // what's stored. Saves everything the History accordion needs so it
+  // never has to re-derive anything from live game state.
+  useEffect(() => {
+    if (gamePhase !== 'finished') return;
+
+    const finalTable = buildProgressiveTable(
+      opponents,
+      yourRecord,
+      opponentSupplement,
+      currentMatchdayIndex,
+      fixtures.length
+    );
+    const finalPosition = finalTable.findIndex((row) => row.name === 'Your Team') + 1;
+
+    const finalSquad = formations[selectedFormation]
+      .filter((slot) => draftedSlots[slot.id])
+      .map((slot) => ({
+        slotId: slot.id,
+        slotLabel: slot.label,
+        player: draftedSlots[slot.id],
+        cost: getPlayerCost(draftedSlots[slot.id], gameSeed),
+      }));
+
+    saveSeasonResult({
+      season_year: selectedSeason,
+      team_name: teamName || 'YOUR TEAM',
+      formation: selectedFormation,
+      final_position: finalPosition,
+      points: yourRecord.points,
+      played_at: Date.now(),
+      budget: totalBudget,
+      record: { ...yourRecord },
+      originalAverages: originalDraftAverages,
+      finalAverages: calculateTeamStats(),
+      transferHistory,
+      finalSquad,
+    });
+  }, [gamePhase]);
+
   // Bound version of getPlayerCost for child components -- they call it as
   // getPlayerCostForSquad(player) and never need to know gameSeed exists.
   function getPlayerCostForSquad(player) {
@@ -425,11 +469,16 @@ function App() {
         <Homepage
           onPlayClick={() => setScreen('game')}
           onHowToPlayClick={() => setScreen('howToPlay')}
+          onHistoryClick={() => setScreen('history')}
         />
       )}
 
       {screen === 'howToPlay' && (
         <HowToPlay onBack={() => setScreen('home')} />
+      )}
+
+      {screen === 'history' && (
+        <HistoryPage onBack={() => setScreen('home')} />
       )}
 
       {screen === 'game' && (
@@ -499,7 +548,7 @@ function App() {
                 />
               )}
 
-             {(gamePhase === 'simulating' || gamePhase === 'finished') && (
+              {(gamePhase === 'simulating' || gamePhase === 'finished') && (
                 <Simulating
                   selectedFormation={selectedFormation}
                   formations={formations}

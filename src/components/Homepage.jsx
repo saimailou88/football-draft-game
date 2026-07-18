@@ -1,8 +1,9 @@
 import Footer from './Footer';
 
-function Homepage({ onPlayClick, onHowToPlayClick }) {
+function Homepage({ onPlayClick, onHowToPlayClick, onHistoryClick }) {
   return (
     <div style={{
+      position: 'relative',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
@@ -11,6 +12,14 @@ function Homepage({ onPlayClick, onHowToPlayClick }) {
       padding: '40px 24px',
       gap: '16px'
     }}>
+      <button
+        className="btn btn-dark"
+        onClick={onHistoryClick}
+        style={{ position: 'absolute', top: '20px', right: '24px', padding: '10px 16px', fontSize: '13px' }}
+      >
+        GAME HISTORY
+      </button>
+
       <h1 className="game-title">THE DUGOUT</h1>
 
       <p className="label-mono" style={{ marginBottom: '48px' }}>
