@@ -432,6 +432,20 @@ function App() {
         cost: getPlayerCost(draftedSlots[slot.id], gameSeed),
       }));
 
+    // The draft-day squad, before any transfer-window swaps -- lets the
+    // History screen show the same before/after comparison cards the
+    // live Simulating screen shows for transferred players.
+    const originalSquad = originalDraftedSlots
+      ? formations[selectedFormation]
+          .filter((slot) => originalDraftedSlots[slot.id])
+          .map((slot) => ({
+            slotId: slot.id,
+            slotLabel: slot.label,
+            player: originalDraftedSlots[slot.id],
+            cost: getPlayerCost(originalDraftedSlots[slot.id], gameSeed),
+          }))
+      : [];
+
     saveSeasonResult({
       season_year: selectedSeason,
       team_name: teamName || 'YOUR TEAM',
@@ -445,6 +459,7 @@ function App() {
       finalAverages: calculateTeamStats(),
       transferHistory,
       finalSquad,
+      originalSquad
     });
   }, [gamePhase]);
 

@@ -14,26 +14,30 @@ function round1(value) {
   return Math.round(value);
 }
 
-// Big headline number for the overall squad rating (draft day -> final),
-// colored green/red if it moved, neutral white if unchanged.
+// Big headline number for the overall squad rating (draft day -> final).
+// The starting number always stays white -- only the final number is
+// colored, green if it improved, red if it dropped.
 function RatingChangeLine({ before, after }) {
   if (before === null || before === undefined || after === null || after === undefined) return null;
   const b = round1(before);
   const a = round1(after);
 
-  let directionClass = '';
-  if (a > b) directionClass = 'history-rating-up';
-  else if (a < b) directionClass = 'history-rating-down';
+  let afterClass = '';
+  if (a > b) afterClass = 'history-rating-up';
+  else if (a < b) afterClass = 'history-rating-down';
 
   return (
-    <p className={`history-rating-line ${directionClass}`}>
-      {b} <span className="history-rating-arrow">→</span> {a}
+    <p className="history-rating-line">
+      <span className="history-rating-before">{b}</span>
+      <span className="history-rating-arrow">→</span>
+      <span className={`history-rating-after ${afterClass}`}>{a}</span>
     </p>
   );
 }
 
-// One GK/DEF/MID/FWD line. Shows a single number if the position group
-// never changed, or a before -> after with a signed delta if it did.
+// One GK/DEF/MID/FWD line. Shows a single white number if the position
+// group never changed. If it did, the starting number stays white and
+// only the final number + delta are colored to show direction.
 function StatCompareLine({ label, before, after }) {
   if (before === null || before === undefined || after === null || after === undefined) return null;
   const b = round1(before);
@@ -50,10 +54,12 @@ function StatCompareLine({ label, before, after }) {
 
   const directionClass = delta > 0 ? 'history-stat-up' : 'history-stat-down';
   return (
-    <p className={`history-stat-line ${directionClass}`}>
-      <span className="history-stat-label">{label}:</span> {b}
-      <span className="history-stat-arrow">→</span> {a}
-      <span className="history-stat-delta">({delta > 0 ? '+' : ''}{delta})</span>
+    <p className="history-stat-line">
+      <span className="history-stat-label">{label}:</span>
+      <span className="history-stat-before">{b}</span>
+      <span className="history-stat-arrow">→</span>
+      <span className={`history-stat-after ${directionClass}`}>{a}</span>
+      <span className={`history-stat-delta ${directionClass}`}>({delta > 0 ? '+' : ''}{delta})</span>
     </p>
   );
 }
@@ -62,15 +68,10 @@ function HistoryPage({ onBack }) {
   const [history, setHistory] = useState([]);
   const [expandedSeason, setExpandedSeason] = useState(null);
 
-  // Loaded once on mount -- this screen is only ever visited between
-  // games, so there's no live state to keep it in sync with.
   useEffect(() => {
     setHistory(getHistory());
   }, []);
 
-  // Every season the game supports, not just the ones played -- unplayed
-  // seasons still show up in the list with an N/A rank, so the full
-  // timeline is visible up front.
   const allSeasons = [...new Set(teamsData.map((t) => t.season))].sort((a, b) => a - b);
 
   const sorted = allSeasons.map((season) => {
@@ -79,8 +80,6 @@ function HistoryPage({ onBack }) {
   });
 
   function toggleSeason(seasonYear) {
-    // Accordion behavior: tapping the open row closes it, tapping a
-    // different row closes whichever was open and opens the new one.
     setExpandedSeason((prev) => (prev === seasonYear ? null : seasonYear));
   }
 
@@ -102,13 +101,6 @@ function HistoryPage({ onBack }) {
           {sorted.map((entry) => {
             const isExpanded = expandedSeason === entry.season_year;
             const isChampion = entry.final_position === 1;
-
-            // Slots that were transferred this season -- used to hide the
-            // price on those player cards, matching the same rule used
-            // during live simulation.
-            const transferredSlotIds = new Set(
-              (entry.transferHistory || []).map((t) => t.slotId)
-            );
 
             return (
               <div key={entry.season_year} className="history-entry">
@@ -177,21 +169,61 @@ function HistoryPage({ onBack }) {
 
                     <p className="history-team-name">{entry.team_name}</p>
                     <p className="history-meta-line">{entry.formation} · £{entry.budget}M</p>
-                    
+
                     <div className="slot-list" style={{ marginTop: '12px' }}>
-                      {(entry.finalSquad || []).map((item) => (
-                        <PlayerCard
-                          key={item.slotId}
-                          player={item.player}
-                          cost={transferredSlotIds.has(item.slotId) ? undefined : item.cost}
-                          assignedPosition={item.slotLabel}
-                          origin={{
-                            club: item.player.club,
-                            season: formatSeasonLabel(item.player.season_year),
-                          }}
-                          hideRating={false}
-                        />
-                      ))}
+                      {(entry.finalSquad || []).map((item) => {
+                        const originalItem = (entry.originalSquad || []).find(
+                          (o) => o.slotId === item.slotId
+                        );
+                        const wasTransferred =
+                          originalItem && originalItem.player.player_name !== item.player.player_name;
+
+                        if (wasTransferred) {
+                          const isUpgrade = item.player.rating_overall > originalItem.player.rating_overall;
+                          const isDowngrade = item.player.rating_overall < originalItem.player.rating_overall;
+                          const tradeResult = isUpgrade ? 'upgrade' : isDowngrade ? 'downgrade' : null;
+
+                          return (
+                            <div key={item.slotId} className="player-comparison-row">
+                              <PlayerCard
+                                player={originalItem.player}
+                                cost={originalItem.cost}
+                                assignedPosition={item.slotLabel}
+                                origin={{
+                                  club: originalItem.player.club,
+                                  season: formatSeasonLabel(originalItem.player.season_year),
+                                }}
+                                hideRating={false}
+                              />
+                              <div className="comparison-arrow">↓ TRANSFERRED ↓</div>
+                              <PlayerCard
+                                player={item.player}
+                                assignedPosition={item.slotLabel}
+                                origin={{
+                                  club: item.player.club,
+                                  season: formatSeasonLabel(item.player.season_year),
+                                }}
+                                hideRating={false}
+                                tradeResult={tradeResult}
+                              />
+                            </div>
+                          );
+                        }
+
+                        return (
+                          <PlayerCard
+                            key={item.slotId}
+                            player={item.player}
+                            cost={item.cost}
+                            assignedPosition={item.slotLabel}
+                            origin={{
+                              club: item.player.club,
+                              season: formatSeasonLabel(item.player.season_year),
+                            }}
+                            hideRating={false}
+                          />
+                        );
+                      })}
                     </div>
                   </div>
                 )}
