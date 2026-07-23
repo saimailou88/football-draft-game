@@ -7,29 +7,80 @@ function convertZScoreToRating(zScore) {
 function getGoalsForGap(gap) {
   let possibleGoals;
 
-  if (gap >= 15) possibleGoals = [3, 4, 5];
+  if (gap >= 35) possibleGoals = [4, 5, 6, 6, 7];
+  else if (gap >= 30) possibleGoals = [4, 5, 5, 6];
+  else if (gap >= 25) possibleGoals = [3, 4, 5, 6];
+  else if (gap >= 20) possibleGoals = [3, 4, 5];
+  else if (gap >= 15) possibleGoals = [2, 3, 4, 5];
   else if (gap >= 10) possibleGoals = [2, 3, 4];
   else if (gap >= 5) possibleGoals = [1, 2, 3];
   else if (gap >= 0) possibleGoals = [0, 1, 2];
   else if (gap >= -5) possibleGoals = [0, 1];
   else if (gap >= -10) possibleGoals = [0, 0, 1];
-  else possibleGoals = [0, 0, 1];
+  else if (gap >= -15) possibleGoals = [0, 0, 1];
+  else possibleGoals = [0, 0, 0, 1];
 
   const randomIndex = Math.floor(Math.random() * possibleGoals.length);
   return possibleGoals[randomIndex];
 }
 
+// --- Deriving attack/defense weights from the formation's own slot counts ---
+// Instead of a fixed split everywhere, this looks at how many DEF/MID/FWD
+// slots the SELECTED formation actually has, so a midfield-heavy formation
+// like 4-5-1 genuinely plays differently from a forward-heavy one like 4-3-3.
+export function getFormationWeights(formationSlots, positionCategory) {
+  const counts = { DEF: 0, MID: 0, FWD: 0 };
+  formationSlots.forEach((slot) => {
+    const category = positionCategory[slot.label];
+    if (counts[category] !== undefined) counts[category] += 1;
+  });
+
+  // What fraction of the formation's attacking presence is MID vs FWD.
+  const attackPool = counts.FWD + counts.MID;
+  const midAttackShare = attackPool > 0 ? counts.MID / attackPool : 0;
+
+  // What fraction of the formation's defensive presence is MID vs DEF.
+  const defensePool = counts.DEF + counts.MID;
+  const midDefenseShare = defensePool > 0 ? counts.MID / defensePool : 0;
+
+  // Clamped so FWD/DEF always stay the PRIMARY driver of their own side,
+  // even in extreme formations (e.g. 3-4-2-1 has 1 FWD, 6 MID) -- this
+  // stops MID from mathematically overtaking FWD as the main scoring
+  // driver, which would break the "strikers score goals" identity.
+  const midAttackWeight = Math.min(0.45, midAttackShare * 0.6);
+  const midDefenseWeight = Math.min(0.30, midDefenseShare * 0.4);
+
+  return {
+    fwdWeight: 1 - midAttackWeight,
+    midAttackWeight,
+    defWeight: 1 - midDefenseWeight,
+    midDefenseWeight,
+  };
+}
+
+// --- Blending FWD/MID into attack strength, and DEF/MID into defense
+// strength, using the formation-aware weights calculated above ---
+function getAttackStrength(yourStats, weights) {
+  return yourStats.fwd * weights.fwdWeight + yourStats.mid * weights.midAttackWeight;
+}
+
+function getDefenseStrength(yourStats, weights) {
+  return yourStats.def * weights.defWeight + yourStats.mid * weights.midDefenseWeight;
+}
+
 // --- Simulating one match ---
-export function simulateMatch(yourStats, opponent, isHome) {
+export function simulateMatch(yourStats, opponent, isHome, weights) {
   const theirAttack = convertZScoreToRating(opponent.attack_rating);
   const theirDefence = convertZScoreToRating(opponent.defence_rating);
 
-  let yourGap = yourStats.fwd - theirDefence;
-  if (yourStats.mid > theirDefence) yourGap += 3;
+  const yourAttackStrength = getAttackStrength(yourStats, weights);
+  const yourDefenseStrength = getDefenseStrength(yourStats, weights);
+
+  let yourGap = yourAttackStrength - theirDefence;
   if (isHome) yourGap += 4;
   const yourGoals = getGoalsForGap(yourGap);
 
-  let theirGap = theirAttack - yourStats.def;
+  let theirGap = theirAttack - yourDefenseStrength;
   if (!isHome) theirGap += 4;
   const theirGoals = getGoalsForGap(theirGap);
 

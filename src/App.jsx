@@ -14,6 +14,7 @@ import { formations } from './data/formations';
 import {
   generateFixtures,
   simulateMatch,
+  getFormationWeights,
   createEmptyYourRecord,
   applyResultToYourRecord,
   createEmptyOpponentSupplement,
@@ -276,8 +277,33 @@ function App() {
     function averageFor(category) {
       const group = filledPlayers.filter((entry) => entry.category === category);
       if (group.length === 0) return null;
-      const total = group.reduce((sum, entry) => sum + entry.player.rating_overall, 0);
-      return Math.round(total / group.length);
+
+      // Sort ratings highest to lowest so each player is compared against
+      // the next-best player in their own category, not a flat group average.
+      const ratings = group
+        .map((entry) => entry.player.rating_overall)
+        .sort((a, b) => b - a);
+
+      // Your single best player in a category always counts at full value --
+      // a genuine star always makes that category better.
+      let adjustedTotal = ratings[0];
+
+      // DAMPEN_FACTOR softens how much a big rating GAP between one player
+      // and the next-best player in the same category can pull the group
+      // average up. A small gap (two similar-quality players) is barely
+      // dampened; a big gap (one elite card next to much weaker players)
+      // has half of that excess ignored. This is what stops a single
+      // 95-rated ST in a 1-striker formation from making the whole FWD
+      // category read as world-class.
+      const DAMPEN_FACTOR = 0.5;
+
+      for (let i = 1; i < ratings.length; i++) {
+        const gapAboveNext = ratings[i - 1] - ratings[i];
+        const dampenedGap = gapAboveNext * DAMPEN_FACTOR;
+        adjustedTotal += ratings[i] + (gapAboveNext - dampenedGap);
+      }
+
+      return Math.round(adjustedTotal / group.length);
     }
 
     const overall =
@@ -354,7 +380,11 @@ function App() {
     const yourStats = calculateTeamStats();
     const { opponent, isHome } = fixtures[currentMatchdayIndex];
 
-    const { yourGoals, theirGoals } = simulateMatch(yourStats, opponent, isHome);
+    // Formation-aware weights are recalculated from the selected formation's
+    // slot layout -- cheap to compute, so no need to cache it separately.
+    const weights = getFormationWeights(formations[selectedFormation], POSITION_CATEGORY);
+
+    const { yourGoals, theirGoals } = simulateMatch(yourStats, opponent, isHome, weights);
     const updatedRecord = applyResultToYourRecord(yourRecord, yourGoals, theirGoals);
     const updatedSupplement = applyResultToOpponentSupplement(
       opponentSupplement,
