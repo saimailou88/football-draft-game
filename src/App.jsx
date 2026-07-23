@@ -438,9 +438,9 @@ function App() {
 
   // Records this season's result to local history the moment it finishes.
   // saveSeasonResult only keeps the better of two runs for the same
-  // season, so replaying a season safely updates -- never downgrades --
-  // what's stored. Saves everything the History accordion needs so it
-  // never has to re-derive anything from live game state.
+  // season+difficulty, so replaying a season safely updates -- never
+  // downgrades -- what's stored. Saves everything the History accordion
+  // needs so it never has to re-derive anything from live game state.
   useEffect(() => {
     if (gamePhase !== 'finished') return;
 
@@ -484,6 +484,7 @@ function App() {
       points: yourRecord.points,
       played_at: Date.now(),
       budget: totalBudget,
+      difficulty,
       record: { ...yourRecord },
       originalAverages: originalDraftAverages,
       finalAverages: calculateTeamStats(),

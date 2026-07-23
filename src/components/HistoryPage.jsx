@@ -67,6 +67,9 @@ function StatCompareLine({ label, before, after }) {
 function HistoryPage({ onBack }) {
   const [history, setHistory] = useState([]);
   const [expandedSeason, setExpandedSeason] = useState(null);
+  // Which mode's runs are currently visible. Defaults to 'easy' -- the
+  // list only ever shows one mode at a time, matching the toggle's job.
+  const [selectedDifficulty, setSelectedDifficulty] = useState('easy');
 
   useEffect(() => {
     setHistory(getHistory());
@@ -74,13 +77,26 @@ function HistoryPage({ onBack }) {
 
   const allSeasons = [...new Set(teamsData.map((t) => t.season))].sort((a, b) => a - b);
 
+  // Only look at saved entries that match the currently selected
+  // difficulty -- an Easy run and a Hard run of the same season are
+  // separate entries now (see history.js), so this filter is what
+  // actually makes the toggle do something.
+  const historyForMode = history.filter((e) => e.difficulty === selectedDifficulty);
+
   const sorted = allSeasons.map((season) => {
-    const played = history.find((e) => e.season_year === season);
+    const played = historyForMode.find((e) => e.season_year === season);
     return played || { season_year: season, isUnplayed: true };
   });
 
   function toggleSeason(seasonYear) {
     setExpandedSeason((prev) => (prev === seasonYear ? null : seasonYear));
+  }
+
+  // Switching modes closes any expanded entry -- avoids a stale expanded
+  // card lingering from the mode you just switched away from.
+  function handleDifficultyChange(mode) {
+    setSelectedDifficulty(mode);
+    setExpandedSeason(null);
   }
 
   return (
@@ -93,9 +109,28 @@ function HistoryPage({ onBack }) {
         ← BACK
       </button>
 
-      <h1 className="section-title" style={{ fontSize: '24px', marginBottom: '24px' }}>
-        LEAGUE HISTORY
-      </h1>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '24px' }}>
+        <h1 className="section-title" style={{ fontSize: '24px', margin: 0 }}>
+          LEAGUE HISTORY
+        </h1>
+
+        <div className="history-difficulty-toggle">
+          <button
+            className={`btn ${selectedDifficulty === 'easy' ? 'btn-secondary' : 'btn-dark'}`}
+            onClick={() => handleDifficultyChange('easy')}
+            style={{ padding: '8px 14px', fontSize: '12px' }}
+          >
+            EASY
+          </button>
+          <button
+            className={`btn ${selectedDifficulty === 'hard' ? 'btn-secondary' : 'btn-dark'}`}
+            onClick={() => handleDifficultyChange('hard')}
+            style={{ padding: '8px 14px', fontSize: '12px' }}
+          >
+            HARD
+          </button>
+        </div>
+      </div>
 
       <div className="history-list">
           {sorted.map((entry) => {
@@ -115,7 +150,7 @@ function HistoryPage({ onBack }) {
                 {isExpanded && entry.isUnplayed && (
                   <div className="history-expanded">
                     <p className="no-slot-text">
-                      Season not played yet — your best result for each season will show up here once you finish one.
+                      Season not played yet in {selectedDifficulty === 'easy' ? 'Easy' : 'Hard'} mode — your best result for each season will show up here once you finish one.
                     </p>
                   </div>
                 )}

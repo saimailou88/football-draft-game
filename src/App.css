@@ -1274,3 +1274,15 @@ body {
   text-align: left;
   margin-bottom: 6px;
 }
+
+/* ===========================================
+   LEAGUE HISTORY PAGE: EASY/HARD MODE TOGGLE
+   Sits top-right next to the "LEAGUE HISTORY"
+   title -- two pill buttons, active one in
+   bluey-purple (.btn-secondary), inactive dark.
+   =========================================== */
+.history-difficulty-toggle {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}

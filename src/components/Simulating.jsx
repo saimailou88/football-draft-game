@@ -4,10 +4,8 @@ import PitchPreview from './PitchPreview';
 import EndOfSeasonSummary from './EndOfSeasonSummary';
 
 function resultType(match) {
-  const yourGoals = match.isHome ? match.yourGoals : match.theirGoals;
-  const theirGoals = match.isHome ? match.theirGoals : match.yourGoals;
-  if (yourGoals > theirGoals) return 'win';
-  if (yourGoals < theirGoals) return 'loss';
+  if (match.yourGoals > match.theirGoals) return 'win';
+  if (match.yourGoals < match.theirGoals) return 'loss';
   return 'draw';
 }
 

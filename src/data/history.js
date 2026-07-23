@@ -16,21 +16,26 @@ export function getHistory() {
   }
 }
 
-// Saves a completed season's result. If an entry already exists for this
-// exact season_year, it's only overwritten when the new result is a
-// better (lower) final position -- so replaying a season keeps your best
-// run rather than your most recent one.
+// Saves a completed season's result. Entries are matched by BOTH
+// season_year AND difficulty -- so an Easy run and a Hard run of the same
+// season are stored as separate entries instead of overwriting each
+// other. Within the same season+difficulty combo, an existing entry is
+// only overwritten when the new result is a better (lower) final
+// position -- so replaying keeps your best run rather than your most
+// recent one.
 export function saveSeasonResult(entry) {
   try {
     const history = getHistory();
-    const existingIndex = history.findIndex((e) => e.season_year === entry.season_year);
+    const existingIndex = history.findIndex(
+      (e) => e.season_year === entry.season_year && e.difficulty === entry.difficulty
+    );
 
     if (existingIndex === -1) {
       history.push(entry);
     } else if (entry.final_position < history[existingIndex].final_position) {
       history[existingIndex] = entry;
     } else {
-      return; // existing best run for this season stays as-is
+      return; // existing best run for this season+difficulty stays as-is
     }
 
     localStorage.setItem(STORAGE_KEY, JSON.stringify(history));
