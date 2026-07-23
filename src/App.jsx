@@ -122,11 +122,37 @@ function rollRandomBudget() {
   return Math.floor(Math.random() * (MAX_BUDGET - MIN_BUDGET + 1)) + MIN_BUDGET;
 }
 
+const LAST_TEAM_NAME_KEY = 'dugoutLastTeamName';
+
+// Reads the last-used team name from localStorage -- falls back to an
+// empty string if nothing's been saved yet, or if localStorage is
+// unavailable for any reason, so this never crashes app startup.
+function getLastTeamName() {
+  try {
+    return localStorage.getItem(LAST_TEAM_NAME_KEY) || '';
+  } catch (err) {
+    console.error('Failed to read last team name from localStorage:', err);
+    return '';
+  }
+}
+
+// Saves the team name so the NEXT new game can prefill it.
+function saveLastTeamName(name) {
+  try {
+    localStorage.setItem(LAST_TEAM_NAME_KEY, name);
+  } catch (err) {
+    console.error('Failed to save last team name to localStorage:', err);
+  }
+}
+
 function App() {
   const [screen, setScreen] = useState('home'); // 'home' | 'howToPlay' | 'history' | 'game'
   const [selectedSeason, setSelectedSeason] = useState(null);
   const [difficulty, setDifficulty] = useState(null); // 'easy' | 'hard'
-  const [teamName, setTeamName] = useState('');
+  // Prefills with whatever team name was last used, if any -- covers the
+  // case where the app loads fresh (e.g. a reload mid-setup) as well as
+  // the normal new-game flow handled in newGame() below.
+  const [teamName, setTeamName] = useState(() => getLastTeamName());
   const [selectedFormation, setSelectedFormation] = useState(null);
   const [setupComplete, setSetupComplete] = useState(false);
 
@@ -327,7 +353,10 @@ function App() {
     setScreen('home');
     setSelectedSeason(null);
     setDifficulty(null);
-    setTeamName('');
+    // Refills with the last saved team name rather than blanking it --
+    // saveLastTeamName() is what keeps this value current (see PlayPrem's
+    // onConfirmPlay below).
+    setTeamName(getLastTeamName());
     setSelectedFormation(null);
     setSetupComplete(false);
     setCurrentSquad(null);
@@ -559,7 +588,10 @@ function App() {
               maxBudget={MAX_BUDGET}
               onGenerateBudget={generateBudget}
               onBudgetRolled={handleBudgetRolled}
-              onConfirmPlay={() => setSetupComplete(true)}
+              onConfirmPlay={() => {
+                saveLastTeamName(teamName);
+                setSetupComplete(true);
+              }}
               onBack={() => setScreen('home')}
             />
           )}
